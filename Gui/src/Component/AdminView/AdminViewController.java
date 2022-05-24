@@ -1,0 +1,148 @@
+package Component.AdminView;
+    import Component.MainComponent.BankController;
+    import Component.ViewLoansInfo.ViewLoansInfoController;
+    import Component.ViewCustomersInfo.ViewCustomersInfoController;
+    import DTOs.CustomerDTOs;
+    import DTOs.LoanDTOs;
+    import SystemExceptions.InccorectInputType;
+    import common.BankResourcesConstants;
+    import javafx.beans.property.SimpleBooleanProperty;
+    import javafx.beans.property.SimpleStringProperty;
+    import javafx.collections.FXCollections;
+    import javafx.event.ActionEvent;
+    import javafx.fxml.FXML;
+    import javafx.fxml.FXMLLoader;
+    import javafx.geometry.Insets;
+    import javafx.scene.control.*;
+    import javafx.scene.control.cell.PropertyValueFactory;
+    import javafx.scene.layout.*;
+    import javafx.scene.paint.Color;
+    import javafx.stage.FileChooser;
+    import org.controlsfx.control.table.TableRowExpanderColumn;
+
+    import java.io.File;
+    import java.io.IOException;
+    import java.net.URL;
+    import java.util.List;
+
+public class AdminViewController {
+
+    @FXML BankController mainController;
+    @FXML private Button IncreaseYazBtn;
+    @FXML private Button LoadFileBtn;
+    @FXML private TableView<LoanDTOs> LoansData = new TableView<>();
+    @FXML private TableView<CustomerDTOs> CustomerData = new TableView<>();
+
+    private SimpleStringProperty selectedFileProperty;
+    private SimpleBooleanProperty isFileSelected;
+
+    public AdminViewController() {
+        this.selectedFileProperty = new SimpleStringProperty();
+        this.isFileSelected = new SimpleBooleanProperty(false);
+    }
+
+    @FXML private void initialize(){
+       IncreaseYazBtn.disableProperty().bind(isFileSelected.not());
+    }
+
+    public SimpleStringProperty getSelectedFileProperty() {
+        return selectedFileProperty;
+    }
+
+    public SimpleStringProperty selectedFilePropertyProperty() {
+        return selectedFileProperty;
+    }
+
+    public void setMainController(BankController m_mainController){
+        this.mainController = m_mainController;
+    }
+
+    @FXML private void clickOnLoadFile(ActionEvent event) throws InccorectInputType {
+        List<LoanDTOs> allLoans = null;
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Bank Data File");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XML files", "*.xml"));
+        File selectedFile = mainController.ShowFileChooserDialog(fileChooser);
+        if(selectedFile == null){
+            return;
+        }
+        String absolutePath = selectedFile.getAbsolutePath();
+        selectedFileProperty.set(absolutePath);
+        isFileSelected.set(mainController.LoadFileActivation());//TODO add exception
+        if(isFileSelected.getValue()){
+            CustomerData.getItems().clear();
+            LoansData.getItems().clear();
+            ViewLoansInfoController loansInfoController = new ViewLoansInfoController();
+            loansInfoController.setMainController(mainController);
+            loansInfoController.buildLoansTableView(LoansData);
+            buildCustomersTableView();
+        }
+    }
+
+    private void buildCustomersTableView(){
+        List<CustomerDTOs> allCustomers = mainController.getSystemCustomers();
+        TableRowExpanderColumn<CustomerDTOs> expanderColumn = new TableRowExpanderColumn<>(param -> {
+            try {
+                return expandCustomerInfo(param);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        });
+
+        expanderColumn.setPrefWidth(45);
+        TableColumn<CustomerDTOs, String> nameOfCustomer = new TableColumn<>("Name of customer");
+        nameOfCustomer.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameOfCustomer.setPrefWidth(125);
+
+        TableColumn<CustomerDTOs, String> balance = new TableColumn<>("Balance");
+        balance.setCellValueFactory(new PropertyValueFactory<>("balance"));
+        balance.setPrefWidth(125);
+
+        TableColumn<CustomerDTOs, String> loansAsLoaner = new TableColumn<>("Loans as Borrower");
+        loansAsLoaner.setCellValueFactory(new PropertyValueFactory<>("numOfLoansAsBorrower"));
+
+        TableColumn<CustomerDTOs, String> loansAsLender = new TableColumn<>("Loans as lender");
+        loansAsLender.setCellValueFactory(new PropertyValueFactory<>("numOfLoansAsLender"));
+
+
+        CustomerData.getColumns().addAll(expanderColumn, nameOfCustomer, balance, loansAsLoaner, loansAsLender);
+        CustomerData.getItems().addAll(FXCollections.observableArrayList(allCustomers));
+
+    }
+
+    private GridPane expandCustomerInfo(TableRowExpanderColumn.TableRowDataFeatures<CustomerDTOs> param) throws IOException {
+        GridPane workSpace = new GridPane();
+        workSpace.setHgap(10);
+        workSpace.setVgap(5);
+
+        CustomerDTOs customer = param.getValue();
+
+     /*   String nameOfCustomer = customer.getName();
+        String paymentFrequency = Integer.toString(customer.getBalance());
+        String LoansAsBorrower = Integer.toString(customer.getNumOfLoansAsBorrower());
+        String LoansAsLender = Integer.toString(customer.getNumOfLoansAsLender());/TODO delete if not in use*/
+
+        FXMLLoader loader = new FXMLLoader();
+        URL CustomerViewFXML = getClass().getResource(BankResourcesConstants.VIEWCUSTOMERDATAEXPANDED_RESOURCE_IDENTIFIRE);
+        loader.setLocation(CustomerViewFXML);
+        GridPane CustomerExpandedDetails = loader.load();
+        ViewCustomersInfoController customersInfoController = loader.getController();
+        CustomerExpandedDetails.setBackground(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        customersInfoController.SetLoansAsLenderByStatusLabels(mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsALender()));
+        customersInfoController.SetLoansAsLoanerByStatusLabels(mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()));
+
+        return CustomerExpandedDetails;
+    }
+
+    @FXML private void clickOnIncreaseYaz(ActionEvent event){
+        //0.before increasing the yaz we need to check if there is a loans that had to pay in this yaz and didnt pay if so make them in risk mode
+        //1.increase yaz
+        //2.send alert to all users that need to pay loans on this updated yaz
+        //do we need to make loan risk here?
+
+    }
+
+
+}

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="fixed main bug" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/BankExui1" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="pod34" />
+        <option name="repository" value="BankEx2" />
+      </RepoCoordinatesHolder>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="29701FNJPDGg33oOq6Ugc8b2W13" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Gui/src/Component/AdminView" />
+      <recent name="$PROJECT_DIR$/Gui/src/Component/MainComponent" />
+      <recent name="$PROJECT_DIR$/Gui/src/Main" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Gui/src/BankController" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="TaskMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main.TaskMain" />
+      <module name="Gui" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TaskMain" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="" />
+      <created>1652448602491</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652448602491</updated>
+      <workItem from="1652448604383" duration="80000" />
+      <workItem from="1652452505246" duration="123000" />
+      <workItem from="1652452643671" duration="2765000" />
+      <workItem from="1652455798885" duration="661000" />
+      <workItem from="1652456736391" duration="597000" />
+      <workItem from="1652518636898" duration="1027000" />
+      <workItem from="1652519860997" duration="4537000" />
+      <workItem from="1652524637382" duration="165000" />
+      <workItem from="1652525058834" duration="2032000" />
+      <workItem from="1652527251660" duration="113000" />
+      <workItem from="1652527471023" duration="190000" />
+      <workItem from="1652527749511" duration="435000" />
+      <workItem from="1652528277397" duration="3427000" />
+      <workItem from="1652531861131" duration="4457000" />
+      <workItem from="1652539834277" duration="1939000" />
+      <workItem from="1652632690282" duration="74000" />
+      <workItem from="1652633417239" duration="11000" />
+      <workItem from="1652648930689" duration="100000" />
+      <workItem from="1652649058258" duration="1025000" />
+      <workItem from="1652699682449" duration="1431000" />
+      <workItem from="1652713780223" duration="7000" />
+      <workItem from="1652718161043" duration="22000" />
+      <workItem from="1652718472298" duration="200000" />
+      <workItem from="1652870374377" duration="3738000" />
+      <workItem from="1652950045968" duration="46000" />
+      <workItem from="1652951580736" duration="7000" />
+      <workItem from="1653303475504" duration="15484000" />
+      <workItem from="1653398009979" duration="26000" />
+    </task>
+    <task id="LOCAL-00001" summary="added Admin by View component">
+      <created>1652454811156</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652454811156</updated>
+    </task>
+    <task id="LOCAL-00002" summary="split into 2 modules gui and bankex2(engine) and added 2 fxml files">
+      <created>1652456791012</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652456791012</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fixed main bug">
+      <created>1652870400773</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1652870400774</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/BankEx2" />
+      <path value="$PROJECT_DIR$/BankExui1" />
+    </ignored-roots>
+    <MESSAGE value="added Admin by View component" />
+    <MESSAGE value="split into 2 modules gui and bankex2(engine) and added 2 fxml files" />
+    <MESSAGE value="fixed main bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed main bug" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/javafx-src.zip!/javafx/fxml/FXMLLoader.java</url>
+          <line>2539</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/javafx-src.zip!/javafx/fxml/FXMLLoader.java</url>
+          <line>2424</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="xmlStreamReader" language="JAVA" />
+        <watch expression="loadListener" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
