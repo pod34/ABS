@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -107,7 +108,15 @@
                                  <children>
                                     <ScrollPane fx:id="LoanerInfoTable1" prefHeight="190.0" prefWidth="390.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                                     <ScrollPane fx:id="LoansInfoTable1" prefHeight="190.0" prefWidth="390.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                                    <ScrollPane fx:id="AccountTransInfo1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.rowSpan="3" />
+                                    <AnchorPane GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.rowSpan="3">
+                                       <children>
+                                          <ScrollPane fx:id="AccountTransInfo1" prefHeight="359.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <content>
+                                                <ListView fx:id="messagesView" prefHeight="357.0" prefWidth="170.0" />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </GridPane>
                            </children>

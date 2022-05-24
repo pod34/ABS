@@ -110,6 +110,7 @@ public class BankController {
       if (!viewBy.getValue().equals("Admin")) {
          curCustomerViewBy.set(viewBy.getValue());
          subComponent.getChildren().setAll(viewByCustomer);
+         viewByCustomerController.setMessagesViewToCustomer(curCustomerViewBy.getValue());
 
       }
       else{

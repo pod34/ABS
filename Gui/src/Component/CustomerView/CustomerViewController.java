@@ -6,12 +6,11 @@ import DTOs.LoanDTOs;
 import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,6 +31,7 @@ public class CustomerViewController {
     @FXML private TextField AmountTB;
     @FXML private Button ChargeBT;
     @FXML private Button WithdrawBT;
+    @FXML private ListView<String> messagesView;
 
     public void setMainController(BankController mainController) {
         this.mainController = mainController;
@@ -57,7 +57,7 @@ public class CustomerViewController {
     }
 
     @FXML
-    void withdrawClicked(ActionEvent event) {
+    void withdrawClicked(ActionEvent event) {//TODO: add limit check
         if (!AmountTB.getText().trim().isEmpty()) {
             mainController.withdrawActivation(Integer.parseInt(AmountTB.getText()));
         }
@@ -75,6 +75,19 @@ public class CustomerViewController {
                 }
             }
         });
+    }
+
+    public void setMessagesViewToCustomer(String customerName) {
+        messagesView.getItems().clear();
+        ObservableList<String> items = null;
+        if (messages != null) {
+            if (messages.containsKey(customerName))
+                items = FXCollections.observableArrayList(messages.get(customerName));
+        }
+        else
+            items = FXCollections.observableArrayList("No messages to " + customerName);
+
+        messagesView.setItems(items);
     }
 }
 

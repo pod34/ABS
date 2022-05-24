@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="fixed main bug">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/controlsfx_8_40_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/tools.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BankSystem/BankSystem.iml" afterDir="false" />
+    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="added account transactions, and made the textfield for int only.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/Gui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/Gui.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
@@ -136,7 +132,7 @@
       <workItem from="1653303475504" duration="15484000" />
       <workItem from="1653398009979" duration="26000" />
       <workItem from="1653401626160" duration="496000" />
-      <workItem from="1653402141579" duration="7141000" />
+      <workItem from="1653402141579" duration="10457000" />
     </task>
     <task id="LOCAL-00001" summary="added Admin by View component">
       <created>1652454811156</created>
@@ -159,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652870400774</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added account transactions, and made the textfield for int only.">
+      <created>1653414098470</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653414098470</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,7 +187,8 @@
     <MESSAGE value="added Admin by View component" />
     <MESSAGE value="split into 2 modules gui and bankex2(engine) and added 2 fxml files" />
     <MESSAGE value="fixed main bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed main bug" />
+    <MESSAGE value="added account transactions, and made the textfield for int only." />
+    <option name="LAST_COMMIT_MESSAGE" value="added account transactions, and made the textfield for int only." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -198,15 +202,6 @@
           <url>jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home/javafx-src.zip!/javafx/fxml/FXMLLoader.java</url>
           <line>2424</line>
           <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java</url>
-          <line>50</line>
-          <properties class="Component.CustomerView.CustomerViewController" method="chargeClicked">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
