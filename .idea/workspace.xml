@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="fixed main bug">
-      <change afterPath="$PROJECT_DIR$/BankSystem/BankSystem.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/Gui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/Gui.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/AdminView/AdminViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gui/Component/AdminView/AdminViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/ViewLoansInfo/ViewLoansInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gui/Component/ViewLoansInfo/ViewLoansInfoController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="ViewByCustomerDataComponents" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,6 +96,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TaskMain" />
+        <item itemvalue="Application.TaskMain" />
         <item itemvalue="Application.TaskMain" />
       </list>
     </recent_temporary>
@@ -182,7 +185,8 @@
     <MESSAGE value="added Admin by View component" />
     <MESSAGE value="split into 2 modules gui and bankex2(engine) and added 2 fxml files" />
     <MESSAGE value="fixed main bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed main bug" />
+    <MESSAGE value="added loans table to customer view need some desing work" />
+    <option name="LAST_COMMIT_MESSAGE" value="added loans table to customer view need some desing work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -25,8 +25,8 @@ public class CustomerDataToPresent {
         this.customer = customer;
         List<LoanDTOs> lst = new ArrayList<>();
         loansInfoController.setMainController(mainController);
-        loansInfoController.buildLoansTableView(LoansAsLoanerData);
-        loansInfoController.buildLoansTableView(LoansAsLenderData);
+        loansInfoController.buildLoansTableView(LoansAsLoanerData,mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()));
+        loansInfoController.buildLoansTableView(LoansAsLenderData,mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsALender()));
     }
 
     public TableView<LoanDTOs> getLoansAsLoanerData() {
