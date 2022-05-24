@@ -6,6 +6,7 @@ import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
@@ -53,13 +54,16 @@ public class CustomerViewController {
 
     private void setLonerLoan(String nameOfCustomer){
        // LoanerLoan = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
-        LoansAsLoaner.getChildren().setAll(DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData());
+        TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
+        LoansAsLoaner.getChildren().setAll(tmp);
 
     }
 
     private void setLenderLoans(String nameOfCustomer){
        // lenderLoans = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
-        LoansAsLender.getChildren().setAll(DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData());
+        TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
+        LoansAsLender.getChildren().setAll(tmp);
+
     }
 
 }

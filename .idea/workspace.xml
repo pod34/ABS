@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="fixed main bug">
+    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="apply feature relevant loans per customer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/Gui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/Gui.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/AdminView/AdminViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gui/Component/AdminView/AdminViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/ViewLoansInfo/ViewLoansInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gui/Component/ViewLoansInfo/ViewLoansInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652870400774</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="apply feature relevant loans per customer">
+      <created>1653410812593</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653410812593</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,7 +187,8 @@
     <MESSAGE value="split into 2 modules gui and bankex2(engine) and added 2 fxml files" />
     <MESSAGE value="fixed main bug" />
     <MESSAGE value="added loans table to customer view need some desing work" />
-    <option name="LAST_COMMIT_MESSAGE" value="added loans table to customer view need some desing work" />
+    <MESSAGE value="apply feature relevant loans per customer" />
+    <option name="LAST_COMMIT_MESSAGE" value="apply feature relevant loans per customer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
