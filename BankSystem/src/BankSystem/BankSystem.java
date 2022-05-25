@@ -4,6 +4,8 @@ import BankActions.Loan;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import SystemExceptions.InccorectInputType;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,4 +21,6 @@ public interface BankSystem {
     List<CustomerDTOs> getListOfDTOsCustomer();
     List<LoanDTOs> getListOfLoansDTO();
     List<LoanDTOs> getListOfLoansDtoByListOfNamesOFLoans(List<String> i_loansName);
+    SimpleStringProperty getYazProperty();
+    void fullPaymentOnLoans(List<String> loanNames, String customerName);
 }

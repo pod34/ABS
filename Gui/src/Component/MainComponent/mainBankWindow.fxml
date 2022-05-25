@@ -21,7 +21,7 @@
                   <Insets top="15.0" />
                </HBox.margin>
             </Label>
-            <Label fx:id="CurrentYazLabel" alignment="BOTTOM_RIGHT" text="Current Yaz">
+            <Label fx:id="CurrentYazLabel" alignment="BOTTOM_RIGHT" text="Current Yaz:">
                <HBox.margin>
                   <Insets top="15.0" />
                </HBox.margin>

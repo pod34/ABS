@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="apply feature relevant loans per customer test to merge main">
+    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="completed increase Yaz event, added yaz property.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
+    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="apply feature relevant loans per customer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +28,7 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="ViewByCustomerDataComponents" />
+
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,7 +53,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="29701FNJPDGg33oOq6Ugc8b2W13" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -58,7 +66,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/BankSystem" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -130,7 +138,10 @@
       <workItem from="1652950045968" duration="46000" />
       <workItem from="1652951580736" duration="7000" />
       <workItem from="1653303475504" duration="15484000" />
-      <workItem from="1653398009979" duration="8350000" />
+      <workItem from="1653398009979" duration="26000" />
+      <workItem from="1653401626160" duration="496000" />
+      <workItem from="1653402141579" duration="10795000" />
+      <workItem from="1653469290427" duration="6791000" />
     </task>
     <task id="LOCAL-00001" summary="added Admin by View component">
       <created>1652454811156</created>
@@ -159,8 +170,23 @@
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
       <updated>1653410812593</updated>
+
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added messages view depending on the customer">
+      <created>1653421209831</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653421209831</updated>
+    </task>
+    <task id="LOCAL-00006" summary="completed increase Yaz event, added yaz property.">
+      <created>1653470510303</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653470510303</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,10 +211,16 @@
     <MESSAGE value="added Admin by View component" />
     <MESSAGE value="split into 2 modules gui and bankex2(engine) and added 2 fxml files" />
     <MESSAGE value="fixed main bug" />
+    <MESSAGE value="added account transactions, and made the textfield for int only." />
+    <MESSAGE value="added messages view depending on the customer" />
+    <MESSAGE value="completed increase Yaz event, added yaz property." />
+    <option name="LAST_COMMIT_MESSAGE" value="completed increase Yaz event, added yaz property." />
     <MESSAGE value="added loans table to customer view need some desing work" />
     <MESSAGE value="apply feature relevant loans per customer" />
     <MESSAGE value="apply feature relevant loans per customer test to merge main" />
     <option name="LAST_COMMIT_MESSAGE" value="apply feature relevant loans per customer test to merge main" />
+    <option name="LAST_COMMIT_MESSAGE" value="apply feature relevant loans per customer" />
+
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
