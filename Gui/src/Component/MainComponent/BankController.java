@@ -2,6 +2,7 @@ package Component.MainComponent;
 import BankActions.Loan;
 import BankSystem.BankSystem;
 import Component.AdminView.AdminViewController;
+import Component.CustomerView.CustomerDataToPresent;
 import Component.CustomerView.CustomerViewController;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
@@ -21,6 +22,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.stream.Collectors;
 
@@ -75,6 +77,7 @@ public class BankController {
       boolean flag = bankEngine.ReadingTheSystemInformationFile(filePath.getText());
       if (flag) {
          addCustomersToComboBox();
+         viewByCustomerController.setDataOfCustomerTOPresentInCustomerView(bankEngine.getListOfDTOsCustomer());
       }
       return flag;
    }
@@ -110,6 +113,7 @@ public class BankController {
       if (!viewBy.getValue().equals("Admin")) {
          curCustomerViewBy.set(viewBy.getValue());
          subComponent.getChildren().setAll(viewByCustomer);
+         viewByCustomerController.setViewByCustomerData(viewBy.getValue());
          viewByCustomerController.setMessagesViewToCustomer(curCustomerViewBy.getValue());
 
       }

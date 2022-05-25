@@ -38,8 +38,7 @@ public class ViewLoansInfoController {
 
     public void setMainController(BankController mainController) {this.mainController = mainController;}
 
-    public void buildLoansTableView(TableView<LoanDTOs> i_LoansData){
-        List<LoanDTOs> allLoans = mainController.getSystemLoans();
+    public void buildLoansTableView(TableView<LoanDTOs> i_LoansData,List<LoanDTOs> allLoans){
         TableRowExpanderColumn<LoanDTOs> expanderColumn = new TableRowExpanderColumn<>(param -> {
             try {
                 return expandLoanInfo(param);
