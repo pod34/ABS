@@ -1,9 +1,6 @@
 package Component.CustomerView;
-import BankActions.Loan;
 import Component.MainComponent.BankController;
-import Component.ViewLoansInfo.ViewLoansInfoController;
 import DTOs.LoanDTOs;
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -11,11 +8,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.controlsfx.control.ListSelectionView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CustomerViewController {
     @FXML private ScrollPane LoanerInfoTable;
@@ -26,12 +25,14 @@ public class CustomerViewController {
     @FXML private ScrollPane NotificationsTable;
     @FXML private TableView<LoanDTOs> LoanerLoan;
     @FXML private TableView<LoanDTOs> lenderLoans;
-    private Map<String, List<String>> messages;
+    private Map<String, List<String>> notifications;
     @FXML private BankController mainController;
     @FXML private TextField AmountTB;
     @FXML private Button ChargeBT;
     @FXML private Button WithdrawBT;
-    @FXML private ListView<String> messagesView;
+    @FXML private ListView<String> notificationsView;
+    @FXML private ListSelectionView<String> choosingLoans = new ListSelectionView<>();//TODO:build this after building loans inlay
+    @FXML private Button payFullyOnLoansBT;
 
     public void setMainController(BankController mainController) {
         this.mainController = mainController;
@@ -41,10 +42,10 @@ public class CustomerViewController {
         StringBuilder message = new StringBuilder();
         message.append("Hello " + customerName + "\n" + msg + loanName);
         message.append("\n" + "The amount for payment is: " + amount);
-        if (messages.containsKey(customerName))
-            messages.get(customerName).add(msg.toString());
+        if (notifications.containsKey(customerName))
+            notifications.get(customerName).add(msg.toString());
         else
-            messages.put(customerName, new ArrayList<>(Collections.singleton(message.toString())));
+            notifications.put(customerName, new ArrayList<>(Collections.singleton(message.toString())));
     }
 
     @FXML
@@ -78,16 +79,22 @@ public class CustomerViewController {
     }
 
     public void setMessagesViewToCustomer(String customerName) {
-        messagesView.getItems().clear();
+        notificationsView.getItems().clear();
         ObservableList<String> items = null;
-        if (messages != null) {
-            if (messages.containsKey(customerName))
-                items = FXCollections.observableArrayList(messages.get(customerName));
+        if (notifications != null) {
+            if (notifications.containsKey(customerName))
+                items = FXCollections.observableArrayList(notifications.get(customerName));
         }
         else
             items = FXCollections.observableArrayList("No messages to " + customerName);
 
-        messagesView.setItems(items);
+        notificationsView.setItems(items);
+    }
+
+    @FXML
+    public void paySelectedLoansClicked(ActionEvent event) {
+        List<String> loanNames = choosingLoans.getTargetItems().stream().collect(Collectors.toList());
+        mainController.fullyLoansPaymentActivation(loanNames);
     }
 }
 

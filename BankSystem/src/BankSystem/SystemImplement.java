@@ -1,9 +1,6 @@
 package BankSystem;
 
-import BankActions.AccountTransaction;
-import BankActions.LeftToPay;
-import BankActions.Loan;
-import BankActions.LoanStatus;
+import BankActions.*;
 import Component.MainComponent.BankController;
 import Costumers.Customer;
 import DTOs.AccountTransactionDTO;
@@ -200,25 +197,40 @@ public class SystemImplement implements BankSystem , Serializable {
     }
 
     public void IncreaseYaz(){
-        //Find if there is loans that didnt pay at time and make them risk
+        List<Loan> allActiveLoans = LoansInBank.values().stream().filter(L -> L.getStatus().equals(LoanStatus.ACTIVE)).filter(L -> (L.getNextYazForPayment() == Yaz)).collect(Collectors.toList());
+        checkIfLoanNeedsToBeInRisk(allActiveLoans);
         Yaz++;
-        yazProperty.set("Current Yaz: " + Yaz);
         for(Customer curCustomer : Costumers.values()){
             List<Loan> curCustomerLoans = LoansInBank.values().stream().filter(L -> L.getNameOfLoaner().equals(curCustomer.getName())).filter(L -> (L.getStatus().equals(LoanStatus.ACTIVE)||L.getStatus().equals(LoanStatus.RISK))).collect(Collectors.toList());
             for(Loan curLoan : curCustomerLoans){
                 curLoan.setHowManyYazAreLeft();
                 if(curLoan.getNextYazForPayment() == Yaz){
                     //send message to relevant customer that is payday you need to pay is: curLoan.getYazlyPaymentWithDebtsCalculation()
+                    mainController.setMessage(curLoan.getNameOfLoaner(), curLoan.getYazlyPaymentWithDebtsCalculation(), curLoan.getNameOfLoan(), "The payment date has arrived on the loan: ");
                 }
             }
         }
     }
 
-    private void checkIfTheLoanIsFinished(Loan curLoan){
+    private void checkIfLoanNeedsToBeInRisk(List<Loan> allActiveLoans) {
+        for (Loan curLoan : allActiveLoans) {
+            List<Payment> curLoanPayments = curLoan.getPayments().stream().filter(P -> (P.getPaymentDate() == Yaz)).collect(Collectors.toList());
+            if (curLoanPayments.isEmpty()) {
+                int amount = curLoan.getYazlyPaymentWithDebtsCalculation();
+                mainController.setMessage(curLoan.getNameOfLoaner(), amount, curLoan.getNameOfLoan(), "You did not pay on the due date: ");
+                curLoan.makeRisk(Yaz);
+            }
+        }
+    }
+
+    private Boolean checkIfTheLoanIsFinished(Loan curLoan){
+        Boolean flag = false;
         if(curLoan.getHowManyYazAreLeft() == 0) {
-            if (curLoan.getTheInterestYetToBePaidOnTheLoan() == 0 && curLoan.getTheAmountOfPrincipalPaymentYetToBePaid() == 0)
+            flag = (curLoan.getTheInterestYetToBePaidOnTheLoan() == 0 && curLoan.getTheAmountOfPrincipalPaymentYetToBePaid() == 0);
+            if (flag)
                 curLoan.makeFinished(Yaz);
         }
+        return flag;
     }
 
     public static boolean checkFileName(String FileName){
@@ -237,6 +249,27 @@ public class SystemImplement implements BankSystem , Serializable {
             entry.getValue().setAmountLeftToPay();
             entry.getValue().setAmountOfPayment();
             entry.getValue().resetDebt();
+        }
+    }
+
+    public void fullPaymentOnLoans(List<String> loanNames, String customerName){
+        Loan curLoanToPay;
+        Customer curCustomer = Costumers.get(customerName);
+        for (String curLoan: loanNames) {
+            curLoanToPay = LoansInBank.get(curLoan);
+            payForLoanFully(curLoanToPay, curCustomer);
+        }
+    }
+
+    private void payForLoanFully(Loan loan, Customer customer){
+        Boolean flag = false;
+        while(!flag){
+            loan.setHowManyYazAreLeft();
+            loan.getYazlyPaymentWithDebtsCalculation();
+            customer.WithdrawMoney(loan.getYazlyPaymentWithDebts(), Yaz);
+            this.makePayment(loan);
+            loan.makeLoanPayment(Yaz);
+            flag = checkIfTheLoanIsFinished(loan);
         }
     }
 

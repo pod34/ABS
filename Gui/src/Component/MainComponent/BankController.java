@@ -131,5 +131,9 @@ public class BankController {
    public void increaseYazActivation(){
       bankEngine.IncreaseYaz();
    }
+
+   public void fullyLoansPaymentActivation(List<String> loanNames){
+      bankEngine.fullPaymentOnLoans(loanNames, curCustomerViewBy.getValue());
+   }
 }
 

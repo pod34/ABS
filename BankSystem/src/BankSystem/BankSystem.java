@@ -22,4 +22,5 @@ public interface BankSystem {
     List<LoanDTOs> getListOfLoansDTO();
     List<LoanDTOs> getListOfLoansDtoByListOfNamesOFLoans(List<String> i_loansName);
     SimpleStringProperty getYazProperty();
+    void fullPaymentOnLoans(List<String> loanNames, String customerName);
 }
