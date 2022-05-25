@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.ListSelectionView?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Component.CustomerView.CustomerViewController">
    <children>
@@ -100,24 +101,56 @@
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="32.0" />
                                  </columnConstraints>
                                  <rowConstraints>
-                                    <RowConstraints maxHeight="294.0" minHeight="10.0" prefHeight="119.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="202.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="294.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="163.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="241.0" minHeight="10.0" prefHeight="217.0" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="241.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
                                     <ScrollPane fx:id="LoanerInfoTable1" prefHeight="190.0" prefWidth="390.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-                                    <ScrollPane fx:id="LoansInfoTable1" prefHeight="190.0" prefWidth="390.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                                    <AnchorPane GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.rowSpan="3">
+                                    <AnchorPane GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.rowSpan="7">
                                        <children>
                                           <ScrollPane fx:id="AccountTransInfo1" prefHeight="359.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <content>
-                                                <ListView fx:id="messagesView" prefHeight="357.0" prefWidth="170.0" />
+                                                <ListView fx:id="notificationsView" prefHeight="404.0" prefWidth="170.0" />
                                              </content>
                                           </ScrollPane>
                                        </children>
                                     </AnchorPane>
+                                    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="5">
+                                      <tabs>
+                                        <Tab text="Full payment on the loans">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <BorderPane prefHeight="140.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <left>
+                                                            <ListSelectionView fx:id="choosingLoans" prefHeight="221.0" prefWidth="252.0" BorderPane.alignment="CENTER" />
+                                                         </left>
+                                                         <right>
+                                                            <Button fx:id="payFullyOnLoansBT" mnemonicParsing="false" onAction="#paySelectedLoansClicked" prefWidth="140.5" text="Pay selected loans" BorderPane.alignment="CENTER">
+                                                               <BorderPane.margin>
+                                                                  <Insets right="15.0" />
+                                                               </BorderPane.margin>
+                                                            </Button>
+                                                         </right>
+                                                      </BorderPane>
+                                                   </children>
+                                                </AnchorPane>
+                                          </content>
+                                        </Tab>
+                                        <Tab text="Divided payment">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                          </content>
+                                        </Tab>
+                                      </tabs>
+                                    </TabPane>
                                  </children>
                               </GridPane>
                            </children>
