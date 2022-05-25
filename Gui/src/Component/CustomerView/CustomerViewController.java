@@ -1,5 +1,7 @@
 package Component.CustomerView;
 import Component.MainComponent.BankController;
+import Component.ViewLoansInfo.ViewLoansInfoController;
+import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,6 +17,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+
+import java.util.*;
 
 public class CustomerViewController {
     @FXML private ScrollPane LoanerInfoTable;
@@ -23,10 +31,13 @@ public class CustomerViewController {
     @FXML private ScrollPane LoanerLoansTable;
     @FXML private ScrollPane PaymentControl;
     @FXML private ScrollPane NotificationsTable;
-    @FXML private TableView<LoanDTOs> LoanerLoan;
-    @FXML private TableView<LoanDTOs> lenderLoans;
     private Map<String, List<String>> notifications;
+    @FXML private AnchorPane LoansAsLoaner;
+    @FXML private AnchorPane LoansAsLender;
+
+    private Map<String, List<String>> messages;
     @FXML private BankController mainController;
+    private Map<String, CustomerDataToPresent> DataOfCustomerTOPresentInCustomerView = new HashMap<>();
     @FXML private TextField AmountTB;
     @FXML private Button ChargeBT;
     @FXML private Button WithdrawBT;
@@ -46,6 +57,31 @@ public class CustomerViewController {
             notifications.get(customerName).add(msg.toString());
         else
             notifications.put(customerName, new ArrayList<>(Collections.singleton(message.toString())));
+    }
+
+    public void setDataOfCustomerTOPresentInCustomerView(List<CustomerDTOs> i_bankCustomer){
+        for(CustomerDTOs curCustomer : i_bankCustomer){
+            DataOfCustomerTOPresentInCustomerView.put(curCustomer.getName(),new CustomerDataToPresent(curCustomer,mainController));
+        }
+    }
+
+    public void setViewByCustomerData(String nameOfCustomer){
+        setLenderLoans(nameOfCustomer);
+        setLonerLoan(nameOfCustomer);
+    }
+
+    private void setLonerLoan(String nameOfCustomer){
+       // LoanerLoan = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
+        TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
+        LoansAsLoaner.getChildren().setAll(tmp);
+
+    }
+
+    private void setLenderLoans(String nameOfCustomer){
+       // lenderLoans = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
+        TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
+        LoansAsLender.getChildren().setAll(tmp);
+
     }
 
     @FXML

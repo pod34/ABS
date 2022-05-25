@@ -6,8 +6,11 @@
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
+    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="apply feature relevant loans per customer">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +27,8 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="ViewByCustomerDataComponents" />
+
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,11 +74,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Gui/src/Component/CustomerView" />
       <recent name="$PROJECT_DIR$/Gui/src/Component/AdminView" />
       <recent name="$PROJECT_DIR$/Gui/src/Component/MainComponent" />
       <recent name="$PROJECT_DIR$/Gui/src/Main" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/Gui/src/BankController" />
     </key>
   </component>
   <component name="RunManager">
@@ -93,6 +97,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TaskMain" />
+        <item itemvalue="Application.TaskMain" />
         <item itemvalue="Application.TaskMain" />
       </list>
     </recent_temporary>
@@ -158,12 +164,13 @@
       <option name="project" value="LOCAL" />
       <updated>1652870400774</updated>
     </task>
-    <task id="LOCAL-00004" summary="added account transactions, and made the textfield for int only.">
-      <created>1653414098470</created>
+    <task id="LOCAL-00004" summary="apply feature relevant loans per customer">
+      <created>1653410812593</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1653414098470</updated>
+      <updated>1653410812593</updated>
+
     </task>
     <task id="LOCAL-00005" summary="added messages view depending on the customer">
       <created>1653421209831</created>
@@ -208,6 +215,10 @@
     <MESSAGE value="added messages view depending on the customer" />
     <MESSAGE value="completed increase Yaz event, added yaz property." />
     <option name="LAST_COMMIT_MESSAGE" value="completed increase Yaz event, added yaz property." />
+    <MESSAGE value="added loans table to customer view need some desing work" />
+    <MESSAGE value="apply feature relevant loans per customer" />
+    <option name="LAST_COMMIT_MESSAGE" value="apply feature relevant loans per customer" />
+
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
