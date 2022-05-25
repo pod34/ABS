@@ -28,22 +28,14 @@ import java.util.stream.Collectors;
 
 public class BankController {
 
-   @FXML
-   private ComboBox<String> viewBy;
-   @FXML
-   private Label filePath;
-   @FXML
-   private Label CurrentYazLabel;
-   @FXML
-   private AnchorPane viewByAdmin;
-   @FXML
-   private AdminViewController viewByAdminController;
-   @FXML
-   private AnchorPane subComponent;
-   @FXML
-   private AnchorPane viewByCustomer;
-   @FXML
-   private CustomerViewController viewByCustomerController;
+   @FXML private ComboBox<String> viewBy;
+   @FXML private Label filePath;
+   @FXML private Label CurrentYazLabel;
+   @FXML private AnchorPane viewByAdmin;
+   @FXML private AdminViewController viewByAdminController;
+   @FXML private AnchorPane subComponent;
+   @FXML private AnchorPane viewByCustomer;
+   @FXML private CustomerViewController viewByCustomerController;
    private SimpleStringProperty curCustomerViewBy;
 
 
@@ -122,11 +114,21 @@ public class BankController {
          curCustomerViewBy.set(viewBy.getValue());
          subComponent.getChildren().setAll(viewByCustomer);
          viewByCustomerController.setViewByCustomerData(viewBy.getValue());
+         viewByCustomerController.setMessagesViewToCustomer(curCustomerViewBy.getValue());
+
       }
       else{
          if(!subComponent.equals(viewByAdmin))
             subComponent.getChildren().setAll(viewByAdmin);
       }
+   }
+
+   public void chargeActivation(int amount){
+      bankEngine.DepositToAccount(amount, curCustomerViewBy.getValue());
+   }
+
+   public void withdrawActivation(int amount){
+      bankEngine.DepositToAccount(amount, curCustomerViewBy.getValue());
    }
 }
 
