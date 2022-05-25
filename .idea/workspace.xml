@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="apply feature relevant loans per customer">
+    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="apply feature relevant loans per customer test to merge main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +187,8 @@
     <MESSAGE value="fixed main bug" />
     <MESSAGE value="added loans table to customer view need some desing work" />
     <MESSAGE value="apply feature relevant loans per customer" />
-    <option name="LAST_COMMIT_MESSAGE" value="apply feature relevant loans per customer" />
+    <MESSAGE value="apply feature relevant loans per customer test to merge main" />
+    <option name="LAST_COMMIT_MESSAGE" value="apply feature relevant loans per customer test to merge main" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
