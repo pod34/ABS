@@ -27,7 +27,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="IncreaseYazBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" text="Increase YAZ" GridPane.rowIndex="1" />
+                        <Button fx:id="IncreaseYazBtn" mnemonicParsing="false" onAction="#clickOnIncreaseYaz" prefHeight="30.0" prefWidth="105.0" text="Increase YAZ" GridPane.rowIndex="1" />
                         <Button fx:id="LoadFileBtn" mnemonicParsing="false" onAction="#clickOnLoadFile" prefHeight="30.0" prefWidth="105.0" text="Load File" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                      <padding>

@@ -75,6 +75,7 @@ public class BankController {
       boolean flag = bankEngine.ReadingTheSystemInformationFile(filePath.getText());
       if (flag) {
          addCustomersToComboBox();
+         CurrentYazLabel.textProperty().bind(bankEngine.getYazProperty());
       }
       return flag;
    }
@@ -125,6 +126,10 @@ public class BankController {
 
    public void withdrawActivation(int amount){
       bankEngine.DepositToAccount(amount, curCustomerViewBy.getValue());
+   }
+
+   public void increaseYazActivation(){
+      bankEngine.IncreaseYaz();
    }
 }
 

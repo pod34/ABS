@@ -11,6 +11,8 @@ import DTOs.CategoriesDTO;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import SystemExceptions.InccorectInputType;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 import java.util.*;
@@ -25,6 +27,12 @@ public class SystemImplement implements BankSystem , Serializable {
     private List<String> allCategories;
     private BankController mainController;
     private static int Yaz = 1;
+    private SimpleStringProperty yazProperty = new SimpleStringProperty();
+
+
+    public SimpleStringProperty getYazProperty() {
+        return yazProperty;
+    }
 
     public SystemImplement(BankController mainController) {
         this.mainController = mainController;
@@ -42,6 +50,7 @@ public class SystemImplement implements BankSystem , Serializable {
         LoansInBank = loansInSystem.stream().collect(Collectors.toMap(Loan::getNameOfLoan, loan -> loan));
         allCategories = allCategoriesInSystem;
         Yaz = 1;
+        yazProperty.set("Current Yaz: " + Yaz);
         return flag;
     }
 
@@ -193,6 +202,7 @@ public class SystemImplement implements BankSystem , Serializable {
     public void IncreaseYaz(){
         //Find if there is loans that didnt pay at time and make them risk
         Yaz++;
+        yazProperty.set("Current Yaz: " + Yaz);
         for(Customer curCustomer : Costumers.values()){
             List<Loan> curCustomerLoans = LoansInBank.values().stream().filter(L -> L.getNameOfLoaner().equals(curCustomer.getName())).filter(L -> (L.getStatus().equals(LoanStatus.ACTIVE)||L.getStatus().equals(LoanStatus.RISK))).collect(Collectors.toList());
             for(Loan curLoan : curCustomerLoans){

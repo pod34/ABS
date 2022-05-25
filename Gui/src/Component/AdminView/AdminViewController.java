@@ -137,11 +137,7 @@ public class AdminViewController {
     }
 
     @FXML private void clickOnIncreaseYaz(ActionEvent event){
-        //0.before increasing the yaz we need to check if there is a loans that had to pay in this yaz and didnt pay if so make them in risk mode
-        //1.increase yaz
-        //2.send alert to all users that need to pay loans on this updated yaz
-        //do we need to make loan risk here?
-
+        mainController.increaseYazActivation();
     }
 
 

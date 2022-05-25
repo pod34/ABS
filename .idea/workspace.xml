@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="added account transactions, and made the textfield for int only.">
+    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="added messages view depending on the customer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +133,8 @@
       <workItem from="1653303475504" duration="15484000" />
       <workItem from="1653398009979" duration="26000" />
       <workItem from="1653401626160" duration="496000" />
-      <workItem from="1653402141579" duration="10457000" />
+      <workItem from="1653402141579" duration="10795000" />
+      <workItem from="1653469290427" duration="957000" />
     </task>
     <task id="LOCAL-00001" summary="added Admin by View component">
       <created>1652454811156</created>
@@ -162,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653414098470</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added messages view depending on the customer">
+      <created>1653421209831</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653421209831</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +197,8 @@
     <MESSAGE value="split into 2 modules gui and bankex2(engine) and added 2 fxml files" />
     <MESSAGE value="fixed main bug" />
     <MESSAGE value="added account transactions, and made the textfield for int only." />
-    <option name="LAST_COMMIT_MESSAGE" value="added account transactions, and made the textfield for int only." />
+    <MESSAGE value="added messages view depending on the customer" />
+    <option name="LAST_COMMIT_MESSAGE" value="added messages view depending on the customer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
