@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="completed increase Yaz event, added yaz property.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
@@ -8,6 +9,11 @@
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
+=======
+    <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="apply feature relevant loans per customer test to merge main">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" afterDir="false" />
+>>>>>>> fixingGitBug
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +30,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+<<<<<<< HEAD
         <entry key="$PROJECT_DIR$" value="master" />
+=======
+        <entry key="$PROJECT_DIR$" value="ViewByCustomerDataComponents" />
+>>>>>>> fixingGitBug
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,11 +80,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Gui/src/Component/CustomerView" />
       <recent name="$PROJECT_DIR$/Gui/src/Component/AdminView" />
       <recent name="$PROJECT_DIR$/Gui/src/Component/MainComponent" />
       <recent name="$PROJECT_DIR$/Gui/src/Main" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/Gui/src/BankController" />
     </key>
   </component>
   <component name="RunManager">
@@ -93,6 +103,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TaskMain" />
+        <item itemvalue="Application.TaskMain" />
         <item itemvalue="Application.TaskMain" />
       </list>
     </recent_temporary>
@@ -132,10 +144,14 @@
       <workItem from="1652950045968" duration="46000" />
       <workItem from="1652951580736" duration="7000" />
       <workItem from="1653303475504" duration="15484000" />
+<<<<<<< HEAD
       <workItem from="1653398009979" duration="26000" />
       <workItem from="1653401626160" duration="496000" />
       <workItem from="1653402141579" duration="10795000" />
       <workItem from="1653469290427" duration="6791000" />
+=======
+      <workItem from="1653398009979" duration="8350000" />
+>>>>>>> fixingGitBug
     </task>
     <task id="LOCAL-00001" summary="added Admin by View component">
       <created>1652454811156</created>
@@ -158,6 +174,7 @@
       <option name="project" value="LOCAL" />
       <updated>1652870400774</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00004" summary="added account transactions, and made the textfield for int only.">
       <created>1653414098470</created>
       <option name="number" value="00004" />
@@ -180,6 +197,16 @@
       <updated>1653470510303</updated>
     </task>
     <option name="localTasksCounter" value="7" />
+=======
+    <task id="LOCAL-00004" summary="apply feature relevant loans per customer">
+      <created>1653410812593</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653410812593</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+>>>>>>> fixingGitBug
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,10 +231,17 @@
     <MESSAGE value="added Admin by View component" />
     <MESSAGE value="split into 2 modules gui and bankex2(engine) and added 2 fxml files" />
     <MESSAGE value="fixed main bug" />
+<<<<<<< HEAD
     <MESSAGE value="added account transactions, and made the textfield for int only." />
     <MESSAGE value="added messages view depending on the customer" />
     <MESSAGE value="completed increase Yaz event, added yaz property." />
     <option name="LAST_COMMIT_MESSAGE" value="completed increase Yaz event, added yaz property." />
+=======
+    <MESSAGE value="added loans table to customer view need some desing work" />
+    <MESSAGE value="apply feature relevant loans per customer" />
+    <MESSAGE value="apply feature relevant loans per customer test to merge main" />
+    <option name="LAST_COMMIT_MESSAGE" value="apply feature relevant loans per customer test to merge main" />
+>>>>>>> fixingGitBug
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -143,7 +143,7 @@ public class Loan implements Serializable {
     }
 
     public List<Payment> getPayments() {
-        Payments.add(new Payment(1,100,30,3,true));
+       // Payments.add(new Payment(1,100,30,3,true));
         return Payments;
     }
 

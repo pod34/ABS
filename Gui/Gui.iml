@@ -7,6 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< HEAD
+=======
+    <orderEntry type="module" module-name="BankSystem" exported="" />
+>>>>>>> fixingGitBug
     <orderEntry type="library" name="tools" level="project" />
     <orderEntry type="library" name="controlsfx-8.40.14" level="project" />
     <orderEntry type="module" module-name="BankSystem" />

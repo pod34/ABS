@@ -74,7 +74,7 @@ public class AdminViewController {
             LoansData.getItems().clear();
             ViewLoansInfoController loansInfoController = new ViewLoansInfoController();
             loansInfoController.setMainController(mainController);
-            loansInfoController.buildLoansTableView(LoansData);
+            loansInfoController.buildLoansTableView(LoansData,mainController.getSystemLoans());
             buildCustomersTableView();
         }
     }

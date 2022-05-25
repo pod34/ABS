@@ -1,5 +1,7 @@
 package Component.CustomerView;
 import Component.MainComponent.BankController;
+import Component.ViewLoansInfo.ViewLoansInfoController;
+import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -7,9 +9,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.*;
 import org.controlsfx.control.ListSelectionView;
 
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,6 +34,7 @@ public class CustomerViewController {
     @FXML private TableView<LoanDTOs> lenderLoans;
     private Map<String, List<String>> notifications;
     @FXML private BankController mainController;
+    private Map<String, CustomerDataToPresent> DataOfCustomerTOPresentInCustomerView = new HashMap<>();
     @FXML private TextField AmountTB;
     @FXML private Button ChargeBT;
     @FXML private Button WithdrawBT;
@@ -96,6 +104,32 @@ public class CustomerViewController {
         List<String> loanNames = choosingLoans.getTargetItems().stream().collect(Collectors.toList());
         mainController.fullyLoansPaymentActivation(loanNames);
     }
+
+    public void setDataOfCustomerTOPresentInCustomerView(List<CustomerDTOs> i_bankCustomer){
+        for(CustomerDTOs curCustomer : i_bankCustomer){
+            DataOfCustomerTOPresentInCustomerView.put(curCustomer.getName(),new CustomerDataToPresent(curCustomer,mainController));
+        }
+    }
+
+    public void setViewByCustomerData(String nameOfCustomer){
+        setLenderLoans(nameOfCustomer);
+        setLonerLoan(nameOfCustomer);
+    }
+
+    private void setLonerLoan(String nameOfCustomer){
+       // LoanerLoan = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
+        TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
+        LoansAsLoaner.getChildren().setAll(tmp);
+
+    }
+
+    private void setLenderLoans(String nameOfCustomer){
+       // lenderLoans = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
+        TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
+        LoansAsLender.getChildren().setAll(tmp);
+
+    }
+
 }
 
 
