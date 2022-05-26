@@ -9,9 +9,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableView;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.ListSelectionView;
 
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -31,13 +35,14 @@ public class CustomerViewController {
     @FXML private ScrollPane LoanerLoansTable;
     @FXML private ScrollPane PaymentControl;
     @FXML private ScrollPane NotificationsTable;
-    private Map<String, List<String>> notifications;
-    @FXML private AnchorPane LoansAsLoaner;
     @FXML private AnchorPane LoansAsLender;
+    @FXML private AnchorPane LoansAsLoaner;
+    private Map<String, CustomerDataToPresent> DataOfCustomerTOPresentInCustomerView = new HashMap<>();
 
     private Map<String, List<String>> messages;
     @FXML private BankController mainController;
     private Map<String, CustomerDataToPresent> DataOfCustomerTOPresentInCustomerView = new HashMap<>();
+    private Map<String, List<String>> notifications;
     @FXML private TextField AmountTB;
     @FXML private Button ChargeBT;
     @FXML private Button WithdrawBT;
@@ -94,7 +99,7 @@ public class CustomerViewController {
     }
 
     @FXML
-    void withdrawClicked(ActionEvent event) {//TODO: add limit check
+    void withdrawClicked(ActionEvent event) {//TODO: add limit check cant withdraw more than customer have
         if (!AmountTB.getText().trim().isEmpty()) {
             mainController.withdrawActivation(Integer.parseInt(AmountTB.getText()));
         }
@@ -132,6 +137,30 @@ public class CustomerViewController {
         List<String> loanNames = choosingLoans.getTargetItems().stream().collect(Collectors.toList());
         mainController.fullyLoansPaymentActivation(loanNames);
     }
+
+    public void setDataOfCustomerTOPresentInCustomerView(List<CustomerDTOs> i_bankCustomer){
+        for(CustomerDTOs curCustomer : i_bankCustomer){
+            DataOfCustomerTOPresentInCustomerView.put(curCustomer.getName(),new CustomerDataToPresent(curCustomer,mainController));
+        }
+    }
+
+    public void setViewByCustomerData(String nameOfCustomer){
+        setLenderLoans(nameOfCustomer);
+        setLonerLoan(nameOfCustomer);
+    }
+
+    private void setLonerLoan(String nameOfCustomer){
+        TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
+        LoansAsLoaner.getChildren().setAll(tmp);
+
+    }
+
+    private void setLenderLoans(String nameOfCustomer){
+        TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
+        LoansAsLender.getChildren().setAll(tmp);
+
+    }
+
 }
 
 

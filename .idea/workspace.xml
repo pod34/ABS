@@ -1,22 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="apply feature relevant loans per customer test to merge main">
     <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="completed increase Yaz event, added yaz property.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
+=======
+    <list default="true" id="90877df6-2eb2-4114-8a85-7abf7bcb333e" name="Changes" comment="fixing merge bugs with maya">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/BankSystem.iml" beforeDir="false" />
+>>>>>>> tmp
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/Gui.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
+<<<<<<< HEAD
     <list default="true" id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="apply feature relevant loans per customer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" afterDir="false" />
 
+=======
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/AccountTransaction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/LeftToPay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/Loan.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/LoanStatus$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/LoanStatus$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/LoanStatus$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/LoanStatus$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/LoanStatus$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/LoanStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/NegativeTransaction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/Payment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankActions/positiveTransaction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankSystem/BankSystem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankSystem/FromXmlToClasses.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/BankSystem/SystemImplement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/Costumers/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/DTOs/AccountTransactionDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/DTOs/CategoriesDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/DTOs/CustomerDTOs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/DTOs/LoanDTOs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/SystemExceptions/InccorectInputType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/Validator/Validator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/mypackage/ABS-V1.xsd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/mypackage/AbsCategories.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/mypackage/AbsCustomer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/mypackage/AbsCustomers.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/mypackage/AbsDescriptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/mypackage/AbsLoan.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/mypackage/AbsLoans.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankSystem/mypackage/ObjectFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/AdminView/AdminViewComponent.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/AdminView/AdminViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerDataToPresent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/CustomerView/CustomerViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/MainComponent/BankController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/MainComponent/mainBankWindow.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/ViewCustomersInfo/ViewCustomersInfoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/ViewCustomersInfo/customersInfoComponent.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/ViewLoansInfo/LoansComponent.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Component/ViewLoansInfo/ViewLoansInfoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/Main/TaskMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gui/common/BankResourcesConstants.class" beforeDir="false" />
+>>>>>>> tmp
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -56,30 +112,13 @@
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="29701FNJPDGg33oOq6Ugc8b2W13" />
+=======
+>>>>>>> tmp
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/BankSystem" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Gui/src/Component/CustomerView" />
-      <recent name="$PROJECT_DIR$/Gui/src/Component/AdminView" />
-      <recent name="$PROJECT_DIR$/Gui/src/Component/MainComponent" />
-      <recent name="$PROJECT_DIR$/Gui/src/Main" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
   </component>
   <component name="RunManager">
     <configuration name="TaskMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -98,13 +137,11 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.TaskMain" />
-        <item itemvalue="Application.TaskMain" />
-        <item itemvalue="Application.TaskMain" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+<<<<<<< HEAD
     <task active="true" id="Default" summary="Default task">
       <changelist id="d6cebaa3-dc3b-4a46-bf2e-e7e954e6d603" name="Changes" comment="" />
       <created>1652448602491</created>
@@ -187,10 +224,9 @@
       <updated>1653470510303</updated>
     </task>
     <option name="localTasksCounter" value="7" />
+=======
+>>>>>>> tmp
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -204,6 +240,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+<<<<<<< HEAD
     <ignored-roots>
       <path value="$PROJECT_DIR$/BankEx2" />
       <path value="$PROJECT_DIR$/BankExui1" />
@@ -243,5 +280,9 @@
         <watch expression="loadListener" language="JAVA" />
       </configuration>
     </watches-manager>
+=======
+    <MESSAGE value="fixing merge bugs with maya" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing merge bugs with maya" />
+>>>>>>> tmp
   </component>
 </project>

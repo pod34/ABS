@@ -77,8 +77,8 @@ public class BankController {
       boolean flag = bankEngine.ReadingTheSystemInformationFile(filePath.getText());
       if (flag) {
          addCustomersToComboBox();
-         CurrentYazLabel.textProperty().bind(bankEngine.getYazProperty());
          viewByCustomerController.setDataOfCustomerTOPresentInCustomerView(bankEngine.getListOfDTOsCustomer());
+         CurrentYazLabel.textProperty().bind(bankEngine.getYazProperty());
       }
       return flag;
    }
