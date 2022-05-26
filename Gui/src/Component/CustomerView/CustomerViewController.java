@@ -41,7 +41,6 @@ public class CustomerViewController {
 
     private Map<String, List<String>> messages;
     @FXML private BankController mainController;
-    private Map<String, CustomerDataToPresent> DataOfCustomerTOPresentInCustomerView = new HashMap<>();
     private Map<String, List<String>> notifications;
     @FXML private TextField AmountTB;
     @FXML private Button ChargeBT;
@@ -64,30 +63,6 @@ public class CustomerViewController {
             notifications.put(customerName, new ArrayList<>(Collections.singleton(message.toString())));
     }
 
-    public void setDataOfCustomerTOPresentInCustomerView(List<CustomerDTOs> i_bankCustomer){
-        for(CustomerDTOs curCustomer : i_bankCustomer){
-            DataOfCustomerTOPresentInCustomerView.put(curCustomer.getName(),new CustomerDataToPresent(curCustomer,mainController));
-        }
-    }
-
-    public void setViewByCustomerData(String nameOfCustomer){
-        setLenderLoans(nameOfCustomer);
-        setLonerLoan(nameOfCustomer);
-    }
-
-    private void setLonerLoan(String nameOfCustomer){
-       // LoanerLoan = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
-        TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
-        LoansAsLoaner.getChildren().setAll(tmp);
-
-    }
-
-    private void setLenderLoans(String nameOfCustomer){
-       // lenderLoans = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
-        TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
-        LoansAsLender.getChildren().setAll(tmp);
-
-    }
 
     @FXML
     void chargeClicked(ActionEvent event) {
