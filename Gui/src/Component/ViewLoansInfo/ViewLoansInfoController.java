@@ -159,7 +159,7 @@ public class ViewLoansInfoController {
                 LoanDataByStatus.setText(/*TODO add method to loanDto how much money reised so far*/"___ $ Raised so far  " /* //TODO how much left to raise*/ + "____$ left to make the Loan active ");
                 break;
             case "ACTIVE":
-                LoanDataByStatus.setText("the yaz the loan became active. next payment yaz to we need to use enum here maya?");//TODO
+                LoanDataByStatus.setText("the yaz the loan became active. next payment yaz to pay, do we need to use enum here maya?");//TODO
                 break;
             case "RISK":
                 LoanDataByStatus.setText("Same data as active + to add here how much payment got delayed and how much do we need to pay asap");//TODO

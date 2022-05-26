@@ -200,6 +200,7 @@ public class SystemImplement implements BankSystem , Serializable {
         List<Loan> allActiveLoans = LoansInBank.values().stream().filter(L -> L.getStatus().equals(LoanStatus.ACTIVE)).filter(L -> (L.getNextYazForPayment() == Yaz)).collect(Collectors.toList());
         checkIfLoanNeedsToBeInRisk(allActiveLoans);
         Yaz++;
+        yazProperty.set("Current Yaz: " + Yaz);
         for(Customer curCustomer : Costumers.values()){
             List<Loan> curCustomerLoans = LoansInBank.values().stream().filter(L -> L.getNameOfLoaner().equals(curCustomer.getName())).filter(L -> (L.getStatus().equals(LoanStatus.ACTIVE)||L.getStatus().equals(LoanStatus.RISK))).collect(Collectors.toList());
             for(Loan curLoan : curCustomerLoans){

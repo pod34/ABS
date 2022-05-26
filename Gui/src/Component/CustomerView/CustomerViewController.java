@@ -9,11 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.ListSelectionView;
 
 import java.util.*;
@@ -30,8 +29,8 @@ public class CustomerViewController {
     @FXML private ScrollPane LoanerLoansTable;
     @FXML private ScrollPane PaymentControl;
     @FXML private ScrollPane NotificationsTable;
-    @FXML private TableView<LoanDTOs> LoanerLoan;
-    @FXML private TableView<LoanDTOs> lenderLoans;
+    @FXML private AnchorPane LoansAsLender;
+    @FXML private AnchorPane LoansAsLoaner;
     private Map<String, List<String>> notifications;
     @FXML private BankController mainController;
     private Map<String, CustomerDataToPresent> DataOfCustomerTOPresentInCustomerView = new HashMap<>();
@@ -66,7 +65,7 @@ public class CustomerViewController {
     }
 
     @FXML
-    void withdrawClicked(ActionEvent event) {//TODO: add limit check
+    void withdrawClicked(ActionEvent event) {//TODO: add limit check cant withdraw more than customer have
         if (!AmountTB.getText().trim().isEmpty()) {
             mainController.withdrawActivation(Integer.parseInt(AmountTB.getText()));
         }
@@ -117,14 +116,12 @@ public class CustomerViewController {
     }
 
     private void setLonerLoan(String nameOfCustomer){
-       // LoanerLoan = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
         TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
         LoansAsLoaner.getChildren().setAll(tmp);
 
     }
 
     private void setLenderLoans(String nameOfCustomer){
-       // lenderLoans = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
         TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
         LoansAsLender.getChildren().setAll(tmp);
 
