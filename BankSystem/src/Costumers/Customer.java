@@ -1,13 +1,11 @@
 package Costumers;
 
-import BankActions.AccountTransaction;
-import BankActions.NegativeTransaction;
-import BankActions.positiveTransaction;
+import BankActions.*;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Customer implements Serializable {
     private String name;
@@ -15,6 +13,10 @@ public class Customer implements Serializable {
     private List<String> LoansAsALender;
     private List<String> LoansAsABorrower;
     private List<AccountTransaction> Transactions;
+    private Map<LoanStatus, SimpleIntegerProperty> numberOfLoansAsBorrowerByStatus;
+    private Map<LoanStatus, SimpleStringProperty> stringOfLoansAsBorrowerByStatus;
+    private Map<LoanStatus, SimpleIntegerProperty> numberOfLoansAsLenderByStatus;
+    private Map<LoanStatus, SimpleStringProperty> stringOfLoansAsLenderByStatus;
 
     public Customer(String name, int balance, List<String> loansAsABorrowerNames) {
         this.name = name;
@@ -25,8 +27,47 @@ public class Customer implements Serializable {
         else
 
          */
-            LoansAsABorrower = loansAsABorrowerNames;
-            Transactions = new ArrayList<>();
+        LoansAsABorrower = loansAsABorrowerNames;
+        Transactions = new ArrayList<>();
+        numberOfLoansAsBorrowerByStatus = new HashMap<>();
+        stringOfLoansAsBorrowerByStatus = new HashMap<>();
+        numberOfLoansAsLenderByStatus = new HashMap<>();
+        stringOfLoansAsLenderByStatus = new HashMap<>();
+        initiativePropertyByStatus();
+
+    }
+
+    private void initiativePropertyByStatus(){
+        for (LoanStatus status: LoanStatus.values()) {
+            if(status.equals(LoanStatus.NEW)) {
+                numberOfLoansAsLenderByStatus.put(status, new SimpleIntegerProperty(0));
+                stringOfLoansAsLenderByStatus.put(status, new SimpleStringProperty(status.name() + ": " + 0));
+                numberOfLoansAsBorrowerByStatus.put(status, new SimpleIntegerProperty(LoansAsABorrower.size()));
+                stringOfLoansAsBorrowerByStatus.put(status, new SimpleStringProperty(status.name() + ": " + LoansAsABorrower.size()));
+            }
+            else{
+                numberOfLoansAsLenderByStatus.put(status, new SimpleIntegerProperty(0));
+                stringOfLoansAsLenderByStatus.put(status, new SimpleStringProperty(status.name() + ": " + 0));
+                numberOfLoansAsBorrowerByStatus.put(status, new SimpleIntegerProperty(0));
+                stringOfLoansAsBorrowerByStatus.put(status, new SimpleStringProperty(status.name() + ": " + 0));
+            }
+        }
+    }
+
+    public Map<LoanStatus, SimpleIntegerProperty> getNumberOfLoansAsBorrowerByStatus() {
+        return numberOfLoansAsBorrowerByStatus;
+    }
+
+    public Map<LoanStatus, SimpleStringProperty> getStringOfLoansAsBorrowerByStatus() {
+        return stringOfLoansAsBorrowerByStatus;
+    }
+
+    public Map<LoanStatus, SimpleIntegerProperty> getNumberOfLoansAsLenderByStatus() {
+        return numberOfLoansAsLenderByStatus;
+    }
+
+    public Map<LoanStatus, SimpleStringProperty> getStringOfLoansAsLenderByStatus() {
+        return stringOfLoansAsLenderByStatus;
     }
 
     public List<AccountTransaction> getTransactions() {

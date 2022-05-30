@@ -1,4 +1,5 @@
 package Component.AdminView;
+    import BankActions.LoanStatus;
     import Component.MainComponent.BankController;
     import Component.ViewLoansInfo.ViewLoansInfoController;
     import Component.ViewCustomersInfo.ViewCustomersInfoController;
@@ -7,6 +8,7 @@ package Component.AdminView;
     import SystemExceptions.InccorectInputType;
     import common.BankResourcesConstants;
     import javafx.beans.property.SimpleBooleanProperty;
+    import javafx.beans.property.SimpleIntegerProperty;
     import javafx.beans.property.SimpleStringProperty;
     import javafx.collections.FXCollections;
     import javafx.event.ActionEvent;
@@ -25,6 +27,7 @@ package Component.AdminView;
     import java.io.IOException;
     import java.net.URL;
     import java.util.List;
+    import java.util.Map;
 
 public class AdminViewController {
 
@@ -130,11 +133,19 @@ public class AdminViewController {
         ViewCustomersInfoController customersInfoController = loader.getController();
         CustomerExpandedDetails.setBackground(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        customersInfoController.SetLoansAsLenderByStatusLabels(mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsALender()));
-        customersInfoController.SetLoansAsLoanerByStatusLabels(mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()));
+        customersInfoController.SetLoansAsLenderByStatusLabels(mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsALender()), mainController.getCustomerPropertyOfLoansAsLender(customer.getName()));
+        customersInfoController.SetLoansAsLoanerByStatusLabels(mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()), mainController.getCustomerPropertyOfLoansAsBorrower(customer.getName()));//TODO: change the map
 
         return CustomerExpandedDetails;
     }
+
+//    private Map<LoanStatus, SimpleStringProperty> bindTheLabelsOfTheCustomersBorrower(String customerName){
+//       return mainController.getCustomerPropertyOfLoansAsBorrower(customerName);
+//    }
+
+//    private Map<LoanStatus, SimpleStringProperty> bindTheLabelsOfTheCustomersLender(String customerName){
+//        return mainController.getCustomerPropertyOfLoansAsLender(customerName);
+//    }
 
     @FXML private void clickOnIncreaseYaz(ActionEvent event){
         mainController.increaseYazActivation();

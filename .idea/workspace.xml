@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="final merging commit">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_05_2022__19_26__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_05_2022__19_26__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/BankSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/BankSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankActions/LoanStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankActions/LoanStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/Costumers/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/Costumers/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewCustomersInfo/ViewCustomersInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewCustomersInfo/ViewCustomersInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" afterDir="false" />
@@ -22,6 +33,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29n8pf2JYDuf4nYxa4zuiRN01we" />
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Gui/src/Main/TaskMain.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" root0="FORCE_HIGHLIGHTING" />
@@ -42,6 +57,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/BankSystem" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+
   </component>
   <component name="RunManager">
     <configuration name="TaskMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -60,11 +81,25 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.TaskMain" />
+        <item itemvalue="Application.TaskMain" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="final merging commit" />
+      <created>1653737695703</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653737695703</updated>
+      <workItem from="1653737716296" duration="10000" />
+      <workItem from="1653745437643" duration="5544000" />
+      <workItem from="1653826529436" duration="439000" />
+      <workItem from="1653826991265" duration="201000" />
+      <workItem from="1653827211697" duration="2342000" />
+      <workItem from="1653894882074" duration="23709000" />
+    </task>
     <task id="LOCAL-00001" summary="final merging commit">
       <created>1653567697095</created>
       <option name="number" value="00001" />
@@ -104,6 +139,20 @@
     <option name="LAST_COMMIT_MESSAGE" value="final merging commit" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java</url>
+          <line>130</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java</url>
+          <line>131</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="relevantLoans" language="JAVA" />

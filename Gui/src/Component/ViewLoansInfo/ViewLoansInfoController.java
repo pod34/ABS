@@ -4,6 +4,7 @@ import BankActions.Payment;
 import Component.MainComponent.BankController;
 import DTOs.LoanDTOs;
 import common.BankResourcesConstants;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +34,7 @@ public class ViewLoansInfoController {
     @FXML private Label LoanDataByStatus;
     @FXML private Accordion PaymentsDetails;
     @FXML private Accordion LenderDetails;
-    @FXML BankController mainController;
+    @FXML private BankController mainController;
 
 
     public void setMainController(BankController mainController) {this.mainController = mainController;}
@@ -91,13 +92,13 @@ public class ViewLoansInfoController {
         ViewLoansInfoController expendedLoansDetailsController = loader.getController();
         LoanExpandedDetails.setBackground(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        expendedLoansDetailsController.setLoanDataByStatus(loan);
+        expendedLoansDetailsController.setLoanDataByStatus(loan, mainController);
         expendedLoansDetailsController.setInterestValue(interest);
         expendedLoansDetailsController.setOriginalAmountValue(originalAmount);
         expendedLoansDetailsController.setPaymentFrequencyValue(paymentFrequency);
         expendedLoansDetailsController.setTotalDurationValue(duration);
         expendedLoansDetailsController.setOriginalInterestAmountValue(theTotalInterestAmountOfTheLoan);
-        expendedLoansDetailsController.setStatusValue(status);
+        expendedLoansDetailsController.setStatusValue(status, loan.getNameOfLoan(), mainController);
         expendedLoansDetailsController.setLenderDetails(loan);
         expendedLoansDetailsController.setPaymentsDetails(loan);
 
@@ -124,8 +125,9 @@ public class ViewLoansInfoController {
         originalAmount.setText("The original amount: " + i_originalAmountVal);
     }
 
-    public void setStatusValue(String i_statusVal) {
+    public void setStatusValue(String i_statusVal, String loanName, BankController i_mainController) {
         status.setText(i_statusVal);
+        status.textProperty().bind(i_mainController.getLoanDataByStatusPropertyAndStatusMapFromMainController(loanName).get("statusProperty"));
     }
 
     public void setLenderDetails(LoanDTOs  Loan) {
@@ -150,7 +152,7 @@ public class ViewLoansInfoController {
 
     }
 
-    public void setLoanDataByStatus(LoanDTOs loan){
+    public void setLoanDataByStatus(LoanDTOs loan, BankController i_mainController){
         switch (loan.getStatusName()){
             case "NEW":
                 LoanDataByStatus.setText("0$ Raised so far ");
@@ -171,6 +173,7 @@ public class ViewLoansInfoController {
                 break;
 
         }
+        LoanDataByStatus.textProperty().bind(i_mainController.getLoanDataByStatusPropertyAndStatusMapFromMainController(loan.getNameOfLoan()).get("LoanDataByStatusProperty"));
     }
 }
 

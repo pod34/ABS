@@ -1,6 +1,7 @@
 package Component.ViewCustomersInfo;
-import BankActions.Loan;
+import BankActions.LoanStatus;
 import DTOs.LoanDTOs;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -28,7 +29,7 @@ public class ViewCustomersInfoController {
     @FXML private Label newAsLoaner;
 
 
-    public void SetLoansAsLoanerByStatusLabels(List<LoanDTOs> loansAsLoaner){
+    public void SetLoansAsLoanerByStatusLabels(List<LoanDTOs> loansAsLoaner, Map<LoanStatus, SimpleStringProperty> propertyMapToBind){
         if(loansAsLoaner.size() != 0) {
             Map<String, List<LoanDTOs>> LoansByStatus = loansAsLoaner
                     .stream()
@@ -54,14 +55,19 @@ public class ViewCustomersInfoController {
             }
 
             newAsLoaner.setText("New: " + NewNum);
+            newAsLoaner.textProperty().bind(propertyMapToBind.get(LoanStatus.NEW));
             PendingAsLoaner.setText("Pending: " + pendingNum);
+            PendingAsLoaner.textProperty().bind(propertyMapToBind.get(LoanStatus.PENDING));
             activeAsLoaner.setText("Active: " + activenNum);
+            activeAsLoaner.textProperty().bind(propertyMapToBind.get(LoanStatus.ACTIVE));
             riskAsLoaner.setText("Risk : " + riskNum);
+            riskAsLoaner.textProperty().bind(propertyMapToBind.get(LoanStatus.RISK));
             finishedAsLoaner.setText("Finished: " + FinishedNum);
+            finishedAsLoaner.textProperty().bind(propertyMapToBind.get(LoanStatus.FINISHED));
         }
     }
 
-    public void SetLoansAsLenderByStatusLabels(List<LoanDTOs> loansAsLender){
+    public void SetLoansAsLenderByStatusLabels(List<LoanDTOs> loansAsLender, Map<LoanStatus, SimpleStringProperty> propertyMapToBind){//TODO: list of propertys that will have the amount of loans per status that will be baind to the label
         if(loansAsLender.size() != 0) {
             Map<String, List<LoanDTOs>> LoansByStatus = loansAsLender
                     .stream()
@@ -91,10 +97,14 @@ public class ViewCustomersInfoController {
             riskAsLender.setText("Risk : " + riskNum);
             finishedAsLender.setText("Finished: " + FinishedNum);
             newAsLender.setText("New: " + NewNum);
+            newAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.NEW));
         }
+        pendingAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.PENDING));
+        activeAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.ACTIVE));
+        riskAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.RISK));
+        finishedAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.FINISHED));
+        newAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.NEW));
 
     }
-
-
 
 }
