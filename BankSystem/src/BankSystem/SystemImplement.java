@@ -121,21 +121,17 @@ public class SystemImplement implements BankSystem , Serializable {
         return ListOfTransactionDTO;
     }
 
-    public List<LoanDTOs> ActivationOfAnInlay(List<String> chosenCategories, int minimumDuration, int minimumInterestForSingleYaz,String name){
+    public List<LoanDTOs> ActivationOfAnInlay(List<String> chosenCategories, int minimumDuration, int minimumInterestForSingleYaz,int maxOpenLoansForLoanOwner,String name){
         List<LoanDTOs> filteredListOfLoansDTO = new ArrayList<>();
         List<Loan> filteredListOfLoans = LoansInBank.values().stream()
                 .filter(L-> chosenCategories.contains(L.getCategory()))
+                .filter(L-> Costumers.get(L.getNameOfLoaner()).getLoansAsABorrower().size() <= maxOpenLoansForLoanOwner)
                 .filter(L->(L.getDurationOfTheLoan() >= minimumDuration))
                 .filter(L->(L.getInterest() >= minimumInterestForSingleYaz)).filter(L->!L.getNameOfLoaner().equals(name))
                 .filter(L->((L.getStatus().equals(LoanStatus.NEW)) || (L.getStatus().equals(LoanStatus.PENDING))))
                 .collect(Collectors.toList());
         for (Loan curLoan: filteredListOfLoans) {
             filteredListOfLoansDTO.add(new LoanDTOs(curLoan));
-        }
-        int numOfLoan = 1;
-        for (Loan curLoan: filteredListOfLoans) {
-            curLoan.PrintLoan(true, numOfLoan);
-            numOfLoan++;
         }
         return filteredListOfLoansDTO;
     }
@@ -150,24 +146,31 @@ public class SystemImplement implements BankSystem , Serializable {
 
     }
 
-    public CustomerDTOs LoansInlay(List<String> namesOfLoans,int amountOfMoneyUserWantToInvest,String nameOfLender) {
+    public CustomerDTOs LoansInlay(List<String> namesOfLoans,int amountOfMoneyUserWantToInvest,String nameOfLender,int maxOwnerShipOfTheLoan) {//TODO check if maxOwnerShip Does work
         List<Loan> loansForInvestment = FindLoansInSystemByNames(namesOfLoans);
         int numOfLoans = loansForInvestment.size();
-        int tmpMoneyInvested;
+        int tmpMoneyInvested,moneyToInvest;
         int dividedAmount;
         int totalAmountInvested = 0;
         for (Loan loan : loansForInvestment) {
             dividedAmount = amountOfMoneyUserWantToInvest / numOfLoans;
-            if (loan.getTheAmountLeftToMakeTheLoanActive() < dividedAmount) {
-                tmpMoneyInvested = loan.getTheAmountLeftToMakeTheLoanActive();
-                loan.setAnInvestment(loan.getTheAmountLeftToMakeTheLoanActive(),nameOfLender,Yaz);
-                this.depositTheMoneyOfTheLoanInBorrowerAccount(loan.getOriginalAmount(), loan.getNameOfLoaner(), loan);
+            if(calcPercentValueForLoan(loan.getOriginalAmount(),maxOwnerShipOfTheLoan) < dividedAmount) {
+                moneyToInvest = calcPercentValueForLoan(loan.getOriginalAmount(),maxOwnerShipOfTheLoan);
             }
             else{
-                tmpMoneyInvested =dividedAmount;
-                loan.setAnInvestment(dividedAmount,nameOfLender,Yaz);
-                this.depositTheMoneyOfTheLoanInBorrowerAccount(loan.getOriginalAmount(), loan.getNameOfLoaner(), loan);
+                moneyToInvest = dividedAmount;
             }
+                if (loan.getTheAmountLeftToMakeTheLoanActive() < moneyToInvest) {
+                    tmpMoneyInvested = loan.getTheAmountLeftToMakeTheLoanActive();
+                    loan.setAnInvestment(loan.getTheAmountLeftToMakeTheLoanActive(), nameOfLender, Yaz);
+                    this.depositTheMoneyOfTheLoanInBorrowerAccount(loan.getOriginalAmount(), loan.getNameOfLoaner(), loan);
+                } else {
+                    tmpMoneyInvested = moneyToInvest;
+                    loan.setAnInvestment(moneyToInvest, nameOfLender, Yaz);
+                    this.depositTheMoneyOfTheLoanInBorrowerAccount(loan.getOriginalAmount(), loan.getNameOfLoaner(), loan);
+                }
+
+
             amountOfMoneyUserWantToInvest -= tmpMoneyInvested;
             Costumers.get(nameOfLender).makeAnInvestment(loan.getNameOfLoan(),tmpMoneyInvested, Yaz);
             totalAmountInvested += tmpMoneyInvested;
@@ -176,6 +179,10 @@ public class SystemImplement implements BankSystem , Serializable {
         }
         CustomerDTOs lender = new CustomerDTOs(totalAmountInvested);
         return lender;
+    }
+
+    private int calcPercentValueForLoan(int amount,int percent){
+        return (amount * percent) / 100;
     }
 
     private void depositTheMoneyOfTheLoanInBorrowerAccount(int amount, String nameOfLoaner, Loan loan){

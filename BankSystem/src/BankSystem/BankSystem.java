@@ -1,6 +1,8 @@
 package BankSystem;
 
 import BankActions.LoanStatus;
+import BankActions.Loan;
+import DTOs.CategoriesDTO;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import SystemExceptions.InccorectInputType;
@@ -15,14 +17,15 @@ public interface BankSystem {
     void DisplayInformationAboutSystemCustomers();
     void DepositToAccount(int amount, String nameOfCostumerToDepositTo);
     boolean WithdrawFromTheAccount(int amount,String nameOfCostumerToDepositTo);
-    List<LoanDTOs> ActivationOfAnInlay(List<String> chosenCategories, int minimumDuration, int minimumInterestForSingleYaz, String name);
+    List<LoanDTOs> ActivationOfAnInlay(List<String> chosenCategories, int minimumDuration, int minimumInterestForSingleYaz,int maxOpenLoansForLoanOwner, String name);
+    CustomerDTOs LoansInlay(List<String> namesOfLoans,int amountOfMoneyUserWantToInvest,String nameOfLender,int maxOwnerShipOfTheLoan);
     void IncreaseYaz();
     List<CustomerDTOs> getListOfDTOsCustomer();
     List<LoanDTOs> getListOfLoansDTO();
     List<LoanDTOs> getListOfLoansDtoByListOfNamesOFLoans(List<String> i_loansName);
     SimpleStringProperty getYazProperty();
     void fullPaymentOnLoans(List<String> loanNames, String customerName);
-    Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsBorrower(String customerName);
     Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsLender(String customerName);
     Map<String, SimpleStringProperty> getLoanDataByStatusPropertyFromSystemMap(String loanName);
+    CategoriesDTO getAllCategories();
 }

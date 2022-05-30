@@ -21,6 +21,7 @@ package Component.AdminView;
     import javafx.scene.paint.Color;
     import javafx.stage.FileChooser;
     import org.controlsfx.control.table.TableRowExpanderColumn;
+    import sun.applet.Main;
 
     import java.io.File;
     import java.io.IOException;
@@ -33,8 +34,11 @@ public class AdminViewController {
     @FXML BankController mainController;
     @FXML private Button IncreaseYazBtn;
     @FXML private Button LoadFileBtn;
+    @FXML private GridPane MainButtonsBox;
     @FXML private TableView<LoanDTOs> LoansData = new TableView<>();
     @FXML private TableView<CustomerDTOs> CustomerData = new TableView<>();
+    @FXML private BorderPane viewByAdminContainer;
+    @FXML private AnchorPane viewByAdminContainer2;
 
     private SimpleStringProperty selectedFileProperty;
     private SimpleBooleanProperty isFileSelected;
@@ -46,6 +50,7 @@ public class AdminViewController {
 
     @FXML private void initialize(){
        IncreaseYazBtn.disableProperty().bind(isFileSelected.not());
+        MainButtonsBox.prefWidthProperty().bind(viewByAdminContainer.widthProperty());
     }
 
     public SimpleStringProperty getSelectedFileProperty() {
