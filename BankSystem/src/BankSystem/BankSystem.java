@@ -1,14 +1,13 @@
 package BankSystem;
 
-import BankActions.Loan;
+import BankActions.LoanStatus;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import SystemExceptions.InccorectInputType;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public interface BankSystem {
     boolean ReadingTheSystemInformationFile(String FileName) throws InccorectInputType;
@@ -23,4 +22,7 @@ public interface BankSystem {
     List<LoanDTOs> getListOfLoansDtoByListOfNamesOFLoans(List<String> i_loansName);
     SimpleStringProperty getYazProperty();
     void fullPaymentOnLoans(List<String> loanNames, String customerName);
+    Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsBorrower(String customerName);
+    Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsLender(String customerName);
+    Map<String, SimpleStringProperty> getLoanDataByStatusPropertyFromSystemMap(String loanName);
 }

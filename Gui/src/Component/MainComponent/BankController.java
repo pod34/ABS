@@ -1,21 +1,17 @@
 package Component.MainComponent;
-import BankActions.Loan;
+import BankActions.LoanStatus;
 import BankSystem.BankSystem;
 import Component.AdminView.AdminViewController;
-import Component.CustomerView.CustomerDataToPresent;
 import Component.CustomerView.CustomerViewController;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import SystemExceptions.InccorectInputType;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -23,8 +19,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
-import java.util.stream.Collectors;
 
 public class BankController {
 
@@ -139,5 +133,18 @@ public class BankController {
    public void fullyLoansPaymentActivation(List<String> loanNames){
       bankEngine.fullPaymentOnLoans(loanNames, curCustomerViewBy.getValue());
    }
+
+   public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyOfLoansAsBorrower(String customerName){
+      return bankEngine.getCustomerPropertyForLoanAsBorrower(customerName);
+   }
+
+   public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyOfLoansAsLender(String customerName){
+      return bankEngine.getCustomerPropertyForLoanAsLender(customerName);
+   }
+
+   public Map<String, SimpleStringProperty> getLoanDataByStatusPropertyAndStatusMapFromMainController(String loanName){
+      return bankEngine.getLoanDataByStatusPropertyFromSystemMap(loanName);
+   }
+
 }
 

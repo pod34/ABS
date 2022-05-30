@@ -8,7 +8,6 @@ import DTOs.CategoriesDTO;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import SystemExceptions.InccorectInputType;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
@@ -274,5 +273,15 @@ public class SystemImplement implements BankSystem , Serializable {
         }
     }
 
+    public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsBorrower(String customerName){
+        return Costumers.get(customerName).getStringOfLoansAsBorrowerByStatus();
+    }
 
+    public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsLender(String customerName){
+        return Costumers.get(customerName).getStringOfLoansAsLenderByStatus();
+    }
+
+    public Map<String, SimpleStringProperty> getLoanDataByStatusPropertyFromSystemMap(String loanName){
+        return LoansInBank.get(loanName).getLoanDataByStatusPropertyAndStatusProperty();
+    }
 }

@@ -1,5 +1,7 @@
 package BankActions;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +34,7 @@ public class Loan implements Serializable {
     private int yazlyPayment;
     private int yazlyInterest;
     private int totalMissedYazNeedToPayBack = 0;
+    private Map<String, SimpleStringProperty> loanDataByStatusPropertyAndStatusProperty;
 
 
     public Loan(String nameOfLoan, String nameOfLoaner, String category, int originalAmount, int durationOfTheLoan,
@@ -51,7 +54,14 @@ public class Loan implements Serializable {
         yazlyPayment = 0;
         yazlyInterest =0;
         theInterestYetToBePaidOnTheLoan = (originalAmount * interest) / 100;
+        loanDataByStatusPropertyAndStatusProperty = new HashMap<>();
+        loanDataByStatusPropertyAndStatusProperty.put("LoanDataByStatusProperty", new SimpleStringProperty());
+        loanDataByStatusPropertyAndStatusProperty.get("LoanDataByStatusProperty").set("0$ Raised so far ");
+        loanDataByStatusPropertyAndStatusProperty.put("statusProperty", new SimpleStringProperty(LoanStatus.NEW.name()));
+    }
 
+    public Map<String, SimpleStringProperty> getLoanDataByStatusPropertyAndStatusProperty() {
+        return loanDataByStatusPropertyAndStatusProperty;
     }
 
     public String getNameOfLoan() {
