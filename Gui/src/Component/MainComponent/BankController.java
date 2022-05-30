@@ -16,6 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -36,7 +37,9 @@ public class BankController {
    @FXML private AnchorPane subComponent;
    @FXML private AnchorPane viewByCustomer;
    @FXML private CustomerViewController viewByCustomerController;
+   @FXML private BorderPane mainContainerComponent;
    private SimpleStringProperty curCustomerViewBy;
+
 
 
    private Stage primaryStage;
@@ -53,11 +56,18 @@ public class BankController {
 
    public void setCustomerController(AnchorPane customerScene) {
       this.viewByCustomer = customerScene;
+      viewByCustomer.prefWidthProperty().bind(viewByAdmin.widthProperty());
+      viewByCustomer.prefHeightProperty().bind(viewByAdmin.heightProperty());
    }
 
    public void setViewByCustomerController(CustomerViewController viewByCustomerController) {
       this.viewByCustomerController = viewByCustomerController;
       viewByCustomerController.setMainController(this);
+
+   }
+
+   public void activateLoansInlay(List<String> nameOfLoansToInvestIn,int amountOfInvestment,int maxOwnerShipOfTheLoan){
+      bankEngine.LoansInlay(nameOfLoansToInvestIn,amountOfInvestment,curCustomerViewBy.getValue(),maxOwnerShipOfTheLoan);
    }
 
    @FXML
@@ -77,6 +87,7 @@ public class BankController {
       boolean flag = bankEngine.ReadingTheSystemInformationFile(filePath.getText());
       if (flag) {
          addCustomersToComboBox();
+         viewByCustomerController.addCategoriesToScramble(bankEngine.getAllCategories().getCategories());
          viewByCustomerController.setDataOfCustomerTOPresentInCustomerView(bankEngine.getListOfDTOsCustomer());
          CurrentYazLabel.textProperty().bind(bankEngine.getYazProperty());
       }
@@ -113,10 +124,11 @@ public class BankController {
    private void viewByChooserClicked(ActionEvent event) {
       if (!viewBy.getValue().equals("Admin")) {
          curCustomerViewBy.set(viewBy.getValue());
+         viewByCustomer.prefWidthProperty().bind(subComponent.widthProperty());
+         viewByCustomer.prefHeightProperty().bind(subComponent.heightProperty());
          subComponent.getChildren().setAll(viewByCustomer);
          viewByCustomerController.setViewByCustomerData(viewBy.getValue());
          viewByCustomerController.setMessagesViewToCustomer(curCustomerViewBy.getValue());
-
       }
       else{
          if(!subComponent.equals(viewByAdmin))
@@ -138,6 +150,10 @@ public class BankController {
 
    public void fullyLoansPaymentActivation(List<String> loanNames){
       bankEngine.fullPaymentOnLoans(loanNames, curCustomerViewBy.getValue());
+   }
+
+   public List<LoanDTOs> scrambleActivation(List<String> chosenCategories,int minDuration,int minInterestForSingleYaz,int i_maxOpenLoansForLoanOwner){
+     return bankEngine.ActivationOfAnInlay(chosenCategories,minDuration,minInterestForSingleYaz,i_maxOpenLoansForLoanOwner,curCustomerViewBy.getValue());//TODO add more param later according to new filters
    }
 }
 

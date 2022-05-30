@@ -3,14 +3,46 @@
   <component name="ChangeListManager">
     <list default="true" id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="final merging commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Main/TaskMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Main/TaskMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Gui/src/Main/TaskMain.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29i2x7HMIUH0kpxcXfoPP8D5pcT" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
   <component name="RunManager">
     <configuration name="TaskMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main.TaskMain" />
@@ -31,8 +63,30 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="final merging commit">
+      <created>1653567697095</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1653567697095</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="" />
+      <created>1653581833991</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653581833991</updated>
+      <workItem from="1653581839352" duration="35255000" />
+      <workItem from="1653922832515" duration="2531000" />
+      <workItem from="1653925503833" duration="7354000" />
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -48,5 +102,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="final merging commit" />
     <option name="LAST_COMMIT_MESSAGE" value="final merging commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="relevantLoans" language="JAVA" />
+        <watch expression="howManyLoansFound" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
