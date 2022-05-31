@@ -1,36 +1,70 @@
 package DTOs;
 
 import BankActions.AccountTransaction;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 
 public class AccountTransactionDTO implements Serializable {
-    protected final int timeOfAction;
-    protected final int amountOfTransaction;
-    protected final int amountBefore;
-    protected final int amountAfter;
 
+    private SimpleBooleanProperty TransactionType = new SimpleBooleanProperty(this, "TransactionType");//to do change it to + or - for now true is possitive (+)
+    private SimpleIntegerProperty amount = new SimpleIntegerProperty(this, "amount");
+    private SimpleIntegerProperty yazOfAction = new SimpleIntegerProperty(this, "yazOfAction");
+    private SimpleIntegerProperty previousBalance = new SimpleIntegerProperty(this, "previousBalance");
+    private SimpleIntegerProperty curBalance = new SimpleIntegerProperty(this, "curBalance");
 
     public AccountTransactionDTO(AccountTransaction Transaction){
-        timeOfAction = Transaction.getTimeOfAction();
-        amountOfTransaction = Transaction.getAmountOfTransaction();
-        amountBefore = Transaction.getAmountBefore();
-        amountAfter = Transaction.getAmountAfter();
+        amount.set(Transaction.getAmountOfTransaction());
+        yazOfAction.set(Transaction.getTimeOfAction());
+        previousBalance.set(Transaction.getAmountBefore());
+        curBalance.set(Transaction.getAmountAfter());
+        if(previousBalance.get() < curBalance.get()){
+            TransactionType.set(true);
+        }
+        else {
+            TransactionType.set(false);
+        }
     }
 
-    public int getTimeOfAction() {
-        return timeOfAction;
+    public boolean isTransactionType() {
+        return TransactionType.get();
     }
 
-    public int getAmountOfTransaction() {
-        return amountOfTransaction;
+    public SimpleBooleanProperty transactionTypeProperty() {
+        return TransactionType;
     }
 
-    public int getAmountBefore() {
-        return amountBefore;
+    public int getAmount() {
+        return amount.get();
     }
 
-    public int getAmountAfter() {
-        return amountAfter;
+    public SimpleIntegerProperty amountProperty() {
+        return amount;
+    }
+
+    public int getYazOfAction() {
+        return yazOfAction.get();
+    }
+
+    public SimpleIntegerProperty yazOfActionProperty() {
+        return yazOfAction;
+    }
+
+    public int getPreviousBalance() {
+        return previousBalance.get();
+    }
+
+    public SimpleIntegerProperty previousBalanceProperty() {
+        return previousBalance;
+    }
+
+    public int getCurBalance() {
+        return curBalance.get();
+    }
+
+    public SimpleIntegerProperty curBalanceProperty() {
+        return curBalance;
     }
 }

@@ -132,11 +132,12 @@ public class BankController {
    }
 
    public void chargeActivation(int amount){
-      bankEngine.DepositToAccount(amount, curCustomerViewBy.getValue());
+      viewByCustomerController.addTransactionToTransactionTable(bankEngine.DepositToAccount(amount, curCustomerViewBy.getValue()));
    }
 
    public void withdrawActivation(int amount){
-      bankEngine.DepositToAccount(amount, curCustomerViewBy.getValue());
+
+      viewByCustomerController.addTransactionToTransactionTable(bankEngine.WithdrawFromTheAccount(amount, curCustomerViewBy.getValue()));
    }
 
    public void increaseYazActivation(){

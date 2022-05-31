@@ -1,5 +1,4 @@
 package Component.AdminView;
-    import BankActions.LoanStatus;
     import Component.MainComponent.BankController;
     import Component.ViewLoansInfo.ViewLoansInfoController;
     import Component.ViewCustomersInfo.ViewCustomersInfoController;
@@ -8,7 +7,6 @@ package Component.AdminView;
     import SystemExceptions.InccorectInputType;
     import common.BankResourcesConstants;
     import javafx.beans.property.SimpleBooleanProperty;
-    import javafx.beans.property.SimpleIntegerProperty;
     import javafx.beans.property.SimpleStringProperty;
     import javafx.collections.FXCollections;
     import javafx.event.ActionEvent;
@@ -21,13 +19,11 @@ package Component.AdminView;
     import javafx.scene.paint.Color;
     import javafx.stage.FileChooser;
     import org.controlsfx.control.table.TableRowExpanderColumn;
-    import sun.applet.Main;
 
     import java.io.File;
     import java.io.IOException;
     import java.net.URL;
     import java.util.List;
-    import java.util.Map;
 
 public class AdminViewController {
 

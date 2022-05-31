@@ -1,6 +1,7 @@
 package Component.CustomerView;
 import Component.MainComponent.BankController;
 import Component.ViewLoansInfo.ViewLoansInfoController;
+import DTOs.AccountTransactionDTO;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -21,7 +23,9 @@ import org.controlsfx.control.CheckComboBox;
 import org.controlsfx.control.CheckListView;
 import org.controlsfx.control.ListSelectionView;
 import org.controlsfx.control.StatusBar;
+import org.controlsfx.control.table.TableRowExpanderColumn;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,7 +37,7 @@ import java.util.stream.Collectors;
 public class CustomerViewController {
     @FXML private ScrollPane LoanerInfoTable;
     @FXML private ScrollPane LoansInfoTable;
-    @FXML private ScrollPane AccountTransInfo;
+    @FXML private AnchorPane AccountTransInfo;
     @FXML private ScrollPane LoanerLoansTable;
     @FXML private ScrollPane PaymentControl;
     @FXML private VBox ChargeOrWithdraw;
@@ -69,6 +73,7 @@ public class CustomerViewController {
     @FXML private Button payFullyOnLoansBT;
     @FXML private Button resetSearch;
     @FXML private CheckBox selectAllLoansToInvest;
+    @FXML private TableView<?> TransactionTable;
 
 
     public void setMainController(BankController mainController) {
@@ -191,6 +196,7 @@ public class CustomerViewController {
     public void setViewByCustomerData(String nameOfCustomer){
         setLenderLoans(nameOfCustomer);
         setLonerLoan(nameOfCustomer);
+        setAccountTransInfo(nameOfCustomer);
     }
 
     private void setLonerLoan(String nameOfCustomer){
@@ -208,6 +214,13 @@ public class CustomerViewController {
         tmp.prefHeightProperty().bind(LoansAsLender.heightProperty());
         LoansAsLender.getChildren().setAll(tmp);
 
+    }
+
+    private void setAccountTransInfo(String nameOfCustomer){
+        TableView<AccountTransactionDTO> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getTransactionTable();
+        tmp.prefWidthProperty().bind(AccountTransInfo.widthProperty());
+        tmp.prefHeightProperty().bind(AccountTransInfo.heightProperty());
+        AccountTransInfo.getChildren().setAll(tmp);
     }
 
     public void addCategoriesToScramble(List<String> i_categories){
@@ -319,12 +332,12 @@ public class CustomerViewController {
     }
 
     @FXML
-    void resetSearchBtClicked(ActionEvent event) {
+    private void resetSearchBtClicked(ActionEvent event) {
         resetScrambleTab();
     }
 
     @FXML
-    void selectAllLoansToInvestBtClicked(ActionEvent event) {
+    private void selectAllLoansToInvestBtClicked(ActionEvent event) {
         if(selectAllLoansToInvest.isSelected())
             checkLoansToInvest.getCheckModel().checkAll();
         else{
@@ -332,6 +345,14 @@ public class CustomerViewController {
         }
 
     }
+
+    public void addTransactionToTransactionTable(AccountTransactionDTO transaction){
+        TableView<AccountTransactionDTO> tmp = (TableView<AccountTransactionDTO>) AccountTransInfo.getChildren().get(0);
+        tmp.getItems().add(transaction);
+        AccountTransInfo.getChildren().setAll(tmp);
+    }
+
+
 
 }
 

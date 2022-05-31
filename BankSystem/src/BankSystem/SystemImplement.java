@@ -80,12 +80,12 @@ public class SystemImplement implements BankSystem , Serializable {
     }
 
     @Override
-    public void DepositToAccount(int amount,String nameOfCostumer){
-        Costumers.get(nameOfCostumer).DepositMoney(amount,Yaz);
+    public AccountTransactionDTO DepositToAccount(int amount,String nameOfCostumer){
+        return Costumers.get(nameOfCostumer).DepositMoney(amount,Yaz);
     }
 
     @Override
-    public boolean WithdrawFromTheAccount(int amount,String nameOfCostumer){
+    public AccountTransactionDTO WithdrawFromTheAccount(int amount,String nameOfCostumer){
         return Costumers.get(nameOfCostumer).WithdrawMoney(amount,Yaz);
     }
 
