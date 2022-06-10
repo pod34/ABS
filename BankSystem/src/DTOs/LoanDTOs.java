@@ -3,11 +3,14 @@ package DTOs;
 import BankActions.Loan;
 import BankActions.LoanStatus;
 import BankActions.Payment;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-//import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.List;
 
 public class LoanDTOs implements Serializable {
@@ -15,11 +18,14 @@ public class LoanDTOs implements Serializable {
     private SimpleStringProperty category = new SimpleStringProperty(this, "category");
     private SimpleStringProperty statusName = new SimpleStringProperty(this, "status");
     private SimpleStringProperty nameOfLoaner = new SimpleStringProperty(this, "nameOfLoaner");
+    private SimpleBooleanProperty selected = new SimpleBooleanProperty(this,"selected");
+    private SimpleStringProperty amountToPay = new SimpleStringProperty(this,"AmountToPay");
+    private SimpleIntegerProperty nextYazPayment = new SimpleIntegerProperty(this,"nextYazPayment");
     private final int originalAmount;
     private final int durationOfTheLoan;
     private final int paymentFrequency;
     private final int interest;
-    private final List<?> listOfLenders;// TODO: do we need it?
+    private Map<String, Integer> listOfLenders = new HashMap<String, Integer>();;// TODO: do we need it?
     private final int howManyUnitsOfTimeAreLeft; //TODO: wtf does it mean
     private final float interestPayedSoFar;
     private final float theInterestYetToBePaidOnTheLoan;
@@ -32,20 +38,20 @@ public class LoanDTOs implements Serializable {
     public LoanDTOs(Loan loan){
         nameOfLoan.set(loan.getNameOfLoan());
         category.set(loan.getCategory());
+        nextYazPayment.set(loan.getNextYazForPayment());
         originalAmount = loan.getOriginalAmount();
         nameOfLoaner.set(loan.getNameOfLoaner());
         durationOfTheLoan = loan.getDurationOfTheLoan();
         paymentFrequency = loan.getPaymentFrequency();
         howManyUnitsOfTimeAreLeft = loan.getHowManyYazAreLeft();
         interest = loan.getInterest();
-        listOfLenders = Collections.unmodifiableList(loan.getListOfLenders());
+        listOfLenders = loan.getListOfLenders();
         interestPayedSoFar = loan.getInterestPayedSoFar();
         theInterestYetToBePaidOnTheLoan = loan.getTheInterestYetToBePaidOnTheLoan();
         theAmountOfThePrincipalPaymentPaidOnTheLoanSoFar = loan.getTheAmountOfThePrincipalPaymentPaidOnTheLoanSoFar();
         theAmountOfTheFundYetToBePaid = loan.getTheAmountOfPrincipalPaymentYetToBePaid();
         status = loan.getStatus();
         statusName.set(status.name());
-
         loansPayments = loan.getPayments();
     }
 
@@ -77,7 +83,7 @@ public class LoanDTOs implements Serializable {
         return interest;
     }
 
-    public List<?> getListOfLenders() {
+    public Map<String, Integer> getListOfLenders() {
         return listOfLenders;
     }
 
@@ -123,5 +129,33 @@ public class LoanDTOs implements Serializable {
 
     public SimpleStringProperty nameOfLoanerProperty() {
         return nameOfLoaner;
+    }
+
+    public boolean isSelected() {
+        return selected.get();
+    }
+
+    public SimpleBooleanProperty selectedProperty() {
+        return selected;
+    }
+
+    public String getAmountToPay() {
+        return amountToPay.get();
+    }
+
+    public SimpleStringProperty amountToPayProperty() {
+        return amountToPay;
+    }
+
+    public void setAmountToPay(String amountToPay) {
+        this.amountToPay.set(amountToPay);
+    }
+
+    public int getNextYazPayment() {
+        return nextYazPayment.get();
+    }
+
+    public SimpleIntegerProperty nextYazPaymentProperty() {
+        return nextYazPayment;
     }
 }

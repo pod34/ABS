@@ -3,27 +3,44 @@ import BankActions.LoanStatus;
 import BankSystem.BankSystem;
 import Component.AdminView.AdminViewController;
 import Component.CustomerView.CustomerViewController;
+import DTOs.AccountTransactionDTO;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import SystemExceptions.InccorectInputType;
+import common.BankResourcesConstants;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class BankController {
 
+
+
+   @FXML private Button OkBt;
    @FXML private ComboBox<String> viewBy;
    @FXML private Label filePath;
    @FXML private Label CurrentYazLabel;
@@ -35,11 +52,28 @@ public class BankController {
    @FXML private BorderPane mainContainerComponent;
    private SimpleStringProperty curCustomerViewBy;
 
-
-
    private Stage primaryStage;
    BankSystem bankEngine;
 
+   @FXML
+   private void initialize() throws IOException {
+      if (viewByAdminController != null) {
+         viewByAdminController.setMainController(this);
+      }
+      filePath.textProperty().bind(viewByAdminController.getSelectedFileProperty());
+      curCustomerViewBy = new SimpleStringProperty("Admin");
+      FXMLLoader loader = new FXMLLoader();
+      URL BankControllerFXML = getClass().getResource(BankResourcesConstants.ERRORPOPUPWINDOW);
+      loader.setLocation(BankControllerFXML);
+   }
+
+   public int getCurrentYaz(){
+      return bankEngine.getCurrentYaz();
+   }
+
+   public Boolean checkIfCustomerHasEnoughMoneyToInvest(int amount){
+     return bankEngine.checkIfCustomerHasEnoughMoneyToInvestByGivenAmount(curCustomerViewBy.getValue(),amount);
+   }
 
    public void setBankEngine(BankSystem m_bankEngine) {
       bankEngine = m_bankEngine;
@@ -62,16 +96,13 @@ public class BankController {
    }
 
    public void activateLoansInlay(List<String> nameOfLoansToInvestIn,int amountOfInvestment,int maxOwnerShipOfTheLoan){
-      bankEngine.LoansInlay(nameOfLoansToInvestIn,amountOfInvestment,curCustomerViewBy.getValue(),maxOwnerShipOfTheLoan);
-   }
-
-   @FXML
-   private void initialize() {
-      if (viewByAdminController != null) {
-         viewByAdminController.setMainController(this);
+      if(bankEngine.LoansInlay(nameOfLoansToInvestIn,amountOfInvestment,curCustomerViewBy.getValue(),maxOwnerShipOfTheLoan) != null) {
+         viewByAdminController.updateLoansInBankInAdminView();
       }
-      filePath.textProperty().bind(viewByAdminController.getSelectedFileProperty());
-      curCustomerViewBy = new SimpleStringProperty("Admin");
+      else{
+        //TODO errorLabel.setText("You can't invest more money than you have in your balance");
+         //dialog.show();
+      }
    }
 
    public File ShowFileChooserDialog(FileChooser i_fileChooser) {
@@ -132,11 +163,17 @@ public class BankController {
    }
 
    public void chargeActivation(int amount){
-      bankEngine.DepositToAccount(amount, curCustomerViewBy.getValue());
+      viewByCustomerController.addTransactionToTransactionTable(bankEngine.DepositToAccount(amount, curCustomerViewBy.getValue()));
    }
 
    public void withdrawActivation(int amount){
-      bankEngine.DepositToAccount(amount, curCustomerViewBy.getValue());
+      AccountTransactionDTO tmp = bankEngine.WithdrawFromTheAccount(amount, curCustomerViewBy.getValue());
+      if(tmp != null)
+         viewByCustomerController.addTransactionToTransactionTable(tmp);
+      else {
+         //TODO errorLabel.setText("You can't withdraw more money that you have in your balance");
+         //dialog.show();
+      }
    }
 
    public void increaseYazActivation(){
@@ -145,6 +182,7 @@ public class BankController {
 
    public void fullyLoansPaymentActivation(List<String> loanNames){
       bankEngine.fullPaymentOnLoans(loanNames, curCustomerViewBy.getValue());
+      viewByAdminController.updateLoansInBankInAdminView();
    }
 
    public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyOfLoansAsBorrower(String customerName){
@@ -161,6 +199,10 @@ public class BankController {
 
    public List<LoanDTOs> scrambleActivation(List<String> chosenCategories,int minDuration,int minInterestForSingleYaz,int i_maxOpenLoansForLoanOwner){
      return bankEngine.ActivationOfAnInlay(chosenCategories,minDuration,minInterestForSingleYaz,i_maxOpenLoansForLoanOwner,curCustomerViewBy.getValue());//TODO add more param later according to new filters
+   }
+
+   public CustomerDTOs getCustomerByName(String nameOfCustomer){
+      return bankEngine.getCustomerByName(nameOfCustomer);
    }
 }
 

@@ -1,14 +1,13 @@
 package Component.AdminView;
-    import BankActions.LoanStatus;
     import Component.MainComponent.BankController;
     import Component.ViewLoansInfo.ViewLoansInfoController;
     import Component.ViewCustomersInfo.ViewCustomersInfoController;
+    import DTOs.AccountTransactionDTO;
     import DTOs.CustomerDTOs;
     import DTOs.LoanDTOs;
     import SystemExceptions.InccorectInputType;
     import common.BankResourcesConstants;
     import javafx.beans.property.SimpleBooleanProperty;
-    import javafx.beans.property.SimpleIntegerProperty;
     import javafx.beans.property.SimpleStringProperty;
     import javafx.collections.FXCollections;
     import javafx.event.ActionEvent;
@@ -21,13 +20,11 @@ package Component.AdminView;
     import javafx.scene.paint.Color;
     import javafx.stage.FileChooser;
     import org.controlsfx.control.table.TableRowExpanderColumn;
-    import sun.applet.Main;
 
     import java.io.File;
     import java.io.IOException;
     import java.net.URL;
     import java.util.List;
-    import java.util.Map;
 
 public class AdminViewController {
 
@@ -87,7 +84,21 @@ public class AdminViewController {
         }
     }
 
+    public void updateLoansInBankInAdminView(){
+        CustomerData.getItems().clear();
+        LoansData.getItems().clear();
+        ViewLoansInfoController loansInfoController = new ViewLoansInfoController();
+        loansInfoController.setMainController(mainController);
+        loansInfoController.buildLoansTableView(LoansData,mainController.getSystemLoans());
+        buildCustomersTableView();
+    }
+
+    public void addToLoanTableInAdminView(){
+        //LoansData.find
+    }
+
     private void buildCustomersTableView(){
+        CustomerData.getItems().clear();
         List<CustomerDTOs> allCustomers = mainController.getSystemCustomers();
         TableRowExpanderColumn<CustomerDTOs> expanderColumn = new TableRowExpanderColumn<>(param -> {
             try {
@@ -113,8 +124,8 @@ public class AdminViewController {
         TableColumn<CustomerDTOs, String> loansAsLender = new TableColumn<>("Loans as lender");
         loansAsLender.setCellValueFactory(new PropertyValueFactory<>("numOfLoansAsLender"));
 
-
-        CustomerData.getColumns().addAll(expanderColumn, nameOfCustomer, balance, loansAsLoaner, loansAsLender);
+        if(CustomerData.getColumns().isEmpty())
+            CustomerData.getColumns().addAll(expanderColumn, nameOfCustomer, balance, loansAsLoaner, loansAsLender);
         CustomerData.getItems().addAll(FXCollections.observableArrayList(allCustomers));
 
     }
@@ -148,7 +159,9 @@ public class AdminViewController {
 //    }
 
     @FXML private void clickOnIncreaseYaz(ActionEvent event){
+
         mainController.increaseYazActivation();
+        updateLoansInBankInAdminView();
     }
 
 

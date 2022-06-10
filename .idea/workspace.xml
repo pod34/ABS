@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="BankSystem:jar" />
+      <artifact name="Gui:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="final merging commit">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_05_2022__19_26__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_05_2022__19_26__Changes_.xml" afterDir="false" />
+    <list default="true" id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="add transaction table">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/BankSystem_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Gui_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gui/src/Component/PopUpWindows/ErrorWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_05_2022,_19_26_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_05_2022__19_26__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/BankSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/BankSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankActions/LeftToPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankActions/LeftToPay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankActions/LoanStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankActions/LoanStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/Costumers/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/Costumers/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/DTOs/LoanDTOs.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/DTOs/LoanDTOs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewCustomersInfo/ViewCustomersInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewCustomersInfo/ViewCustomersInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Main/TaskMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Main/TaskMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" afterDir="false" />
     </list>
@@ -30,13 +33,21 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="29n8pf2JYDuf4nYxa4zuiRN01we" />
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Gui/src/Main/TaskMain.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" root0="FORCE_HIGHLIGHTING" />
@@ -56,13 +67,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/BankSystem" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Gui/src/Component/PopUpWindows" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="TaskMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -81,25 +96,11 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.TaskMain" />
-        <item itemvalue="Application.TaskMain" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="final merging commit" />
-      <created>1653737695703</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1653737695703</updated>
-      <workItem from="1653737716296" duration="10000" />
-      <workItem from="1653745437643" duration="5544000" />
-      <workItem from="1653826529436" duration="439000" />
-      <workItem from="1653826991265" duration="201000" />
-      <workItem from="1653827211697" duration="2342000" />
-      <workItem from="1653894882074" duration="23709000" />
-    </task>
     <task id="LOCAL-00001" summary="final merging commit">
       <created>1653567697095</created>
       <option name="number" value="00001" />
@@ -116,8 +117,29 @@
       <workItem from="1653581839352" duration="35255000" />
       <workItem from="1653922832515" duration="2531000" />
       <workItem from="1653925503833" duration="7354000" />
+      <workItem from="1653999563917" duration="16000" />
+      <workItem from="1654019951532" duration="12824000" />
+      <workItem from="1654085523046" duration="930000" />
+      <workItem from="1654100230062" duration="243000" />
+      <workItem from="1654120950705" duration="2557000" />
+      <workItem from="1654168542883" duration="140000" />
+      <workItem from="1654173867488" duration="1399000" />
+      <workItem from="1654253414252" duration="22000" />
+      <workItem from="1654365859182" duration="82000" />
+      <workItem from="1654375309739" duration="608000" />
+      <workItem from="1654609141949" duration="16466000" />
+      <workItem from="1654760965755" duration="12631000" />
+      <workItem from="1654852004504" duration="3488000" />
+      <workItem from="1654856723802" duration="17803000" />
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add transaction table">
+      <created>1653993899727</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1653993899727</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,28 +158,32 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="final merging commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="final merging commit" />
+    <MESSAGE value="add transaction table" />
+    <option name="LAST_COMMIT_MESSAGE" value="add transaction table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java</url>
-          <line>130</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java</url>
-          <line>131</line>
-          <option name="timeStamp" value="21" />
+          <url>file://$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java</url>
+          <line>219</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="relevantLoans" language="JAVA" />
-        <watch expression="howManyLoansFound" language="JAVA" />
+        <watch expression="DataOfCustomerTOPresentInCustomerView.get(curCustomerName).getLoansAsLoanerDataForPaymentTab().getItems();" language="JAVA" />
+        <watch expression="loan.getNextYazForPayment()" language="JAVA" />
+        <watch expression="L.getNextYazPayment()" language="JAVA" />
+        <watch expression="loansToPay" language="JAVA" />
+        <watch expression="DataOfCustomerTOPresentInCustomerView.get(curCustomerName).getLoansAsLoanerDataForPaymentTab().getItems()" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ABS$TaskMain.ic" NAME="TaskMain Coverage Results" MODIFIED="1654073049912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Main.*</FILTER>
+    </SUITE>
   </component>
 </project>

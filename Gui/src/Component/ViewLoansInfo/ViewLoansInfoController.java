@@ -1,4 +1,5 @@
 package Component.ViewLoansInfo;
+import BankActions.LeftToPay;
 import BankActions.Loan;
 import BankActions.Payment;
 import Component.MainComponent.BankController;
@@ -17,9 +18,10 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import org.controlsfx.control.table.TableRowExpanderColumn;
-
+import java.util.Map;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -40,6 +42,8 @@ public class ViewLoansInfoController {
     public void setMainController(BankController mainController) {this.mainController = mainController;}
 
     public void buildLoansTableView(TableView<LoanDTOs> i_LoansData,List<LoanDTOs> allLoans){
+        i_LoansData.getItems().clear();
+        i_LoansData.refresh();
         TableRowExpanderColumn<LoanDTOs> expanderColumn = new TableRowExpanderColumn<>(param -> {
             try {
                 return expandLoanInfo(param);
@@ -54,6 +58,7 @@ public class ViewLoansInfoController {
         nameOfLoan.setCellValueFactory(new PropertyValueFactory<>("nameOfLoan"));
         nameOfLoan.setPrefWidth(125);
 
+
         TableColumn<LoanDTOs, String> nameOfLoaner = new TableColumn<>("Name of loaner");
         nameOfLoaner.setCellValueFactory(new PropertyValueFactory<>("nameOfLoaner"));
         nameOfLoaner.setPrefWidth(125);
@@ -64,8 +69,8 @@ public class ViewLoansInfoController {
         TableColumn<LoanDTOs, String> category = new TableColumn<>("Category");
         category.setCellValueFactory(new PropertyValueFactory<>("category"));
 
-
-        i_LoansData.getColumns().addAll(expanderColumn, nameOfLoan, nameOfLoaner, category, status);
+        if(i_LoansData.getColumns().isEmpty())
+            i_LoansData.getColumns().addAll(expanderColumn, nameOfLoan, nameOfLoaner, category, status);
         i_LoansData.getItems().addAll(FXCollections.observableArrayList(allLoans));
     }
 
@@ -131,13 +136,14 @@ public class ViewLoansInfoController {
     }
 
     public void setLenderDetails(LoanDTOs  Loan) {
-        List<String> listOfLenders = (List<String>) Loan.getListOfLenders();
+        Map<String,Integer> listOfLenders =  Loan.getListOfLenders();
         TitledPane[] lenders = new TitledPane[listOfLenders.size()];
-        for(int counter = 0; counter < listOfLenders.size(); counter++){
-            lenders[counter] = new TitledPane(listOfLenders.get(counter),new Label("details to be added"));//TODO change details to be added to part of the loan this lender has
+        int counter = 0;
+        for (Map.Entry<String, Integer> entry : listOfLenders.entrySet()){
+            lenders[counter] = new TitledPane(entry.getKey(),new Label("Share in loan: " + entry.getValue().toString()));
+            counter++;
         }
         LenderDetails.getPanes().addAll(lenders);
-
     }
 
     public void setPaymentsDetails(LoanDTOs Loan){

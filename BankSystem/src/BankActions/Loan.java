@@ -92,10 +92,13 @@ public class Loan implements Serializable {
         return interest;
     }
 
-    public List<String> getListOfLenders() {
-         LeftToPay tmp = new LeftToPay(100,12);//TODO to delete
-        listOfLenders.put("Dan",tmp);//TODO to delete
-        return listOfLenders.keySet().stream().collect(Collectors.toList());
+
+
+    public Map<String,Integer> getListOfLenders() {
+        Map<String,Integer> listOfLenderAndTheirShareInTheInvesment = new HashMap<>();
+        for (Map.Entry<String,LeftToPay> entry : listOfLenders.entrySet())
+            listOfLenderAndTheirShareInTheInvesment.put(entry.getKey(),entry.getValue().getOriginalAmount());
+        return listOfLenderAndTheirShareInTheInvesment;
     }
 
     public Map<String, LeftToPay> getMapOfLenders() {
@@ -153,7 +156,6 @@ public class Loan implements Serializable {
     }
 
     public List<Payment> getPayments() {
-       // Payments.add(new Payment(1,100,30,3,true));
         return Payments;
     }
 
@@ -246,10 +248,21 @@ public class Loan implements Serializable {
         theInterestYetToBePaidOnTheLoan -= yazlyInterest;
         theAmountOfThePrincipalPaymentPaidOnTheLoanSoFar += yazlyPayment;
         interestPayedSoFar += yazlyInterest;
-        status = LoanStatus.ACTIVE;
+        status = LoanStatus.ACTIVE;//TODO we dont want to make it active without verify that there is no debts.
         totalMissedYazNeedToPayBack = 0;
         active = true;
     }
+
+    public void makeFullyPaymentToCloseLoan(int yaz,int principalAmount,int interestAmount){
+        howManyYazAreLeft = 0;
+        Payments.add(new Payment(yaz, principalAmount, interestAmount, principalAmount + interestAmount, true));
+        theAmountOfPrincipalPaymentYetToBePaid = 0;
+        theInterestYetToBePaidOnTheLoan = 0;
+        theAmountOfThePrincipalPaymentPaidOnTheLoanSoFar += principalAmount;
+        interestPayedSoFar += interestAmount;
+        totalMissedYazNeedToPayBack = 0;
+    }
+
 
     public int getTotalMissedYazNeedToPayBack() {
         return totalMissedYazNeedToPayBack;

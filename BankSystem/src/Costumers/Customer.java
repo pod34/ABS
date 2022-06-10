@@ -1,6 +1,7 @@
 package Costumers;
 
 import BankActions.*;
+import DTOs.AccountTransactionDTO;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -105,22 +106,21 @@ public class Customer implements Serializable {
         return moneyInAccount;
     }
 
-    public void DepositMoney(int amount,int time){
+    public AccountTransactionDTO DepositMoney(int amount, int time){
         positiveTransaction depositMoney = new positiveTransaction(amount,time,moneyInAccount);
         moneyInAccount += amount;
         Transactions.add(depositMoney);
+        return new AccountTransactionDTO(depositMoney);
     }
 
-    public boolean WithdrawMoney(int amount,int time){
+    public AccountTransactionDTO WithdrawMoney(int amount,int time){
         if(moneyInAccount < amount){
-            return false;
+            return null;
         }
-        else {
             NegativeTransaction withdrawMoney = new NegativeTransaction(amount, time, moneyInAccount);
             moneyInAccount -= amount;
             Transactions.add(withdrawMoney);
-        }
-        return true;
+        return new AccountTransactionDTO(withdrawMoney);
     }
 
     public void PrintCustomerTransactions(){
