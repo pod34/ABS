@@ -17,6 +17,12 @@ public class LeftToPay implements Serializable {
         debtInterest = 0;
     }
 
+    public void resetLeftToPayAfterClosingTheLoan(){
+        amountLeftToPay = 0;
+        resetDebt();
+        amountOfPayments = 0;
+    }
+
     public void setAmountLeftToPay() {
         if (amountLeftToPay != 0)
             amountLeftToPay -= amountLeftToPay / amountOfPayments;
@@ -49,6 +55,11 @@ public class LeftToPay implements Serializable {
         originalAmount += amount;
         amountLeftToPay += amount;
     }
+
+    public int getAmountLeftToPayToCloseTheLoan(int interest) {
+        return ((amountLeftToPay * interest) / 100) + amountLeftToPay  + debt + debtInterest;
+    }
+
 
     public int getOriginalAmount() {
         return originalAmount;

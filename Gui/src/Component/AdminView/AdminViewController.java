@@ -2,6 +2,7 @@ package Component.AdminView;
     import Component.MainComponent.BankController;
     import Component.ViewLoansInfo.ViewLoansInfoController;
     import Component.ViewCustomersInfo.ViewCustomersInfoController;
+    import DTOs.AccountTransactionDTO;
     import DTOs.CustomerDTOs;
     import DTOs.LoanDTOs;
     import SystemExceptions.InccorectInputType;
@@ -83,7 +84,21 @@ public class AdminViewController {
         }
     }
 
+    public void updateLoansInBankInAdminView(){
+        CustomerData.getItems().clear();
+        LoansData.getItems().clear();
+        ViewLoansInfoController loansInfoController = new ViewLoansInfoController();
+        loansInfoController.setMainController(mainController);
+        loansInfoController.buildLoansTableView(LoansData,mainController.getSystemLoans());
+        buildCustomersTableView();
+    }
+
+    public void addToLoanTableInAdminView(){
+        //LoansData.find
+    }
+
     private void buildCustomersTableView(){
+        CustomerData.getItems().clear();
         List<CustomerDTOs> allCustomers = mainController.getSystemCustomers();
         TableRowExpanderColumn<CustomerDTOs> expanderColumn = new TableRowExpanderColumn<>(param -> {
             try {
@@ -109,8 +124,8 @@ public class AdminViewController {
         TableColumn<CustomerDTOs, String> loansAsLender = new TableColumn<>("Loans as lender");
         loansAsLender.setCellValueFactory(new PropertyValueFactory<>("numOfLoansAsLender"));
 
-
-        CustomerData.getColumns().addAll(expanderColumn, nameOfCustomer, balance, loansAsLoaner, loansAsLender);
+        if(CustomerData.getColumns().isEmpty())
+            CustomerData.getColumns().addAll(expanderColumn, nameOfCustomer, balance, loansAsLoaner, loansAsLender);
         CustomerData.getItems().addAll(FXCollections.observableArrayList(allCustomers));
 
     }
@@ -144,7 +159,9 @@ public class AdminViewController {
 //    }
 
     @FXML private void clickOnIncreaseYaz(ActionEvent event){
+
         mainController.increaseYazActivation();
+        updateLoansInBankInAdminView();
     }
 
 

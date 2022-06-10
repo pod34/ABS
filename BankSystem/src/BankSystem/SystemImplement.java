@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 import static BankSystem.FromXmlToClasses.fromXmlToObjects;
 
 public class SystemImplement implements BankSystem , Serializable {
-    private Map<String, Customer> Costumers;
+    private Map<String, Customer> Customers;
     private Map<String, Loan> LoansInBank;
     private List<String> allCategories;
     private BankController mainController;
@@ -42,7 +42,7 @@ public class SystemImplement implements BankSystem , Serializable {
         List<Loan> loansInSystem = new ArrayList<>();
         List<String> allCategoriesInSystem = new ArrayList<>();
         flag = fromXmlToObjects(customersInSystem, loansInSystem, FileName, allCategoriesInSystem);
-        Costumers = customersInSystem.stream().collect(Collectors.toMap(Customer::getName, customer -> customer));
+        Customers = customersInSystem.stream().collect(Collectors.toMap(Customer::getName, customer -> customer));
         LoansInBank = loansInSystem.stream().collect(Collectors.toMap(Loan::getNameOfLoan, loan -> loan));
         allCategories = allCategoriesInSystem;
         Yaz = 1;
@@ -50,6 +50,10 @@ public class SystemImplement implements BankSystem , Serializable {
         return flag;
     }
 
+    public int getCurrentYaz(){
+        int tmp = Yaz;
+        return tmp;
+    }
     public void ViewInformationOnExistingLoansAndTheirStatus(){
         int numOfLoan = 1;
         for (Loan curLoan: LoansInBank.values()) {
@@ -59,7 +63,7 @@ public class SystemImplement implements BankSystem , Serializable {
     }
 
     public void DisplayInformationAboutSystemCustomers(){
-        for (Customer curCustomer: Costumers.values()) {
+        for (Customer curCustomer: Customers.values()) {
             AtomicInteger numOfLoan = new AtomicInteger(1);
             System.out.println("\n");
             System.out.println("The name of the customer: " + curCustomer.getName());
@@ -81,19 +85,19 @@ public class SystemImplement implements BankSystem , Serializable {
 
     @Override
     public AccountTransactionDTO DepositToAccount(int amount,String nameOfCostumer){
-        return Costumers.get(nameOfCostumer).DepositMoney(amount,Yaz);
+        return Customers.get(nameOfCostumer).DepositMoney(amount,Yaz);
     }
 
     @Override
     public AccountTransactionDTO WithdrawFromTheAccount(int amount,String nameOfCostumer){
-        return Costumers.get(nameOfCostumer).WithdrawMoney(amount,Yaz);
+        return Customers.get(nameOfCostumer).WithdrawMoney(amount,Yaz);
     }
 
     public List<CustomerDTOs> getListOfDTOsCustomer(){
-        List<CustomerDTOs> customerDtosList = new ArrayList<>(Costumers.size());
+        List<CustomerDTOs> customerDtosList = new ArrayList<>(Customers.size());
         List<AccountTransactionDTO> listOFTransactinsDTOs;
 
-        for (Customer curCustomer: Costumers.values()) {
+        for (Customer curCustomer: Customers.values()) {
             listOFTransactinsDTOs = getListOfTransactionsDTO(curCustomer.getTransactions());
             customerDtosList.add(new CustomerDTOs(curCustomer,listOFTransactinsDTOs));
         }
@@ -125,7 +129,7 @@ public class SystemImplement implements BankSystem , Serializable {
         List<LoanDTOs> filteredListOfLoansDTO = new ArrayList<>();
         List<Loan> filteredListOfLoans = LoansInBank.values().stream()
                 .filter(L-> chosenCategories.contains(L.getCategory()))
-                .filter(L-> Costumers.get(L.getNameOfLoaner()).getLoansAsABorrower().size() <= maxOpenLoansForLoanOwner)
+                .filter(L-> Customers.get(L.getNameOfLoaner()).getLoansAsABorrower().size() <= maxOpenLoansForLoanOwner)
                 .filter(L->(L.getDurationOfTheLoan() >= minimumDuration))
                 .filter(L->(L.getInterest() >= minimumInterestForSingleYaz)).filter(L->!L.getNameOfLoaner().equals(name))
                 .filter(L->((L.getStatus().equals(LoanStatus.NEW)) || (L.getStatus().equals(LoanStatus.PENDING))))
@@ -144,6 +148,10 @@ public class SystemImplement implements BankSystem , Serializable {
         }
         return listOfLoansDTO;
 
+    }
+
+    public boolean checkIfCustomerHasEnoughMoneyToInvestByGivenAmount(String i_nameOfCustomer,int amountToInvest){
+        return Customers.get(i_nameOfCustomer).getMoneyInAccount() >= amountToInvest;
     }
 
     public CustomerDTOs LoansInlay(List<String> namesOfLoans,int amountOfMoneyUserWantToInvest,String nameOfLender,int maxOwnerShipOfTheLoan) {//TODO check if maxOwnerShip Does work
@@ -172,7 +180,7 @@ public class SystemImplement implements BankSystem , Serializable {
 
 
             amountOfMoneyUserWantToInvest -= tmpMoneyInvested;
-            Costumers.get(nameOfLender).makeAnInvestment(loan.getNameOfLoan(),tmpMoneyInvested, Yaz);
+            Customers.get(nameOfLender).makeAnInvestment(loan.getNameOfLoan(),tmpMoneyInvested, Yaz);
             totalAmountInvested += tmpMoneyInvested;
             numOfLoans--;
 
@@ -207,7 +215,7 @@ public class SystemImplement implements BankSystem , Serializable {
         checkIfLoanNeedsToBeInRisk(allActiveLoans);
         Yaz++;
         yazProperty.set("Current Yaz: " + Yaz);
-        for(Customer curCustomer : Costumers.values()){
+        for(Customer curCustomer : Customers.values()){
             List<Loan> curCustomerLoans = LoansInBank.values().stream().filter(L -> L.getNameOfLoaner().equals(curCustomer.getName())).filter(L -> (L.getStatus().equals(LoanStatus.ACTIVE)||L.getStatus().equals(LoanStatus.RISK))).collect(Collectors.toList());
             for(Loan curLoan : curCustomerLoans){
                 curLoan.setHowManyYazAreLeft();
@@ -252,7 +260,7 @@ public class SystemImplement implements BankSystem , Serializable {
 
     private void makePayment(Loan loan){
         for (Map.Entry<String, LeftToPay> entry :loan.getMapOfLenders().entrySet()) {
-            Costumers.get(entry.getKey()).DepositMoney(entry.getValue().amountToPayThisYaz() + entry.getValue().interestToPayThisYaz(loan.getInterest()), Yaz);
+            Customers.get(entry.getKey()).DepositMoney(entry.getValue().amountToPayThisYaz() + entry.getValue().interestToPayThisYaz(loan.getInterest()), Yaz);
             entry.getValue().setAmountLeftToPay();
             entry.getValue().setAmountOfPayment();
             entry.getValue().resetDebt();
@@ -261,34 +269,49 @@ public class SystemImplement implements BankSystem , Serializable {
 
     public void fullPaymentOnLoans(List<String> loanNames, String customerName){
         Loan curLoanToPay;
-        Customer curCustomer = Costumers.get(customerName);
+        Customer curCustomer = Customers.get(customerName);
         for (String curLoan: loanNames) {
             curLoanToPay = LoansInBank.get(curLoan);
             payForLoanFully(curLoanToPay, curCustomer);
         }
+
     }
 
     private void payForLoanFully(Loan loan, Customer customer){
         Boolean flag = false;
-        while(!flag){
+        int sumOfPayments = 0,curPayment = 0;
+        for(Map.Entry<String,LeftToPay> curLender : loan.getMapOfLenders().entrySet()){
+            curPayment = curLender.getValue().getAmountLeftToPayToCloseTheLoan(loan.getInterest());
+            Customers.get(curLender.getKey()).DepositMoney(curPayment,Yaz);
+            curLender.getValue().resetLeftToPayAfterClosingTheLoan();
+            sumOfPayments += curPayment;
+        }
+        customer.WithdrawMoney(sumOfPayments,Yaz);
+        loan.makeFullyPaymentToCloseLoan(Yaz,sumOfPayments - (sumOfPayments * loan.getInterest()) / 100,(sumOfPayments * loan.getInterest()) / 100);
+        checkIfTheLoanIsFinished(loan);
+       /* while(!flag){
             loan.setHowManyYazAreLeft();
             loan.getYazlyPaymentWithDebtsCalculation();
             customer.WithdrawMoney(loan.getYazlyPaymentWithDebts(), Yaz);
             this.makePayment(loan);
             loan.makeLoanPayment(Yaz);
             flag = checkIfTheLoanIsFinished(loan);
-        }
+        }*/
     }
 
     public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsBorrower(String customerName){
-        return Costumers.get(customerName).getStringOfLoansAsBorrowerByStatus();
+        return Customers.get(customerName).getStringOfLoansAsBorrowerByStatus();
     }
 
     public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsLender(String customerName){
-        return Costumers.get(customerName).getStringOfLoansAsLenderByStatus();
+        return Customers.get(customerName).getStringOfLoansAsLenderByStatus();
     }
 
     public Map<String, SimpleStringProperty> getLoanDataByStatusPropertyFromSystemMap(String loanName){
         return LoansInBank.get(loanName).getLoanDataByStatusPropertyAndStatusProperty();
+    }
+
+    public CustomerDTOs getCustomerByName(String name){
+        return new CustomerDTOs(Customers.get(name),getListOfTransactionsDTO(Customers.get(name).getTransactions()));
     }
 }

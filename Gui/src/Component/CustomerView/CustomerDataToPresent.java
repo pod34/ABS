@@ -1,39 +1,85 @@
 package Component.CustomerView;
 
+import BankActions.Loan;
 import Component.MainComponent.BankController;
 import Component.ViewLoansInfo.ViewLoansInfoController;
-import Costumers.Customer;
 import DTOs.AccountTransactionDTO;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CustomerDataToPresent {
 
     CustomerDTOs customer;
     private TableView<LoanDTOs> LoansAsLoanerData = new TableView<>();
     private TableView<LoanDTOs> LoansAsLenderData = new TableView<>();
+    private TableView<LoanDTOs> LoansAsLoanerDataForPaymentTab = new TableView<>();
     private TableView<AccountTransactionDTO> TransactionTable = new TableView<>();
-    //private TableView<accountTransactions> transactions;
     ViewLoansInfoController loansInfoController = new ViewLoansInfoController();
+    BankController mainController;
 
-    public CustomerDataToPresent(CustomerDTOs customer, BankController mainController) {
-        //this.LoansAsLoanerData = loansAsLoanerData;
-        //this.LoansAsLenderData = loansAsLenderData;
+    public CustomerDataToPresent(CustomerDTOs customer, BankController i_mainController) {
+        mainController = i_mainController;
         this.customer = customer;
         List<LoanDTOs> lst = new ArrayList<>();
         loansInfoController.setMainController(mainController);
         loansInfoController.buildLoansTableView(LoansAsLoanerData,mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()));
         loansInfoController.buildLoansTableView(LoansAsLenderData,mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsALender()));
+        buildLoansTableForPaymentTab();
         buildTransactionsTable(customer.getTransactions());
+    }
 
+    private void buildLoansTableForPaymentTab(){
+        List<LoanDTOs> filteredLoansActiveAndRisk = mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()).stream().filter(L -> (L.getStatusName().equals("ACTIVE") || L.getStatusName().equals("RISK"))).collect(Collectors.toList());
+        loansInfoController.buildLoansTableView(LoansAsLoanerDataForPaymentTab,filteredLoansActiveAndRisk);
+
+        final TableColumn<LoanDTOs, Integer> nextYazPayment = new TableColumn<>( "Next yaz payment" );
+        nextYazPayment.setCellValueFactory( new PropertyValueFactory<>("nextYazPayment"));
+        LoansAsLoanerDataForPaymentTab.getColumns().add(nextYazPayment);
+        nextYazPayment.getTableView().setEditable(true);
+
+
+        final TableColumn<LoanDTOs, String> amountToPayCol = new TableColumn<>("AmountToPay");
+        amountToPayCol.setCellValueFactory( new PropertyValueFactory<>("AmountToPay"));
+        amountToPayCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        amountToPayCol.setOnEditCommit(
+                event -> {
+                    if((event.getTableView().getItems().get(event.getTablePosition().getRow()).getNextYazPayment()) != mainController.getCurrentYaz()){
+                        event.getTableView().getItems().get(event.getTablePosition().getRow()).setAmountToPay("0");
+                    }
+                    else{
+                        event.getTableView().getItems().get(event.getTablePosition().getRow()).setAmountToPay(event.getNewValue());
+                    }
+                }
+        );
+
+        LoansAsLoanerDataForPaymentTab.getColumns().add( amountToPayCol );
+        amountToPayCol.getTableView().setEditable(true);
+
+        final TableColumn<LoanDTOs, Boolean> selectedColumn = new TableColumn<>( "Selected" );
+        selectedColumn.setCellValueFactory( new PropertyValueFactory<>("selected"));
+        selectedColumn.setCellFactory(CheckBoxTableCell.forTableColumn(selectedColumn));
+        LoansAsLoanerDataForPaymentTab.getColumns().add( selectedColumn );
+        selectedColumn.getTableView().setEditable(true);
+
+
+    }
+
+    public TableView<LoanDTOs> getLoansAsLoanerDataForPaymentTab() {
+        return LoansAsLoanerDataForPaymentTab;
     }
 
     public TableView<LoanDTOs> getLoansAsLoanerData() {
@@ -73,4 +119,33 @@ public class CustomerDataToPresent {
         TransactionTable.getColumns().addAll(TransactionType, amount, yazOfAction, previousBalance,curBalance);
         TransactionTable.getItems().addAll(FXCollections.observableArrayList(customerTransactions));
     }
+
+    public void updateLoansTables(CustomerDTOs curCustomer){
+        List<LoanDTOs> loansAsLoaner = mainController.getSystemCustomerLoansByListOfLoansName(curCustomer.getLoansAsABorrower());
+        updateLoansAsLender(mainController.getSystemCustomerLoansByListOfLoansName(curCustomer.getLoansAsALender()));
+        updateLoansAsLoaner(loansAsLoaner);
+        updateLoanAsLoanerForPaymentTab(loansAsLoaner);
+    }
+
+    public void updateLoansAsLender(List<LoanDTOs> i_loansAsLender){
+        LoansAsLenderData.getItems().clear();
+        LoansAsLenderData.getItems().addAll(i_loansAsLender);
+        LoansAsLenderData.refresh();
+    }
+
+    private void updateLoansAsLoaner(List<LoanDTOs> i_loansAsLoaner){
+        LoansAsLoanerData.getItems().clear();
+        LoansAsLoanerData.getItems().addAll(i_loansAsLoaner);
+        LoansAsLoanerData.refresh();
+        LoansAsLoanerData.refresh();
+    }
+
+    private void updateLoanAsLoanerForPaymentTab(List<LoanDTOs> i_loansAsLoaner){
+        LoansAsLoanerDataForPaymentTab.getItems().clear();
+        List<LoanDTOs> filteredLoansActiveAndRisk = i_loansAsLoaner.stream().filter(L -> (L.getStatusName().equals("ACTIVE") || L.getStatusName().equals("RISK"))).collect(Collectors.toList());
+        LoansAsLoanerDataForPaymentTab.getItems().addAll(filteredLoansActiveAndRisk);
+        LoansAsLoanerDataForPaymentTab.refresh();
+    }
+
+
 }

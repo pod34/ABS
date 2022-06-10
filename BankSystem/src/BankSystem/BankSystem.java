@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface BankSystem {
+
     boolean ReadingTheSystemInformationFile(String FileName) throws InccorectInputType;
     void ViewInformationOnExistingLoansAndTheirStatus();
     void DisplayInformationAboutSystemCustomers();
@@ -22,6 +23,7 @@ public interface BankSystem {
     CustomerDTOs LoansInlay(List<String> namesOfLoans,int amountOfMoneyUserWantToInvest,String nameOfLender,int maxOwnerShipOfTheLoan);
     void IncreaseYaz();
     List<CustomerDTOs> getListOfDTOsCustomer();
+    boolean checkIfCustomerHasEnoughMoneyToInvestByGivenAmount(String i_nameOfCustomer,int amountToInvest);
     List<LoanDTOs> getListOfLoansDTO();
     List<LoanDTOs> getListOfLoansDtoByListOfNamesOFLoans(List<String> i_loansName);
     SimpleStringProperty getYazProperty();
@@ -30,5 +32,8 @@ public interface BankSystem {
     Map<String, SimpleStringProperty> getLoanDataByStatusPropertyFromSystemMap(String loanName);
     Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsBorrower(String customerName);
     CategoriesDTO getAllCategories();
+    CustomerDTOs getCustomerByName(String name);
+    int getCurrentYaz();
 
-}
+
+    }

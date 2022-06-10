@@ -15,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -23,9 +22,7 @@ import org.controlsfx.control.CheckComboBox;
 import org.controlsfx.control.CheckListView;
 import org.controlsfx.control.ListSelectionView;
 import org.controlsfx.control.StatusBar;
-import org.controlsfx.control.table.TableRowExpanderColumn;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,10 +41,12 @@ public class CustomerViewController {
     @FXML private ScrollPane NotificationsTable;
     @FXML private AnchorPane LoansAsLender;
     @FXML private AnchorPane LoansAsLoaner;
+    @FXML private AnchorPane LoansAsLoanerTableForPaymentTab;
     @FXML private BorderPane customerViewBorderPane;
     @FXML private Label errorAmountToInvest;
     @FXML private Label howManyLoansFound;
     @FXML private TextField amountToInvest;
+    @FXML private Button yazlyPayment;
     @FXML private CheckComboBox<String> categories;
     @FXML private TextField minimumYaz;
     @FXML private TextField maxOpenLoans;
@@ -64,16 +63,20 @@ public class CustomerViewController {
     private Map<String, CustomerDataToPresent> DataOfCustomerTOPresentInCustomerView = new HashMap<>();
     private Map<String, List<String>> messages;
     @FXML private BankController mainController;
-    private Map<String, List<String>> notifications;
+    private Map<String, List<String>> notifications = new HashMap<>();
     @FXML private TextField AmountTB;
     @FXML private Button ChargeBT;
     @FXML private Button WithdrawBT;
     @FXML private ListView<String> notificationsView;
-    @FXML private ListSelectionView<String> choosingLoans = new ListSelectionView<>();//TODO:build this after building loans inlay
+    @FXML private ListSelectionView<String> choosingLoans;//TODO:build this after building loans inlay
     @FXML private Button payFullyOnLoansBT;
     @FXML private Button resetSearch;
     @FXML private CheckBox selectAllLoansToInvest;
     @FXML private TableView<?> TransactionTable;
+    @FXML private Label welcomeCustomer;
+    @FXML private Label balanceOfCustomer;
+    @FXML private Button fullPayment;
+    private String curCustomerName;
 
 
     public void setMainController(BankController mainController) {
@@ -88,6 +91,8 @@ public class CustomerViewController {
             notifications.get(customerName).add(msg.toString());
         else
             notifications.put(customerName, new ArrayList<>(Collections.singleton(message.toString())));
+
+        notificationsView.getItems().addAll(notifications.get(customerName));
     }
 
     @FXML
@@ -169,14 +174,16 @@ public class CustomerViewController {
     }
 
     public void setMessagesViewToCustomer(String customerName) {
-        notificationsView.getItems().clear();
+        if(!notificationsView.getItems().isEmpty())
+            notificationsView.getItems().clear();
         ObservableList<String> items = null;
         if (notifications != null) {
-            if (notifications.containsKey(customerName))
+            if (notifications.containsKey(customerName)) {
                 items = FXCollections.observableArrayList(notifications.get(customerName));
+            } else {
+                items = FXCollections.observableArrayList("No messages to " + customerName);
+            }
         }
-        else
-            items = FXCollections.observableArrayList("No messages to " + customerName);
 
         notificationsView.setItems(items);
     }
@@ -185,6 +192,7 @@ public class CustomerViewController {
     public void paySelectedLoansClicked(ActionEvent event) {
         List<String> loanNames = choosingLoans.getTargetItems().stream().collect(Collectors.toList());
         mainController.fullyLoansPaymentActivation(loanNames);
+
     }
 
     public void setDataOfCustomerTOPresentInCustomerView(List<CustomerDTOs> i_bankCustomer){
@@ -194,18 +202,30 @@ public class CustomerViewController {
     }
 
     public void setViewByCustomerData(String nameOfCustomer){
+        CustomerDTOs curCustomer = mainController.getCustomerByName(nameOfCustomer);
+        DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).updateLoansTables(curCustomer);
         setLenderLoans(nameOfCustomer);
         setLonerLoan(nameOfCustomer);
+        setLoansAsLoanerForPaymentTab(nameOfCustomer);
         setAccountTransInfo(nameOfCustomer);
+        curCustomerName = nameOfCustomer;
+        welcomeCustomer.setText("Hello " + nameOfCustomer);
+        welcomeCustomer.setStyle("-fx-text-fill: #002df8; -fx-font-size: 24px;");
+        //balanceOfCustomer.setText("Balance: " + );
+    }
+
+    private void setLoansAsLoanerForPaymentTab(String nameOfCustomer){//  TODO tried for hours to duplicate from the info tab to be the same table but it didnt work so maybe to try to fix it with maya
+        TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerDataForPaymentTab();
+        tmp.prefWidthProperty().bind(LoansAsLoanerTableForPaymentTab.widthProperty());
+        tmp.prefHeightProperty().bind(LoansAsLoanerTableForPaymentTab.heightProperty());
+        LoansAsLoanerTableForPaymentTab.getChildren().setAll(tmp);
     }
 
     private void setLonerLoan(String nameOfCustomer){
         TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
         tmp.prefWidthProperty().bind(LoansAsLoaner.widthProperty());
         tmp.prefHeightProperty().bind(LoansAsLoaner.heightProperty());
-
         LoansAsLoaner.getChildren().setAll(tmp);
-
     }
 
     private void setLenderLoans(String nameOfCustomer){
@@ -228,7 +248,7 @@ public class CustomerViewController {
     }
 
     private List<LoanDTOs> getRelevantLoansByUserParameters(){
-        int invesment,minYaz = 0,i_minInterest = 0,i_maxOpenLoansForLoanOwner = mainController.getSystemLoans().size();
+        int investment,minYaz = 0,i_minInterest = 0,i_maxOpenLoansForLoanOwner = mainController.getSystemLoans().size();
 
         List<String> chosenCategories = categories.getCheckModel().getCheckedItems();
         if(chosenCategories.isEmpty()){
@@ -242,17 +262,23 @@ public class CustomerViewController {
             i_minInterest = Integer.parseInt(minInterest.getText());
 
         if(!(amountToInvest.getText().isEmpty()))
-             invesment = Integer.parseInt(amountToInvest.getText());
+             investment = Integer.parseInt(amountToInvest.getText());
         if(!(maxOpenLoans.getText().isEmpty()))
             i_maxOpenLoansForLoanOwner = Integer.parseInt(maxOpenLoans.getText());
-
         return mainController.scrambleActivation(chosenCategories,minYaz,i_minInterest,i_maxOpenLoansForLoanOwner);
     }
 
     @FXML
     void findLoansBtClicked(ActionEvent event) {
-        disableFilterFields(true);
-        startTask();
+        if(mainController.checkIfCustomerHasEnoughMoneyToInvest(Integer.parseInt(amountToInvest.getText()))) {
+            disableFilterFields(true);
+            startTask();
+        }
+        else{
+            errorAmountToInvest.setText("You can't invest more than you have!");
+            errorAmountToInvest.setStyle("-fx-text-fill: #e70d0d; -fx-font-size: 16px;");//TODO not visible after invesment reset
+        }
+
     }
 
     private void disableFilterFields(boolean disable){
@@ -271,6 +297,8 @@ public class CustomerViewController {
             maxOwnerShipOfTheLoan = Integer.parseInt(maxLoanOwner.getText());
         }
         mainController.activateLoansInlay(checkLoansToInvest.getCheckModel().getCheckedItems(),Integer.parseInt(amountToInvest.getText()),maxOwnerShipOfTheLoan);
+        List<LoanDTOs> LoansCurCustomerInvestedIn = mainController.getSystemCustomerLoansByListOfLoansName(checkLoansToInvest.getCheckModel().getCheckedItems());
+        DataOfCustomerTOPresentInCustomerView.get(curCustomerName).updateLoansAsLender(LoansCurCustomerInvestedIn);
         resetScrambleTab();
     }
 
@@ -285,11 +313,13 @@ public class CustomerViewController {
         selectAllLoansToInvest.setSelected(false);
         checkLoansToInvest.getItems().clear();
         howManyMatchingLoansFoundProp.set("");
+        errorAmountToInvest.setText("");
+        relevantLoans.getItems().clear();
 
     }
 
     private void startTask() {
-        Task<Void> task = new Task<Void>() {
+         Task<Void> task = new Task<Void>() {
             @Override protected Void call() throws Exception {
                 updateMessage("Looking for relevant Loans...");
 
@@ -337,6 +367,15 @@ public class CustomerViewController {
     }
 
     @FXML
+    void fullPaymentClicked(ActionEvent event) {
+        List<String> LoansToClose = DataOfCustomerTOPresentInCustomerView.get(curCustomerName).getLoansAsLoanerDataForPaymentTab().getItems().stream()
+                .filter(L -> L.isSelected())
+                .collect(Collectors.toMap(LoanDTOs::getNameOfLoan,loan -> loan))
+                .keySet().stream().collect(Collectors.toList());
+        mainController.fullyLoansPaymentActivation(LoansToClose);
+    }
+
+    @FXML
     private void selectAllLoansToInvestBtClicked(ActionEvent event) {
         if(selectAllLoansToInvest.isSelected())
             checkLoansToInvest.getCheckModel().checkAll();
@@ -352,8 +391,17 @@ public class CustomerViewController {
         AccountTransInfo.getChildren().setAll(tmp);
     }
 
+    @FXML
+    void yazlyPaymentClicked(ActionEvent event) {
+        List<LoanDTOs> loansToPay = DataOfCustomerTOPresentInCustomerView.get(curCustomerName).getLoansAsLoanerDataForPaymentTab().getItems().stream()
+                .filter(L->L.getNextYazPayment() == mainController.getCurrentYaz()).collect(Collectors.toList());
+        Map<String,Integer> loansToPayAndAmountOfPayment = new HashMap<>();
+       for(LoanDTOs curLoan : loansToPay){
+            loansToPayAndAmountOfPayment.put(curLoan.getNameOfLoan(),Integer.parseInt(curLoan.getAmountToPay()));
+       }
+       //TODO call and implemnt new method to pay By amount to pay.
 
-
+    }
 }
 
 

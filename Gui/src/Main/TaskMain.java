@@ -4,12 +4,14 @@ import BankSystem.BankSystem;
 import BankSystem.SystemImplement;
 import Component.CustomerView.CustomerViewController;
 import Component.MainComponent.BankController;
+import Component.PopUpWindows.ErrorWindow;
 import common.BankResourcesConstants;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -34,12 +36,12 @@ public class TaskMain extends Application {
         bankController.setBankEngine(bankEngine);
         bankController.setPrimaryStage(primaryStage);
 
-        FXMLLoader customerLoder = new FXMLLoader();
+        FXMLLoader customerLoader = new FXMLLoader();
         URL CustomerControllerFXML = getClass().getResource(BankResourcesConstants.CUSTOMERCONTROLLER_FXML_RESOURCE_IDENTIFIER);
-        customerLoder.setLocation(CustomerControllerFXML);
+        customerLoader.setLocation(CustomerControllerFXML);
         //TODO: set the controller and load/
-        AnchorPane customerRoot = customerLoder.load();
-        CustomerViewController customerViewController = customerLoder.getController();
+        AnchorPane customerRoot = customerLoader.load();
+        CustomerViewController customerViewController = customerLoader.getController();
         bankController.setCustomerController(customerRoot);
         bankController.setViewByCustomerController(customerViewController);
 
@@ -47,6 +49,7 @@ public class TaskMain extends Application {
         Scene scene = new Scene(root, 1050, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
+
 
     }
 }
