@@ -54,6 +54,7 @@ public class SystemImplement implements BankSystem , Serializable {
         int tmp = Yaz;
         return tmp;
     }
+
     public void ViewInformationOnExistingLoansAndTheirStatus(){
         int numOfLoan = 1;
         for (Loan curLoan: LoansInBank.values()) {
@@ -211,8 +212,21 @@ public class SystemImplement implements BankSystem , Serializable {
     }
 
     public void IncreaseYaz(){
-        List<Loan> allActiveLoans = LoansInBank.values().stream().filter(L -> L.getStatus().equals(LoanStatus.ACTIVE)).filter(L -> (L.getNextYazForPayment() == Yaz)).collect(Collectors.toList());
-        checkIfLoanNeedsToBeInRisk(allActiveLoans);
+        int debt = 0;
+        Map<Loan,Integer> newRiskLoans = new HashMap<>();
+        for(Loan curLoan : LoansInBank.values().stream().filter(L -> /*(L.getStatus().equals(LoanStatus.ACTIVE)) &&*/ (L.getNextYazForPayment() == Yaz)).collect(Collectors.toList())){
+            for(Map.Entry<String,LeftToPay> curLender :curLoan.getMapOfLenders().entrySet()){
+                debt += curLender.getValue().getAmountToPayByGivenYaz(Yaz);
+            }
+            if(debt != 0){
+                curLoan.makeRisk(Yaz,debt);
+                newRiskLoans.put(curLoan,debt);
+            }
+            else{
+                curLoan.setNextYazForPayment();
+            }
+        }
+        sendMassagesToNewRiskLoans(newRiskLoans);
         Yaz++;
         yazProperty.set("Current Yaz: " + Yaz);
         for(Customer curCustomer : Customers.values()){
@@ -220,22 +234,16 @@ public class SystemImplement implements BankSystem , Serializable {
             for(Loan curLoan : curCustomerLoans){
                 curLoan.setHowManyYazAreLeft();
                 if(curLoan.getNextYazForPayment() == Yaz){
-                    //send message to relevant customer that is payday you need to pay is: curLoan.getYazlyPaymentWithDebtsCalculation()
-                    mainController.setMessage(curLoan.getNameOfLoaner(), curLoan.getYazlyPaymentWithDebtsCalculation(), curLoan.getNameOfLoan(), "The payment date has arrived on the loan: ");
+                    mainController.setMessage(curLoan.getNameOfLoaner(), curLoan.getYazlyPaymentWithDebtsCalculation(Yaz), curLoan.getNameOfLoan(), "The payment date has arrived on the loan: ");
                 }
             }
         }
     }
 
-    private void checkIfLoanNeedsToBeInRisk(List<Loan> allActiveLoans) {
-        for (Loan curLoan : allActiveLoans) {
-            List<Payment> curLoanPayments = curLoan.getPayments().stream().filter(P -> (P.getPaymentDate() == Yaz)).collect(Collectors.toList());
-            if (curLoanPayments.isEmpty()) {
-                int amount = curLoan.getYazlyPaymentWithDebtsCalculation();
-                mainController.setMessage(curLoan.getNameOfLoaner(), amount, curLoan.getNameOfLoan(), "You did not pay on the due date: ");
-                curLoan.makeRisk(Yaz);
+    private void sendMassagesToNewRiskLoans(Map<Loan,Integer> i_newRiskLoans) {
+        for (Map.Entry<Loan,Integer> curLoan : i_newRiskLoans.entrySet()) {
+                mainController.setMessage(curLoan.getKey().getNameOfLoaner(), curLoan.getValue(), curLoan.getKey().getNameOfLoan(), "You did not pay on the due date: ");
             }
-        }
     }
 
     private Boolean checkIfTheLoanIsFinished(Loan curLoan){
@@ -258,13 +266,34 @@ public class SystemImplement implements BankSystem , Serializable {
         return new CategoriesDTO(allCategories);
     }
 
-    private void makePayment(Loan loan){
-        for (Map.Entry<String, LeftToPay> entry :loan.getMapOfLenders().entrySet()) {
-            Customers.get(entry.getKey()).DepositMoney(entry.getValue().amountToPayThisYaz() + entry.getValue().interestToPayThisYaz(loan.getInterest()), Yaz);
-            entry.getValue().setAmountLeftToPay();
-            entry.getValue().setAmountOfPayment();
-            entry.getValue().resetDebt();
+    public void YazlyPaymentForGivenLoans(Map<String,Integer> loansToPay){
+        int moneyPaidTmp;
+        int totalAmountPaidThisYaz = 0;
+        for(Map.Entry<String,Integer> entry : loansToPay.entrySet()){
+            int amountUserWantToPay = entry.getValue();
+            if(amountUserWantToPay != 0) {
+                int amountOfLenders = LoansInBank.get(entry.getKey()).getMapOfLenders().size();
+                Map<String,LeftToPay> sortedLendersByAmountToPay = LoansInBank.get(entry.getKey()).getMapOfLenders().entrySet().stream()
+                        .sorted(Comparator.comparingInt(e -> e.getValue().getAmountToPayByGivenYaz(Yaz)))
+                        .collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue,(e1,e2) -> e1,LinkedHashMap::new));
+
+                for (Map.Entry<String, LeftToPay> curLender : sortedLendersByAmountToPay.entrySet()) {//TODO to make sure it is sorted by leftToPayValues
+                    int dividedAmount = amountUserWantToPay / amountOfLenders;
+                    moneyPaidTmp = makePayment(dividedAmount,curLender.getKey(),curLender.getValue());
+                    amountUserWantToPay -= moneyPaidTmp;
+                    amountOfLenders--;
+                    totalAmountPaidThisYaz += moneyPaidTmp;
+                }
+                LoansInBank.get(entry.getKey()).makeLoanPayment(Yaz,totalAmountPaidThisYaz,true);
+                Customers.get(LoansInBank.get(entry.getKey()).getNameOfLoaner()).WithdrawMoney(totalAmountPaidThisYaz,Yaz);
+            }
         }
+    }
+
+    public int makePayment(int amountToPay,String nameOfCustomer,LeftToPay customerLeftToPay){
+        int amountInvested = customerLeftToPay.setAmountPaidInGivenYaz(Yaz,amountToPay);
+        Customers.get(nameOfCustomer).DepositMoney(amountInvested,Yaz);
+        return amountInvested;
     }
 
     public void fullPaymentOnLoans(List<String> loanNames, String customerName){

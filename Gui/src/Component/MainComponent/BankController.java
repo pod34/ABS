@@ -66,6 +66,7 @@ public class BankController {
       URL BankControllerFXML = getClass().getResource(BankResourcesConstants.ERRORPOPUPWINDOW);
       loader.setLocation(BankControllerFXML);
       filePath.setId("file-path-label");
+
    }
 
    public int getCurrentYaz(){
@@ -184,6 +185,10 @@ public class BankController {
    public void fullyLoansPaymentActivation(List<String> loanNames){
       bankEngine.fullPaymentOnLoans(loanNames, curCustomerViewBy.getValue());
       viewByAdminController.updateLoansInBankInAdminView();
+   }
+
+   public void yazlyPaymentOfGivenLoansActivation(Map<String,Integer> loansToPayTo){
+      bankEngine.YazlyPaymentForGivenLoans(loansToPayTo);
    }
 
    public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyOfLoansAsBorrower(String customerName){

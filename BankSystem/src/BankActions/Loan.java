@@ -188,7 +188,7 @@ public class Loan implements Serializable {
 
     public void setAnInvestment(int amount, String nameOfLender, int yaz){
         if(!listOfLenders.containsKey(nameOfLender))
-            listOfLenders.put(nameOfLender,new LeftToPay(amount, (durationOfTheLoan / paymentFrequency)));
+            listOfLenders.put(nameOfLender,new LeftToPay(amount, (durationOfTheLoan / paymentFrequency),interest));
         else
            listOfLenders.get(nameOfLender).setOriginalAmount(amount);
         theAmountLeftToMakeTheLoanActive -= amount;
@@ -198,6 +198,9 @@ public class Loan implements Serializable {
             active = true;
             startingDate = yaz;
             nextYazForPayment = yaz + paymentFrequency;
+            for(LeftToPay curLenderLeftToPay : listOfLenders.values()){
+                curLenderLeftToPay.calculatePaymentForEachYazAfterLoanBecomeActive(yaz,paymentFrequency);
+            }
         }
         else{
             if(status.equals(LoanStatus.NEW)){
@@ -207,18 +210,22 @@ public class Loan implements Serializable {
 
     }
 
-    public void makeRisk(int yaz){
+    public void makeRisk(int yaz,int amountNotPaid){
         totalMissedYazNeedToPayBack++;
-        nextYazForPayment += paymentFrequency;
-        int tempAmount = 0;
+        setNextYazForPayment();
         for (LeftToPay curLender: listOfLenders.values()) {
-            tempAmount = curLender.amountToPayThisYaz();
-            curLender.setDebt(interest);
-            curLender.setAmountLeftToPay();
-            curLender.setAmountOfPayment();
+            if(nextYazForPayment <= curLender.getLastYazOfLoan()) {
+                int tmp = curLender.getAmountToPayByGivenYaz(nextYazForPayment);
+                curLender.getPaymentForEachYaz().put(nextYazForPayment, amountNotPaid + tmp);
+                curLender.getPaymentForEachYaz().put(nextYazForPayment - paymentFrequency, 0);
+            }
         }
         status = LoanStatus.RISK;
-        Payments.add(new Payment(yaz, yazlyPayment, yazlyInterest, yazlyPayment + yazlyInterest, false));
+        this.makeLoanPayment(yaz,amountNotPaid,false);
+    }
+
+    public void setNextYazForPayment(){
+        nextYazForPayment += paymentFrequency;
     }
 
     public void makeFinished(int yaz){
@@ -227,30 +234,29 @@ public class Loan implements Serializable {
         active = false;
     }
 
-    public int getYazlyPaymentWithDebtsCalculation(){
-        yazlyPayment = 0;
-        yazlyInterest = 0;
+    public int getYazlyPaymentWithDebtsCalculation(int curYaz){
+        int sum = 0;
         for (LeftToPay curLender: listOfLenders.values()) {
-            yazlyPayment += curLender.amountToPayThisYaz();
-            yazlyInterest += curLender.interestToPayThisYaz(interest);
+            sum += curLender.getAmountToPayByGivenYaz(curYaz);
         }
-        return yazlyPayment + yazlyInterest;
+        return sum;
     }
 
     public int getYazlyPaymentWithDebts(){
         return yazlyPayment + yazlyInterest;
     }
 
-    public void makeLoanPayment(int yaz){
-        nextYazForPayment += paymentFrequency;
-        Payments.add(new Payment(yaz, yazlyPayment, yazlyInterest, yazlyPayment + yazlyInterest, true));
-        theAmountOfPrincipalPaymentYetToBePaid -= yazlyPayment;
-        theInterestYetToBePaidOnTheLoan -= yazlyInterest;
-        theAmountOfThePrincipalPaymentPaidOnTheLoanSoFar += yazlyPayment;
-        interestPayedSoFar += yazlyInterest;
-        status = LoanStatus.ACTIVE;//TODO we dont want to make it active without verify that there is no debts.
-        totalMissedYazNeedToPayBack = 0;
-        active = true;
+    public void makeLoanPayment(int yaz,int amountPaid,boolean paid){
+        int principalAmount,interestAmount;
+        interestAmount = ((amountPaid * interest) / 100);
+        principalAmount = amountPaid - interestAmount;
+        Payments.add(new Payment(yaz,principalAmount,interestAmount,amountPaid,paid));
+        if(paid) {
+            theAmountOfPrincipalPaymentYetToBePaid -= principalAmount;
+            theInterestYetToBePaidOnTheLoan -= interestAmount;
+            theAmountOfThePrincipalPaymentPaidOnTheLoanSoFar += principalAmount;
+            interestPayedSoFar += interestAmount;
+        }
     }
 
     public void makeFullyPaymentToCloseLoan(int yaz,int principalAmount,int interestAmount){
@@ -262,7 +268,6 @@ public class Loan implements Serializable {
         interestPayedSoFar += interestAmount;
         totalMissedYazNeedToPayBack = 0;
     }
-
 
     public int getTotalMissedYazNeedToPayBack() {
         return totalMissedYazNeedToPayBack;

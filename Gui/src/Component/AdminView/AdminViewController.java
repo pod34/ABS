@@ -35,7 +35,6 @@ public class AdminViewController {
     @FXML private TableView<LoanDTOs> LoansData = new TableView<>();
     @FXML private TableView<CustomerDTOs> CustomerData = new TableView<>();
     @FXML private BorderPane viewByAdminContainer;
-    @FXML private AnchorPane viewByAdminContainer2;
 
     private SimpleStringProperty selectedFileProperty;
     private SimpleBooleanProperty isFileSelected;
@@ -93,10 +92,6 @@ public class AdminViewController {
         buildCustomersTableView();
     }
 
-    public void addToLoanTableInAdminView(){
-        //LoansData.find
-    }
-
     private void buildCustomersTableView(){
         CustomerData.getItems().clear();
         List<CustomerDTOs> allCustomers = mainController.getSystemCustomers();
@@ -150,18 +145,10 @@ public class AdminViewController {
         return CustomerExpandedDetails;
     }
 
-//    private Map<LoanStatus, SimpleStringProperty> bindTheLabelsOfTheCustomersBorrower(String customerName){
-//       return mainController.getCustomerPropertyOfLoansAsBorrower(customerName);
-//    }
-
-//    private Map<LoanStatus, SimpleStringProperty> bindTheLabelsOfTheCustomersLender(String customerName){
-//        return mainController.getCustomerPropertyOfLoansAsLender(customerName);
-//    }
-
     @FXML private void clickOnIncreaseYaz(ActionEvent event){
-
         mainController.increaseYazActivation();
         updateLoansInBankInAdminView();
+        //TODO  update all customer tables
     }
 
 

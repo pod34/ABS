@@ -298,6 +298,7 @@ public class CustomerViewController {
         }
         mainController.activateLoansInlay(checkLoansToInvest.getCheckModel().getCheckedItems(),Integer.parseInt(amountToInvest.getText()),maxOwnerShipOfTheLoan);
         List<LoanDTOs> LoansCurCustomerInvestedIn = mainController.getSystemCustomerLoansByListOfLoansName(checkLoansToInvest.getCheckModel().getCheckedItems());
+        checkLoansToInvest.getCheckModel().clearChecks();
         DataOfCustomerTOPresentInCustomerView.get(curCustomerName).updateLoansAsLender(LoansCurCustomerInvestedIn);
         resetScrambleTab();
     }
@@ -339,7 +340,6 @@ public class CustomerViewController {
                 loansInfoController.buildLoansTableView(relevantLoans,matchingLoans);
                 howManyMatchingLoansFoundProp.set("Found " + matchingLoans.size() + " matching loans!");
                 howManyLoansFound.setStyle("-fx-text-fill: #e70d0d; -fx-font-size: 16px;");//TODO not visible after invesment reset
-
 
                 checkLoansToInvest.getItems().addAll(matchingLoans.stream().collect(Collectors.toMap(LoanDTOs::getNameOfLoan,loan -> loan)).
                         keySet().stream().collect(Collectors.toList()));
@@ -399,9 +399,10 @@ public class CustomerViewController {
        for(LoanDTOs curLoan : loansToPay){
             loansToPayAndAmountOfPayment.put(curLoan.getNameOfLoan(),Integer.parseInt(curLoan.getAmountToPay()));
        }
-       //TODO call and implemnt new method to pay By amount to pay.
+       if(loansToPay.size() != 0)
+           mainController.yazlyPaymentOfGivenLoansActivation(loansToPayAndAmountOfPayment);
 
-    }
+  }
 }
 
 

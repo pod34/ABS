@@ -33,6 +33,7 @@ public interface BankSystem {
     Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsBorrower(String customerName);
     CategoriesDTO getAllCategories();
     CustomerDTOs getCustomerByName(String name);
+    void YazlyPaymentForGivenLoans(Map<String,Integer> loansToPay);
     int getCurrentYaz();
 
 

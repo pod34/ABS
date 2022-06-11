@@ -52,7 +52,7 @@ public class CustomerDataToPresent {
         nextYazPayment.getTableView().setEditable(true);
 
 
-        final TableColumn<LoanDTOs, String> amountToPayCol = new TableColumn<>("AmountToPay");
+        final TableColumn<LoanDTOs, String> amountToPayCol = new TableColumn<>("Amount to pay");
         amountToPayCol.setCellValueFactory( new PropertyValueFactory<>("AmountToPay"));
         amountToPayCol.setCellFactory(TextFieldTableCell.forTableColumn());
         amountToPayCol.setOnEditCommit(
