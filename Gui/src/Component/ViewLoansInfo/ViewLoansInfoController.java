@@ -1,6 +1,7 @@
 package Component.ViewLoansInfo;
 import BankActions.LeftToPay;
 import BankActions.Loan;
+import BankActions.LoanStatus;
 import BankActions.Payment;
 import Component.MainComponent.BankController;
 import DTOs.LoanDTOs;
@@ -33,7 +34,9 @@ public class ViewLoansInfoController {
     @FXML private Label TotalDuration;
     @FXML private Label originalAmount;
     @FXML private Label status;
-    @FXML private Label LoanDataByStatus;
+    //@FXML private Label LoanDataByStatus;
+    @FXML
+    private TextArea LoanDataByStatus;
     @FXML private Accordion PaymentsDetails;
     @FXML private Accordion LenderDetails;
     @FXML private BankController mainController;
@@ -74,7 +77,7 @@ public class ViewLoansInfoController {
         i_LoansData.getItems().addAll(FXCollections.observableArrayList(allLoans));
     }
 
-    private GridPane expandLoanInfo(TableRowExpanderColumn.TableRowDataFeatures<LoanDTOs> param) throws IOException {
+    private ScrollPane expandLoanInfo(TableRowExpanderColumn.TableRowDataFeatures<LoanDTOs> param) throws IOException {
         GridPane workSpace = new GridPane();
         workSpace.setHgap(10);
         workSpace.setVgap(5);
@@ -93,7 +96,7 @@ public class ViewLoansInfoController {
         FXMLLoader loader = new FXMLLoader();
         URL LoansViewFXML = getClass().getResource(BankResourcesConstants.VIEWLOANSDETAILEXPANDED_RESOURCE_IDENTIFIRE);
         loader.setLocation(LoansViewFXML);
-        GridPane LoanExpandedDetails = loader.load();
+        ScrollPane LoanExpandedDetails = loader.load();
         ViewLoansInfoController expendedLoansDetailsController = loader.getController();
         LoanExpandedDetails.setBackground(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY)));
 
@@ -103,7 +106,7 @@ public class ViewLoansInfoController {
         expendedLoansDetailsController.setPaymentFrequencyValue(paymentFrequency);
         expendedLoansDetailsController.setTotalDurationValue(duration);
         expendedLoansDetailsController.setOriginalInterestAmountValue(theTotalInterestAmountOfTheLoan);
-        expendedLoansDetailsController.setStatusValue(status, loan.getNameOfLoan(), mainController);
+        //expendedLoansDetailsController.setStatusValue(status, loan.getNameOfLoan(), mainController);
         expendedLoansDetailsController.setLenderDetails(loan);
         expendedLoansDetailsController.setPaymentsDetails(loan);
 
@@ -138,9 +141,19 @@ public class ViewLoansInfoController {
     public void setLenderDetails(LoanDTOs  Loan) {
         Map<String,Integer> listOfLenders =  Loan.getListOfLenders();
         TitledPane[] lenders = new TitledPane[listOfLenders.size()];
+        ScrollPane scroll=new ScrollPane();
+        scroll.setPrefHeight(LenderDetails.getHeight());
+        scroll.prefWidth(LenderDetails.getWidth());
+
         int counter = 0;
         for (Map.Entry<String, Integer> entry : listOfLenders.entrySet()){
-            lenders[counter] = new TitledPane(entry.getKey(),new Label("Share in loan: " + entry.getValue().toString()));
+            Label curLabel = new Label("Share in loan: " + entry.getValue().toString());
+            GridPane grid = new GridPane();
+            grid.setVgap(4);
+            grid.setPadding(new Insets(5, 5, 5, 5));
+            grid.add(new Label("Share in loan: " + entry.getValue().toString()), 0, 0);
+            lenders[counter] = new TitledPane(entry.getKey(),grid);
+            lenders[counter].setMinSize(50,50);
             counter++;
         }
         LenderDetails.getPanes().addAll(lenders);
@@ -151,7 +164,15 @@ public class ViewLoansInfoController {
         TitledPane[] Payments = new TitledPane[listOfPayments.size()];
         int counter = 0;
         for(Payment curPayment : listOfPayments){
+            GridPane grid = new GridPane();
+            grid.setVgap(4);
+            grid.setPadding(new Insets(5, 5, 5, 5));
+            Label tmp = new Label(curPayment.PaymentDetails());
+            grid.add(new Label(curPayment.PaymentDetails()), 0, 0);
+            grid.setMinHeight(tmp.getMinHeight());
+            grid.setMinSize(500,500);
             Payments[counter] = new TitledPane(Integer.toString(curPayment.getPaymentDate()),new Label(curPayment.PaymentDetails()));//TODO we need to warp it in scroll pane
+            Payments[counter].setMinSize(100,100);
             counter++;
         }
         PaymentsDetails.getPanes().addAll(Payments);
@@ -159,27 +180,40 @@ public class ViewLoansInfoController {
     }
 
     public void setLoanDataByStatus(LoanDTOs loan, BankController i_mainController){
+        LoanDataByStatus.setText("");
+        status.setText("");
         switch (loan.getStatusName()){
             case "NEW":
-                LoanDataByStatus.setText("0$ Raised so far ");
+                status.setText("NEW");
+                LoanDataByStatus.setText("0$ Raised so far.");
                 break;
             case "PENDING":
-                LoanDataByStatus.setText(/*TODO add method to loanDto how much money reised so far*/"___ $ Raised so far  " /* //TODO how much left to raise*/ + "____$ left to make the Loan active ");
+                status.setText("PENDING");
+                LoanDataByStatus.setText(loan.getAmountRaisedSoFar() + "$ Raised so far, \n" + loan.getHowMuchLeftToMakeLoanActive() + "$ left to raise to make the Loan Active.\n");
                 break;
             case "ACTIVE":
-                LoanDataByStatus.setText("the yaz the loan became active. next payment yaz to pay, do we need to use enum here maya?");//TODO
+                status.setText("ACTIVE");
+                LoanDataByStatus.setText("Start yaz " + loan.getTheDateTheLoanBecameActive() +  "\n"
+                        + "next payment yaz is " + loan.getNextYazPayment() + "\n" + "The total principal paid so far : " + loan.getTheAmountOfThePrincipalPaymentPaidOnTheLoanSoFar() + "\n"
+                + "The total interest paid so far : " + loan.getInterestPayedSoFar() + "\n" + "The principal yet to be paid: " + loan.getTheAmountOfTheFundYetToBePaid() + "\n"
+                + "The interest yet to be paid: " + loan.getTheInterestYetToBePaidOnTheLoan());
                 break;
             case "RISK":
-                LoanDataByStatus.setText("Same data as active + to add here how much payment got delayed and how much do we need to pay asap");//TODO
+                status.setText("RISK");
+                LoanDataByStatus.setText("the loan became active on yaz " + loan.getTheDateTheLoanBecameActive() +  "\n"
+                        + "next payment yaz is " + loan.getNextYazPayment() + "\n" + "The total principal paid so far : " + loan.getTheAmountOfThePrincipalPaymentPaidOnTheLoanSoFar() + "\n"
+                        + "The total interest paid so far : " + loan.getInterestPayedSoFar() + "\n" + "The principal yet to be paid: " + loan.getTheAmountOfTheFundYetToBePaid() + "\n"
+                        + "The interest yet to be paid: " + loan.getTheInterestYetToBePaidOnTheLoan());//TODO
                 break;
             case "FINISHED":
-                LoanDataByStatus.setText("Start YAZ ----->  End YAZ");//TODO
+                status.setText("FINISHED");
+                LoanDataByStatus.setText("Start yaz: " + loan.getTheDateTheLoanBecameActive() + "\n" +
+                "End yaz: " + loan.getEndDate());//TODO
                 break;
             default:
                 break;
 
         }
-        LoanDataByStatus.textProperty().bind(i_mainController.getLoanDataByStatusPropertyAndStatusMapFromMainController(loan.getNameOfLoan()).get("LoanDataByStatusProperty"));
     }
 }
 

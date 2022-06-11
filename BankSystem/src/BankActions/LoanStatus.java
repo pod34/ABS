@@ -63,6 +63,7 @@ public enum LoanStatus implements Serializable {
             LoanDataByStatusProperty.get("LoanDataByStatusProperty").set((curLoan.getOriginalAmount() - curLoan.getTheAmountLeftToMakeTheLoanActive()) + "  $ Raised so far  " + curLoan.getTheAmountLeftToMakeTheLoanActive() + " $ left to make the Loan active ");
         }
     },
+
     ACTIVE {
         void PrintForCustomer(Loan curLoanToPrint) {
             System.out.println("The status is: Active\n" + "The next payment is in: "

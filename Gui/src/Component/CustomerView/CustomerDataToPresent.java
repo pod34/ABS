@@ -125,6 +125,7 @@ public class CustomerDataToPresent {
         updateLoansAsLender(mainController.getSystemCustomerLoansByListOfLoansName(curCustomer.getLoansAsALender()));
         updateLoansAsLoaner(loansAsLoaner);
         updateLoanAsLoanerForPaymentTab(loansAsLoaner);
+        updateTransactionTable(curCustomer);
     }
 
     public void updateLoansAsLender(List<LoanDTOs> i_loansAsLender){
@@ -138,6 +139,14 @@ public class CustomerDataToPresent {
         LoansAsLoanerData.getItems().addAll(i_loansAsLoaner);
         LoansAsLoanerData.refresh();
         LoansAsLoanerData.refresh();
+    }
+
+    private void updateTransactionTable(CustomerDTOs curCustomer){
+        List<AccountTransactionDTO> Transactions = curCustomer.getTransactions();
+        TransactionTable.getItems().clear();
+        TransactionTable.getItems().addAll(Transactions);
+        TransactionTable.refresh();
+
     }
 
     private void updateLoanAsLoanerForPaymentTab(List<LoanDTOs> i_loansAsLoaner){

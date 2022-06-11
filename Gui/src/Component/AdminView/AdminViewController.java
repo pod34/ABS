@@ -148,7 +148,7 @@ public class AdminViewController {
     @FXML private void clickOnIncreaseYaz(ActionEvent event){
         mainController.increaseYazActivation();
         updateLoansInBankInAdminView();
-        //TODO  update all customer tables
+
     }
 
 

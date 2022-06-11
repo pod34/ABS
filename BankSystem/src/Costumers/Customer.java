@@ -34,26 +34,9 @@ public class Customer implements Serializable {
         stringOfLoansAsBorrowerByStatus = new HashMap<>();
         numberOfLoansAsLenderByStatus = new HashMap<>();
         stringOfLoansAsLenderByStatus = new HashMap<>();
-        initiativePropertyByStatus();
 
     }
 
-    private void initiativePropertyByStatus(){
-        for (LoanStatus status: LoanStatus.values()) {
-            if(status.equals(LoanStatus.NEW)) {
-                numberOfLoansAsLenderByStatus.put(status, new SimpleIntegerProperty(0));
-                stringOfLoansAsLenderByStatus.put(status, new SimpleStringProperty(status.name() + ": " + 0));
-                numberOfLoansAsBorrowerByStatus.put(status, new SimpleIntegerProperty(LoansAsABorrower.size()));
-                stringOfLoansAsBorrowerByStatus.put(status, new SimpleStringProperty(status.name() + ": " + LoansAsABorrower.size()));
-            }
-            else{
-                numberOfLoansAsLenderByStatus.put(status, new SimpleIntegerProperty(0));
-                stringOfLoansAsLenderByStatus.put(status, new SimpleStringProperty(status.name() + ": " + 0));
-                numberOfLoansAsBorrowerByStatus.put(status, new SimpleIntegerProperty(0));
-                stringOfLoansAsBorrowerByStatus.put(status, new SimpleStringProperty(status.name() + ": " + 0));
-            }
-        }
-    }
 
     public Map<LoanStatus, SimpleIntegerProperty> getNumberOfLoansAsBorrowerByStatus() {
         return numberOfLoansAsBorrowerByStatus;
@@ -135,7 +118,9 @@ public class Customer implements Serializable {
 
     public void makeAnInvestment(String loanName, int amount, int yaz){
         this.WithdrawMoney(amount, yaz);
-        LoansAsALender.add(loanName);
+        if(!LoansAsALender.contains(loanName)){
+            LoansAsALender.add(loanName);
+        }
     }
 }
 

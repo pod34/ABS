@@ -189,13 +189,6 @@ public class CustomerViewController {
         notificationsView.setItems(items);
     }
 
-    @FXML
-    public void paySelectedLoansClicked(ActionEvent event) {
-        List<String> loanNames = choosingLoans.getTargetItems().stream().collect(Collectors.toList());
-        mainController.fullyLoansPaymentActivation(loanNames);
-
-    }
-
     public void setDataOfCustomerTOPresentInCustomerView(List<CustomerDTOs> i_bankCustomer){
         for(CustomerDTOs curCustomer : i_bankCustomer){
             DataOfCustomerTOPresentInCustomerView.put(curCustomer.getName(),new CustomerDataToPresent(curCustomer,mainController));
@@ -214,6 +207,14 @@ public class CustomerViewController {
         //balanceOfCustomer.setText("Balance: " + );
     }
 
+    public void updateCustomersLoansData(){
+        for(Map.Entry<String,CustomerDataToPresent> curCustomerData : DataOfCustomerTOPresentInCustomerView.entrySet()){
+            String nameOfCustomer = curCustomerData.getKey();
+            CustomerDTOs curCustomer = mainController.getCustomerByName(nameOfCustomer);
+            curCustomerData.getValue().updateLoansTables(curCustomer);
+        }
+    }
+
     private void setLoansAsLoanerForPaymentTab(String nameOfCustomer){//  TODO tried for hours to duplicate from the info tab to be the same table but it didnt work so maybe to try to fix it with maya
         TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerDataForPaymentTab();
         tmp.prefWidthProperty().bind(LoansAsLoanerTableForPaymentTab.widthProperty());
@@ -223,8 +224,16 @@ public class CustomerViewController {
 
     private void setLonerLoan(String nameOfCustomer){
         TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerData();
+     /*   tmp.prefWidthProperty().bind(LoansAsLoaner.prefWidthProperty());
+        tmp.prefHeightProperty().bind(LoansAsLoaner.prefHeightProperty());
+        tmp.maxHeightProperty().bind(LoansAsLender.maxHeightProperty());
+        tmp.maxWidthProperty().bind(LoansAsLender.maxWidthProperty());
+        tmp.minHeightProperty().bind(LoansAsLender.minHeightProperty());
+        tmp.minWidthProperty().bind(LoansAsLender.minWidthProperty());*/
         tmp.prefWidthProperty().bind(LoansAsLoaner.widthProperty());
         tmp.prefHeightProperty().bind(LoansAsLoaner.heightProperty());
+
+
         LoansAsLoaner.getChildren().setAll(tmp);
     }
 
@@ -232,6 +241,7 @@ public class CustomerViewController {
         TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLenderData();
         tmp.prefWidthProperty().bind(LoansAsLender.widthProperty());
         tmp.prefHeightProperty().bind(LoansAsLender.heightProperty());
+
         LoansAsLender.getChildren().setAll(tmp);
 
     }
@@ -385,9 +395,11 @@ public class CustomerViewController {
 
     }
 
-    public void addTransactionToTransactionTable(AccountTransactionDTO transaction){
+    public void updateTransactionToTransactionTable(){
         TableView<AccountTransactionDTO> tmp = (TableView<AccountTransactionDTO>) AccountTransInfo.getChildren().get(0);
-        tmp.getItems().add(transaction);
+        if(!tmp.getItems().isEmpty())
+            tmp.getItems().clear();
+        tmp.getItems().setAll(mainController.getCustomerByName(curCustomerName).getDtosTransactions());
         AccountTransInfo.getChildren().setAll(tmp);
     }
 
