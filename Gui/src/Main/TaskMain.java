@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.fxmisc.cssfx.CSSFX;
 
 import java.net.URL;
 
@@ -25,6 +26,7 @@ public class TaskMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        CSSFX.start();
 
         FXMLLoader loader = new FXMLLoader();
         URL BankControllerFXML = getClass().getResource(BankResourcesConstants.BANKCONTROLLER_FXML_RESOURCE_IDENTIFIER);

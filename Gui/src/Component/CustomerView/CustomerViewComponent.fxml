@@ -22,7 +22,7 @@
 <?import org.controlsfx.control.CheckListView?>
 <?import org.controlsfx.control.StatusBar?>
 
-<AnchorPane fx:id="customerViewWindow" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Component.CustomerView.CustomerViewController">
+<AnchorPane fx:id="customerViewWindow" stylesheets="@../../resources/abs.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Component.CustomerView.CustomerViewController">
    <children>
       <ScrollPane fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -62,7 +62,7 @@
                            <children>
                               <VBox fx:id="ChargeOrWithdraw" spacing="15.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="15">
                                  <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="277.0" text="Transactions" underline="true">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="277.0" styleClass="titleLabel" text="Transactions" underline="true">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -99,7 +99,7 @@
                               <AnchorPane fx:id="LoansAsLender" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" GridPane.rowSpan="7" />
                               <VBox spacing="29.0" GridPane.columnIndex="4">
                                  <children>
-                                    <Label fx:id="welcomeCustomer" prefHeight="17.0" prefWidth="274.0" text="Hello customerName" textFill="#0593ff">
+                                    <Label id="welcome-customer-label" fx:id="welcomeCustomer" prefHeight="17.0" prefWidth="274.0" text="Hello customerName" textFill="#0593ff">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -275,7 +275,7 @@
                                           <ListView fx:id="notificationsView" />
                                        </children>
                                     </VBox>
-                                    <Label text="Loans as loaner" GridPane.columnIndex="1">
+                                    <Label styleClass="titleLabel" text="Loans as loaner" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets top="30.0" />
                                        </GridPane.margin>

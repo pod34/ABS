@@ -77,6 +77,8 @@ public class CustomerViewController {
     @FXML private Label balanceOfCustomer;
     @FXML private Button fullPayment;
     private String curCustomerName;
+    @FXML private Label loansInAbsLb;
+    @FXML private Label customersInAbsLb;
 
 
     public void setMainController(BankController mainController) {
@@ -170,7 +172,6 @@ public class CustomerViewController {
         });
 
         howManyLoansFound.textProperty().bind(howManyMatchingLoansFoundProp);
-
     }
 
     public void setMessagesViewToCustomer(String customerName) {
@@ -210,7 +211,6 @@ public class CustomerViewController {
         setAccountTransInfo(nameOfCustomer);
         curCustomerName = nameOfCustomer;
         welcomeCustomer.setText("Hello " + nameOfCustomer);
-        welcomeCustomer.setStyle("-fx-text-fill: #002df8; -fx-font-size: 24px;");
         //balanceOfCustomer.setText("Balance: " + );
     }
 

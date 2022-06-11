@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane fx:id="mainContainerComponent" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Component.MainComponent.BankController">
+<BorderPane fx:id="mainContainerComponent" stylesheets="@../../resources/abs.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Component.MainComponent.BankController">
    <top>
       <GridPane maxHeight="80.0" prefHeight="80.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -31,7 +31,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
                <children>
-                  <Label fx:id="filePath" text="Currently Loaded File Path" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Label id="file-path-label" fx:id="filePath" styleClass="header-label" text="Currently Loaded File Path" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
             <ComboBox fx:id="viewBy" onAction="#viewByChooserClicked" prefHeight="35.0" prefWidth="105.0" promptText="View By" GridPane.rowIndex="1">
@@ -40,7 +40,7 @@
                </GridPane.margin></ComboBox>
             <AnchorPane GridPane.columnIndex="4" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="CurrentYazLabel" alignment="CENTER" contentDisplay="RIGHT" text="Current Yaz:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Label fx:id="CurrentYazLabel" alignment="CENTER" contentDisplay="RIGHT" styleClass="header-label" text="Current Yaz:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
                <GridPane.margin>
                   <Insets right="20.0" />

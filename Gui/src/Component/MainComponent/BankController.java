@@ -65,6 +65,7 @@ public class BankController {
       FXMLLoader loader = new FXMLLoader();
       URL BankControllerFXML = getClass().getResource(BankResourcesConstants.ERRORPOPUPWINDOW);
       loader.setLocation(BankControllerFXML);
+      filePath.setId("file-path-label");
    }
 
    public int getCurrentYaz(){
