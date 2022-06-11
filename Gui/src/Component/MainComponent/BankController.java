@@ -10,24 +10,15 @@ import SystemExceptions.InccorectInputType;
 import common.BankResourcesConstants;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.io.IOException;
@@ -89,6 +80,7 @@ public class BankController {
       this.viewByCustomer = customerScene;
       viewByCustomer.prefWidthProperty().bind(viewByAdmin.widthProperty());
       viewByCustomer.prefHeightProperty().bind(viewByAdmin.heightProperty());
+      
    }
 
    public void setViewByCustomerController(CustomerViewController viewByCustomerController) {
@@ -100,6 +92,7 @@ public class BankController {
    public void activateLoansInlay(List<String> nameOfLoansToInvestIn,int amountOfInvestment,int maxOwnerShipOfTheLoan){
       if(bankEngine.LoansInlay(nameOfLoansToInvestIn,amountOfInvestment,curCustomerViewBy.getValue(),maxOwnerShipOfTheLoan) != null) {
          viewByAdminController.updateLoansInBankInAdminView();
+         viewByCustomerController.updateCustomersLoansData();
       }
       else{
         //TODO errorLabel.setText("You can't invest more money than you have in your balance");
@@ -155,8 +148,10 @@ public class BankController {
          viewByCustomer.prefWidthProperty().bind(subComponent.widthProperty());
          viewByCustomer.prefHeightProperty().bind(subComponent.heightProperty());
          subComponent.getChildren().setAll(viewByCustomer);
+
          viewByCustomerController.setViewByCustomerData(viewBy.getValue());
          viewByCustomerController.setMessagesViewToCustomer(curCustomerViewBy.getValue());
+         viewByCustomerController.updateTransactionToTransactionTable();
       }
       else{
          if(!subComponent.equals(viewByAdmin))
@@ -165,30 +160,47 @@ public class BankController {
    }
 
    public void chargeActivation(int amount){
-      viewByCustomerController.addTransactionToTransactionTable(bankEngine.DepositToAccount(amount, curCustomerViewBy.getValue()));
+      AccountTransactionDTO tmp = bankEngine.DepositToAccount(amount,curCustomerViewBy.getValue());
+      viewByAdminController.updateLoansInBankInAdminView();
+      viewByCustomerController.updateCustomersLoansData();
+
+
    }
 
    public void withdrawActivation(int amount){
       AccountTransactionDTO tmp = bankEngine.WithdrawFromTheAccount(amount, curCustomerViewBy.getValue());
       if(tmp != null)
-         viewByCustomerController.addTransactionToTransactionTable(tmp);
+         viewByCustomerController.updateTransactionToTransactionTable();
       else {
          //TODO errorLabel.setText("You can't withdraw more money that you have in your balance");
          //dialog.show();
       }
+      viewByAdminController.updateLoansInBankInAdminView();
+      viewByCustomerController.updateCustomersLoansData();
+
+
+
    }
 
    public void increaseYazActivation(){
       bankEngine.IncreaseYaz();
+      viewByCustomerController.updateCustomersLoansData();
    }
 
    public void fullyLoansPaymentActivation(List<String> loanNames){
       bankEngine.fullPaymentOnLoans(loanNames, curCustomerViewBy.getValue());
       viewByAdminController.updateLoansInBankInAdminView();
+      viewByCustomerController.updateCustomersLoansData();
+      viewByCustomerController.updateTransactionToTransactionTable();
+
    }
 
    public void yazlyPaymentOfGivenLoansActivation(Map<String,Integer> loansToPayTo){
       bankEngine.YazlyPaymentForGivenLoans(loansToPayTo);
+      viewByCustomerController.updateCustomersLoansData();
+      viewByAdminController.updateLoansInBankInAdminView();
+      viewByCustomerController.updateTransactionToTransactionTable();
+
    }
 
    public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyOfLoansAsBorrower(String customerName){

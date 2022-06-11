@@ -22,9 +22,11 @@ public class LoanDTOs implements Serializable {
     private SimpleStringProperty amountToPay = new SimpleStringProperty(this,"AmountToPay");
     private SimpleIntegerProperty nextYazPayment = new SimpleIntegerProperty(this,"nextYazPayment");
     private final int originalAmount;
+    private int amountRaisedSoFar;
     private final int durationOfTheLoan;
     private final int paymentFrequency;
     private final int interest;
+    private final int theDateTheLoanBecameActive;
     private Map<String, Integer> listOfLenders = new HashMap<String, Integer>();;// TODO: do we need it?
     private final int howManyUnitsOfTimeAreLeft; //TODO: wtf does it mean
     private final float interestPayedSoFar;
@@ -33,6 +35,11 @@ public class LoanDTOs implements Serializable {
     private final int theAmountOfTheFundYetToBePaid;
     private final LoanStatus status;
     private final List<Payment> loansPayments;
+    private int howMuchLeftToMakeLoanActive;
+    private int nextPaymentYaz;
+    private int endDate;
+    private int principalYetToBePaid;
+    private int interestYetToPaid;
 
 
     public LoanDTOs(Loan loan){
@@ -52,11 +59,32 @@ public class LoanDTOs implements Serializable {
         theAmountOfTheFundYetToBePaid = loan.getTheAmountOfPrincipalPaymentYetToBePaid();
         status = loan.getStatus();
         statusName.set(status.name());
+        nextPaymentYaz = loan.getNextYazForPayment();
+        amountRaisedSoFar = loan.getOriginalAmount() - loan.getTheAmountLeftToMakeTheLoanActive();
+        howMuchLeftToMakeLoanActive = loan.getTheAmountLeftToMakeTheLoanActive();
+        theDateTheLoanBecameActive = loan.getStartingDate();
+        endDate = loan.getFinishDate();
         loansPayments = loan.getPayments();
     }
 
-   public String getNameOfLoan() {
+    public int getEndDate() {
+        return endDate;
+    }
+
+    public int getTheDateTheLoanBecameActive() {
+        return theDateTheLoanBecameActive;
+    }
+
+    public int getHowMuchLeftToMakeLoanActive() {
+        return howMuchLeftToMakeLoanActive;
+    }
+
+    public String getNameOfLoan() {
         return nameOfLoan.get();
+    }
+
+    public int getAmountRaisedSoFar() {
+        return amountRaisedSoFar;
     }
 
     public String getCategory() {

@@ -7,17 +7,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="add transaction table And more">
+    <list default="true" id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="done fixing sizing2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankActions/LeftToPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankActions/LeftToPay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/LoansComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/LoansComponent.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="editLoansTableAfterInlay" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -97,6 +93,8 @@
       <list>
         <item itemvalue="Application.TaskMain" />
         <item itemvalue="Application.TaskMain" />
+        <item itemvalue="Application.TaskMain" />
+        <item itemvalue="Application.TaskMain" />
       </list>
     </recent_temporary>
   </component>
@@ -133,7 +131,7 @@
       <workItem from="1654852004504" duration="3488000" />
       <workItem from="1654856723802" duration="17803000" />
       <workItem from="1654928203786" duration="2944000" />
-      <workItem from="1654936070802" duration="17059000" />
+      <workItem from="1654936070802" duration="31121000" />
     </task>
     <task id="LOCAL-00002" summary="add transaction table">
       <created>1653993899727</created>
@@ -142,7 +140,21 @@
       <option name="project" value="LOCAL" />
       <updated>1653993899727</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="divided paymanet">
+      <created>1654956853394</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654956853394</updated>
+    </task>
+    <task id="LOCAL-00004" summary="done fixing sizing">
+      <created>1654985350958</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654985350958</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,7 +174,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="final merging commit" />
     <MESSAGE value="add transaction table" />
-    <option name="LAST_COMMIT_MESSAGE" value="add transaction table" />
+    <MESSAGE value="divided paymanet" />
+    <MESSAGE value="done fixing sizing" />
+    <MESSAGE value="done fixing sizing2" />
+    <option name="LAST_COMMIT_MESSAGE" value="done fixing sizing2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -178,6 +193,12 @@
       <configuration name="Application">
         <watch expression="dividedAmount" language="JAVA" />
         <watch expression="tmp - amountToPay" language="JAVA" />
+        <watch expression="loan.getStatusName()" language="JAVA" />
+        <watch expression="LoanDataByStatus" language="JAVA" />
+        <watch expression="status" language="JAVA" />
+        <watch expression="loans" language="JAVA" />
+        <watch expression="LoansAsLoaner" language="JAVA" />
+        <watch expression="mainContainerComponent.getCenter().getScene().widthProperty()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

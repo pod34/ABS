@@ -59,7 +59,7 @@
                   <TableView fx:id="LoansData" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="600.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="2" GridPane.rowSpan="3" />
                   <TableView fx:id="CustomerData" prefHeight="80.0" prefWidth="600.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="6" GridPane.rowSpan="3" />
                   <Label fx:id="loansInAbsLb" styleClass="titleLabel" text="Loans in ABS" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="customersInAbsLb" styleClass="titleLabel" text="Customers in ABS" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label fx:id="customersInAbsLb" prefHeight="20.0" prefWidth="201.0" styleClass="titleLabel" text="Customers in ABS" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
                </children>
             </GridPane>
          </center>
