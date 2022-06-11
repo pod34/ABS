@@ -113,7 +113,7 @@ public class Loan implements Serializable {
         return interestPayedSoFar;
     }
 
-    public float getTheInterestYetToBePaidOnTheLoan() {
+    public int getTheInterestYetToBePaidOnTheLoan() {
         return theInterestYetToBePaidOnTheLoan;
     }
 

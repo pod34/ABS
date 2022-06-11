@@ -12,12 +12,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 
 import java.io.File;
@@ -30,18 +33,32 @@ import java.util.Map;
 public class BankController {
 
 
-
-   @FXML private Button OkBt;
-   @FXML private ComboBox<String> viewBy;
-   @FXML private Label filePath;
-   @FXML private Label CurrentYazLabel;
-   @FXML private AnchorPane viewByAdmin;
-   @FXML private AdminViewController viewByAdminController;
-   @FXML private AnchorPane subComponent;
-   @FXML private AnchorPane viewByCustomer;
-   @FXML private CustomerViewController viewByCustomerController;
-   @FXML private BorderPane mainContainerComponent;
+   @FXML
+   private Button OkBt;
+   @FXML
+   private ComboBox<String> viewBy;
+   @FXML
+   private Label filePath;
+   @FXML
+   private Label CurrentYazLabel;
+   @FXML
+   private AnchorPane viewByAdmin;
+   @FXML
+   private AdminViewController viewByAdminController;
+   @FXML
+   private AnchorPane subComponent;
+   @FXML
+   private AnchorPane viewByCustomer;
+   @FXML
+   private CustomerViewController viewByCustomerController;
+   @FXML
+   private BorderPane mainContainerComponent;
    private SimpleStringProperty curCustomerViewBy;
+   @FXML
+   private ComboBox<String> Skins;
+   @FXML ImageView image;
+   private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+
 
    private Stage primaryStage;
    BankSystem bankEngine;
@@ -57,15 +74,20 @@ public class BankController {
       URL BankControllerFXML = getClass().getResource(BankResourcesConstants.ERRORPOPUPWINDOW);
       loader.setLocation(BankControllerFXML);
       filePath.setId("file-path-label");
+      Skins.getItems().addAll("Light mode", "Dark mode");
 
    }
 
-   public int getCurrentYaz(){
+   public void setMainContainer(BorderPane main) {
+      this.mainContainerComponent = main;
+   }
+
+   public int getCurrentYaz() {
       return bankEngine.getCurrentYaz();
    }
 
-   public Boolean checkIfCustomerHasEnoughMoneyToInvest(int amount){
-     return bankEngine.checkIfCustomerHasEnoughMoneyToInvestByGivenAmount(curCustomerViewBy.getValue(),amount);
+   public Boolean checkIfCustomerHasEnoughMoneyToInvest(int amount) {
+      return bankEngine.checkIfCustomerHasEnoughMoneyToInvestByGivenAmount(curCustomerViewBy.getValue(), amount);
    }
 
    public void setBankEngine(BankSystem m_bankEngine) {
@@ -89,16 +111,15 @@ public class BankController {
 
    }
 
-   public void activateLoansInlay(List<String> nameOfLoansToInvestIn,int amountOfInvestment,int maxOwnerShipOfTheLoan){
-      if(bankEngine.LoansInlay(nameOfLoansToInvestIn,amountOfInvestment,curCustomerViewBy.getValue(),maxOwnerShipOfTheLoan) != null) {
-         viewByAdminController.updateLoansInBankInAdminView();
-         viewByCustomerController.updateCustomersLoansData();
-      }
-      else{
-        //TODO errorLabel.setText("You can't invest more money than you have in your balance");
-         //dialog.show();
-      }
-   }
+   public void activateLoansInlay(List<String> nameOfLoansToInvestIn, int amountOfInvestment, int maxOwnerShipOfTheLoan) {
+      if(maxOwnerShipOfTheLoan <= 100) {
+         if (bankEngine.LoansInlay(nameOfLoansToInvestIn, amountOfInvestment, curCustomerViewBy.getValue(), maxOwnerShipOfTheLoan) != null) {
+            viewByAdminController.updateLoansInBankInAdminView();
+         } else {
+            errorAlert.setContentText("You can't invest more money than you have in your balance!");
+            errorAlert.show();
+         }
+   
 
    public File ShowFileChooserDialog(FileChooser i_fileChooser) {
       return i_fileChooser.showOpenDialog(primaryStage);
@@ -133,7 +154,7 @@ public class BankController {
       return bankEngine.getListOfDTOsCustomer();
    }
 
-   public List<LoanDTOs> getSystemCustomerLoansByListOfLoansName(List<String> i_LoansName){
+   public List<LoanDTOs> getSystemCustomerLoansByListOfLoansName(List<String> i_LoansName) {
       return bankEngine.getListOfLoansDtoByListOfNamesOFLoans(i_LoansName);
    }
 
@@ -151,12 +172,28 @@ public class BankController {
 
          viewByCustomerController.setViewByCustomerData(viewBy.getValue());
          viewByCustomerController.setMessagesViewToCustomer(curCustomerViewBy.getValue());
+      } else {
+         if (!subComponent.equals(viewByAdmin))
          viewByCustomerController.updateTransactionToTransactionTable();
       }
-      else{
-         if(!subComponent.equals(viewByAdmin))
             subComponent.getChildren().setAll(viewByAdmin);
       }
+   }
+
+ 
+
+   public void withdrawActivation(int amount) {
+      if(bankEngine.checkIfMoneyCanBeWithdraw(amount, curCustomerViewBy.getValue())) {
+         AccountTransactionDTO tmp = bankEngine.WithdrawFromTheAccount(amount, curCustomerViewBy.getValue());
+         if (tmp != null)
+           viewByCustomerController.updateTransactionToTransactionTable();
+      }
+  else {
+         errorAlert.setContentText("You cant withdraw more then what you have!");
+         errorAlert.show();
+      }
+      viewByAdminController.updateLoansInBankInAdminView();
+      viewByCustomerController.updateCustomersLoansData();
    }
 
    public void chargeActivation(int amount){
@@ -167,27 +204,13 @@ public class BankController {
 
    }
 
-   public void withdrawActivation(int amount){
-      AccountTransactionDTO tmp = bankEngine.WithdrawFromTheAccount(amount, curCustomerViewBy.getValue());
-      if(tmp != null)
-         viewByCustomerController.updateTransactionToTransactionTable();
-      else {
-         //TODO errorLabel.setText("You can't withdraw more money that you have in your balance");
-         //dialog.show();
-      }
-      viewByAdminController.updateLoansInBankInAdminView();
-      viewByCustomerController.updateCustomersLoansData();
 
-
-
-   }
-
-   public void increaseYazActivation(){
+   public void increaseYazActivation() {
       bankEngine.IncreaseYaz();
       viewByCustomerController.updateCustomersLoansData();
    }
 
-   public void fullyLoansPaymentActivation(List<String> loanNames){
+   public void fullyLoansPaymentActivation(List<String> loanNames) {
       bankEngine.fullPaymentOnLoans(loanNames, curCustomerViewBy.getValue());
       viewByAdminController.updateLoansInBankInAdminView();
       viewByCustomerController.updateCustomersLoansData();
@@ -195,7 +218,7 @@ public class BankController {
 
    }
 
-   public void yazlyPaymentOfGivenLoansActivation(Map<String,Integer> loansToPayTo){
+   public void yazlyPaymentOfGivenLoansActivation(Map<String, Integer> loansToPayTo) {
       bankEngine.YazlyPaymentForGivenLoans(loansToPayTo);
       viewByCustomerController.updateCustomersLoansData();
       viewByAdminController.updateLoansInBankInAdminView();
@@ -203,24 +226,56 @@ public class BankController {
 
    }
 
-   public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyOfLoansAsBorrower(String customerName){
+   public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyOfLoansAsBorrower(String customerName) {
       return bankEngine.getCustomerPropertyForLoanAsBorrower(customerName);
    }
 
-   public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyOfLoansAsLender(String customerName){
+   public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyOfLoansAsLender(String customerName) {
       return bankEngine.getCustomerPropertyForLoanAsLender(customerName);
    }
 
-   public Map<String, SimpleStringProperty> getLoanDataByStatusPropertyAndStatusMapFromMainController(String loanName){
+   public Map<String, SimpleStringProperty> getLoanDataByStatusPropertyAndStatusMapFromMainController(String loanName) {
       return bankEngine.getLoanDataByStatusPropertyFromSystemMap(loanName);
    }
 
-   public List<LoanDTOs> scrambleActivation(List<String> chosenCategories,int minDuration,int minInterestForSingleYaz,int i_maxOpenLoansForLoanOwner){
-     return bankEngine.ActivationOfAnInlay(chosenCategories,minDuration,minInterestForSingleYaz,i_maxOpenLoansForLoanOwner,curCustomerViewBy.getValue());//TODO add more param later according to new filters
+   public List<LoanDTOs> scrambleActivation(List<String> chosenCategories, int minDuration, int minInterestForSingleYaz, int i_maxOpenLoansForLoanOwner) {
+      return bankEngine.ActivationOfAnInlay(chosenCategories, minDuration, minInterestForSingleYaz, i_maxOpenLoansForLoanOwner, curCustomerViewBy.getValue());//TODO add more param later according to new filters
    }
 
-   public CustomerDTOs getCustomerByName(String nameOfCustomer){
+   public CustomerDTOs getCustomerByName(String nameOfCustomer) {
       return bankEngine.getCustomerByName(nameOfCustomer);
+   }
+
+   public List<String> checkWhatLoansCanBeFullyPaid(List<String> loanNames) {
+      return bankEngine.checkWhatLoansCanBeFullyPaidSystem(loanNames, curCustomerViewBy.getValue());
+   }
+
+   @FXML
+   private void skinsChooserClicked(ActionEvent event) {
+      if (Skins.getValue().equals("Light mode")) {
+         if (!mainContainerComponent.getStylesheets().equals("resources/lightMode.css")) {
+            mainContainerComponent.getStylesheets().remove("resources/darkMode.css");
+            viewByCustomer.getStylesheets().remove("resources/darkMode.css");
+            viewByAdmin.getStylesheets().remove("resources/darkMode.css");
+            mainContainerComponent.getStylesheets().add("resources/lightMode.css");
+            viewByCustomer.getStylesheets().add("resources/lightMode.css");
+            viewByAdmin.getStylesheets().add("resources/lightMode.css");
+
+         }
+      } else {
+         if (!mainContainerComponent.getStylesheets().equals("resources/darkMode.css")) {
+            mainContainerComponent.getStylesheets().remove("resources/lightMode.css");
+            viewByCustomer.getStylesheets().remove("resources/lightMode.css");
+            viewByAdmin.getStylesheets().remove("resources/lightMode.css");
+            mainContainerComponent.getStylesheets().add("resources/darkMode.css");
+            viewByCustomer.getStylesheets().add("resources/darkMode.css");
+            viewByAdmin.getStylesheets().add("resources/darkMode.css");
+         }
+      }
+   }
+
+   public List<String> checkIfDividedLoansCanBePaid(Map<String, Integer> loansToPay){
+      return bankEngine.checkIfCanPayAllLoans(loansToPay, curCustomerViewBy.getValue());
    }
 }
 
