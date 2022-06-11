@@ -80,6 +80,7 @@ public class BankController {
       this.viewByCustomer = customerScene;
       viewByCustomer.prefWidthProperty().bind(viewByAdmin.widthProperty());
       viewByCustomer.prefHeightProperty().bind(viewByAdmin.heightProperty());
+      
    }
 
    public void setViewByCustomerController(CustomerViewController viewByCustomerController) {
@@ -147,6 +148,7 @@ public class BankController {
          viewByCustomer.prefWidthProperty().bind(subComponent.widthProperty());
          viewByCustomer.prefHeightProperty().bind(subComponent.heightProperty());
          subComponent.getChildren().setAll(viewByCustomer);
+
          viewByCustomerController.setViewByCustomerData(viewBy.getValue());
          viewByCustomerController.setMessagesViewToCustomer(curCustomerViewBy.getValue());
          viewByCustomerController.updateTransactionToTransactionTable();

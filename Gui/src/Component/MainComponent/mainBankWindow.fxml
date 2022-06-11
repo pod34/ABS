@@ -52,7 +52,7 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" BorderPane.alignment="CENTER">
          <content>
-            <AnchorPane fx:id="subComponent" minHeight="567.0" minWidth="700.0">
+            <AnchorPane fx:id="subComponent" minHeight="600.0" minWidth="800.0">
                <children>
                   <fx:include fx:id="viewByAdmin" source="../AdminView/AdminViewComponent.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>

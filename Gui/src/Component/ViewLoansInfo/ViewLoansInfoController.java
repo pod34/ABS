@@ -13,10 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import org.controlsfx.control.table.TableRowExpanderColumn;
 import java.util.Map;
@@ -77,7 +74,7 @@ public class ViewLoansInfoController {
         i_LoansData.getItems().addAll(FXCollections.observableArrayList(allLoans));
     }
 
-    private ScrollPane expandLoanInfo(TableRowExpanderColumn.TableRowDataFeatures<LoanDTOs> param) throws IOException {
+    private AnchorPane expandLoanInfo(TableRowExpanderColumn.TableRowDataFeatures<LoanDTOs> param) throws IOException {
         GridPane workSpace = new GridPane();
         workSpace.setHgap(10);
         workSpace.setVgap(5);
@@ -96,7 +93,7 @@ public class ViewLoansInfoController {
         FXMLLoader loader = new FXMLLoader();
         URL LoansViewFXML = getClass().getResource(BankResourcesConstants.VIEWLOANSDETAILEXPANDED_RESOURCE_IDENTIFIRE);
         loader.setLocation(LoansViewFXML);
-        ScrollPane LoanExpandedDetails = loader.load();
+        AnchorPane LoanExpandedDetails = loader.load();
         ViewLoansInfoController expendedLoansDetailsController = loader.getController();
         LoanExpandedDetails.setBackground(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY)));
 
