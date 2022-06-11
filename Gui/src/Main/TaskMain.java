@@ -49,7 +49,7 @@ public class TaskMain extends Application {
         bankController.setViewByCustomerController(customerViewController);
 
         primaryStage.setTitle("Alternative Banking System");
-        Scene scene = new Scene(root, 1050, 600);
+        Scene scene = new Scene(root, 1200, 800);
         primaryStage.setScene(scene);
         primaryStage.show();
 

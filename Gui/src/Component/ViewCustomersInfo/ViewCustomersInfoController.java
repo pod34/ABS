@@ -55,15 +55,10 @@ public class ViewCustomersInfoController {
             }
 
             newAsLoaner.setText("New: " + NewNum);
-            newAsLoaner.textProperty().bind(propertyMapToBind.get(LoanStatus.NEW));
             PendingAsLoaner.setText("Pending: " + pendingNum);
-            PendingAsLoaner.textProperty().bind(propertyMapToBind.get(LoanStatus.PENDING));
             activeAsLoaner.setText("Active: " + activenNum);
-            activeAsLoaner.textProperty().bind(propertyMapToBind.get(LoanStatus.ACTIVE));
             riskAsLoaner.setText("Risk : " + riskNum);
-            riskAsLoaner.textProperty().bind(propertyMapToBind.get(LoanStatus.RISK));
             finishedAsLoaner.setText("Finished: " + FinishedNum);
-            finishedAsLoaner.textProperty().bind(propertyMapToBind.get(LoanStatus.FINISHED));
         }
     }
 
@@ -77,19 +72,19 @@ public class ViewCustomersInfoController {
             int pendingNum,activenNum,riskNum,FinishedNum,NewNum;
             pendingNum = activenNum = riskNum = FinishedNum = NewNum = 0;
             if(LoansByStatus.containsKey("PENDING")){
-                pendingNum = LoansByStatus.get("PENDING").size();
+                pendingNum += LoansByStatus.get("PENDING").size();
             }
             if(LoansByStatus.containsKey("NEW")){
-                NewNum = LoansByStatus.get("NEW").size();
+                NewNum += LoansByStatus.get("NEW").size();
             }
             if(LoansByStatus.containsKey("FINISHED")){
-                FinishedNum = LoansByStatus.get("FINISHED").size();
+                FinishedNum += LoansByStatus.get("FINISHED").size();
             }
             if(LoansByStatus.containsKey("ACTIVE")){
-                activenNum = LoansByStatus.get("ACTIVE").size();
+                activenNum += LoansByStatus.get("ACTIVE").size();
             }
             if(LoansByStatus.containsKey("RISK")){
-                riskNum = LoansByStatus.get("RISK").size();
+                riskNum += LoansByStatus.get("RISK").size();
             }
 
             pendingAsLender.setText("Pending: " + pendingNum);
@@ -97,13 +92,13 @@ public class ViewCustomersInfoController {
             riskAsLender.setText("Risk : " + riskNum);
             finishedAsLender.setText("Finished: " + FinishedNum);
             newAsLender.setText("New: " + NewNum);
-            newAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.NEW));
+           // newAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.NEW));
         }
-        pendingAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.PENDING));
+/*        pendingAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.PENDING));
         activeAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.ACTIVE));
         riskAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.RISK));
         finishedAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.FINISHED));
-        newAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.NEW));
+        newAsLender.textProperty().bind(propertyMapToBind.get(LoanStatus.NEW));*/
 
     }
 
