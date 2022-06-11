@@ -17,6 +17,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import org.controlsfx.control.CheckComboBox;
 import org.controlsfx.control.CheckListView;
@@ -41,7 +42,7 @@ public class CustomerViewController {
     @FXML private ScrollPane NotificationsTable;
     @FXML private TableView LoansAsLender;
     @FXML private TableView LoansAsLoaner;
-    @FXML private TableView LoansAsLoanerTableForPaymentTab;
+    @FXML private AnchorPane LoansAsLoanerTableForPaymentTab;
     @FXML private BorderPane customerViewBorderPane;
     @FXML private Label errorAmountToInvest;
     @FXML private Label howManyLoansFound;
@@ -204,7 +205,7 @@ public class CustomerViewController {
         setAccountTransInfo(nameOfCustomer);
         curCustomerName = nameOfCustomer;
         welcomeCustomer.setText("Hello " + nameOfCustomer);
-        //balanceOfCustomer.setText("Balance: " + );
+        //balanceOfCustomer.setText("Balance: " + );//TODO bind with current balance
     }
 
     public void updateCustomersLoansData(){
@@ -213,27 +214,16 @@ public class CustomerViewController {
             CustomerDTOs curCustomer = mainController.getCustomerByName(nameOfCustomer);
             curCustomerData.getValue().updateLoansTables(curCustomer);
         }
-        setViewByCustomerData(curCustomerName);
+        if(curCustomerName != null)
+            setViewByCustomerData(curCustomerName);
 
     }
 
-    private void setLoansAsLoanerForPaymentTab(String nameOfCustomer){//  TODO tried for hours to duplicate from the info tab to be the same table but it didnt work so maybe to try to fix it with maya
+    private void setLoansAsLoanerForPaymentTab(String nameOfCustomer){
         TableView<LoanDTOs> tmp = DataOfCustomerTOPresentInCustomerView.get(nameOfCustomer).getLoansAsLoanerDataForPaymentTab();
         tmp.prefWidthProperty().bind(LoansAsLoanerTableForPaymentTab.widthProperty());
         tmp.prefHeightProperty().bind(LoansAsLoanerTableForPaymentTab.heightProperty());
-        List<LoanDTOs> loans = tmp.getItems();
-        if(LoansAsLoaner.getColumns().isEmpty()){
-            ViewLoansInfoController tableBuilder = new ViewLoansInfoController();
-            tableBuilder.buildLoansTableView(LoansAsLoanerTableForPaymentTab,loans);
-            LoansAsLoanerTableForPaymentTab.refresh();
-        }
-        else{
-            if(!LoansAsLoanerTableForPaymentTab.getItems().isEmpty()){
-                LoansAsLoanerTableForPaymentTab.getItems().clear();
-            }
-            LoansAsLoanerTableForPaymentTab.getItems().addAll(loans);
-            LoansAsLoanerTableForPaymentTab.refresh();
-        }
+        LoansAsLoanerTableForPaymentTab.getChildren().setAll(tmp);
     }
 
     private void setLonerLoan(String nameOfCustomer){
@@ -363,9 +353,7 @@ public class CustomerViewController {
          Task<Void> task = new Task<Void>() {
             @Override protected Void call() throws Exception {
                 updateMessage("Looking for relevant Loans...");
-
                 Thread.sleep(2500);
-
                 int max = 100000;
                 for (int i = 0; i < max; i++) {
                     if(i == 300)

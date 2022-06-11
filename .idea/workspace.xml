@@ -7,15 +7,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="divided paymanet">
+    <list default="true" id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="done fixing sizing2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/LoansComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/LoansComponent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Main/TaskMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Main/TaskMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654956853394</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="done fixing sizing">
+      <created>1654985350958</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654985350958</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,7 +175,9 @@
     <MESSAGE value="final merging commit" />
     <MESSAGE value="add transaction table" />
     <MESSAGE value="divided paymanet" />
-    <option name="LAST_COMMIT_MESSAGE" value="divided paymanet" />
+    <MESSAGE value="done fixing sizing" />
+    <MESSAGE value="done fixing sizing2" />
+    <option name="LAST_COMMIT_MESSAGE" value="done fixing sizing2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -189,6 +196,9 @@
         <watch expression="loan.getStatusName()" language="JAVA" />
         <watch expression="LoanDataByStatus" language="JAVA" />
         <watch expression="status" language="JAVA" />
+        <watch expression="loans" language="JAVA" />
+        <watch expression="LoansAsLoaner" language="JAVA" />
+        <watch expression="mainContainerComponent.getCenter().getScene().widthProperty()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
