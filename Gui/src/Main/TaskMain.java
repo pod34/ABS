@@ -37,6 +37,7 @@ public class TaskMain extends Application {
         BankSystem bankEngine = new SystemImplement(bankController);
         bankController.setBankEngine(bankEngine);
         bankController.setPrimaryStage(primaryStage);
+        bankController.setMainContainer(root);
 
         FXMLLoader customerLoader = new FXMLLoader();
         URL CustomerControllerFXML = getClass().getResource(BankResourcesConstants.CUSTOMERCONTROLLER_FXML_RESOURCE_IDENTIFIER);

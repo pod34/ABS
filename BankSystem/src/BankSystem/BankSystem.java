@@ -35,6 +35,8 @@ public interface BankSystem {
     CustomerDTOs getCustomerByName(String name);
     void YazlyPaymentForGivenLoans(Map<String,Integer> loansToPay);
     int getCurrentYaz();
-
+    List<String> checkWhatLoansCanBeFullyPaidSystem(List<String> loanNames, String customerName);
+    List<String> checkIfCanPayAllLoans(Map<String,Integer> loansToPay, String customerName);
+    Boolean checkIfMoneyCanBeWithdraw(int amount, String customerName);
 
     }
