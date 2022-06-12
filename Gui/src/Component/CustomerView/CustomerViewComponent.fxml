@@ -161,39 +161,39 @@
                                  <children>
                                     <HBox prefHeight="0.0" prefWidth="380.0" spacing="22.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="120.0" text="Amount to invest" />
+                                          <Label prefHeight="17.0" prefWidth="154.0" text="Amount to invest" />
                                           <TextField fx:id="amountToInvest" prefHeight="27.0" prefWidth="128.0" />
                                           <Label fx:id="errorAmountToInvest" prefHeight="17.0" prefWidth="281.0" />
                                        </children>
                                     </HBox>
                                     <HBox spacing="38.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="105.0" text="Category (optional)" />
+                                          <Label prefHeight="17.0" prefWidth="144.0" text="Category (optional)" />
                                           <CheckComboBox fx:id="categories" prefHeight="27.0" prefWidth="128.0" />
                                        </children>
                                     </HBox>
                                     <HBox>
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="144.0" text="Minimum Yaz(optional)" />
+                                          <Label prefHeight="17.0" prefWidth="178.0" text="Minimum Yaz(optional)" />
                                           <TextField fx:id="minimumYaz" prefHeight="27.0" prefWidth="128.0" />
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="104.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="250.0" text="Maximum open Loans for borrower (Optional)" />
+                                          <Label prefHeight="17.0" prefWidth="320.0" text="Maximum open Loans for borrower (Optional)" />
                                           <TextField fx:id="maxOpenLoans" prefHeight="27.0" prefWidth="128.0" />
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="151.0" spacing="55.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="195.0" text="Maximum loan ownership (optional)" />
+                                          <Label prefHeight="17.0" prefWidth="267.0" text="Maximum loan ownership (optional)" />
                                           <TextField fx:id="maxLoanOwner" minWidth="128.0" prefHeight="27.0" prefWidth="128.0" />
                                           <Label fx:id="errorMaxLoanOwner" prefHeight="17.0" prefWidth="86.0" />
                                        </children>
                                     </HBox>
                                     <HBox layoutX="10.0" layoutY="151.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="250.0" text="Minimum interest for loan (optional)" />
+                                          <Label prefHeight="17.0" prefWidth="321.0" text="Minimum interest for loan (optional)" />
                                           <TextField fx:id="minInterest" prefHeight="27.0" prefWidth="128.0" />
                                        </children>
                                     </HBox>
@@ -293,8 +293,8 @@
                               </Label>
                               <HBox prefHeight="64.0" prefWidth="492.0" spacing="100.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
                                  <children>
-                                    <Button fx:id="fullPayment" mnemonicParsing="false" onAction="#fullPaymentClicked" prefHeight="81.0" prefWidth="132.0" text="Close Loan" />
-                                    <Button fx:id="yazlyPayment" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#yazlyPaymentClicked" prefHeight="81.0" prefWidth="132.0" text="Pay Yazly Payment" />
+                                    <Button fx:id="fullPayment" mnemonicParsing="false" onAction="#fullPaymentClicked" prefHeight="81.0" prefWidth="178.0" text="Close Loan" />
+                                    <Button fx:id="yazlyPayment" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#yazlyPaymentClicked" prefHeight="81.0" prefWidth="192.0" text="Pay Yazly Payment" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets bottom="10.0" left="10.0" top="10.0" />
