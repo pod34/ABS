@@ -35,6 +35,7 @@ public class Loan implements Serializable {
     private int yazlyInterest;
     private int totalMissedYazNeedToPayBack = 0;
     private Map<String, SimpleStringProperty> loanDataByStatusPropertyAndStatusProperty;
+    private int debt;
 
 
     public Loan(String nameOfLoan, String nameOfLoaner, String category, int originalAmount, int durationOfTheLoan,
@@ -256,6 +257,15 @@ public class Loan implements Serializable {
             theInterestYetToBePaidOnTheLoan -= interestAmount;
             theAmountOfThePrincipalPaymentPaidOnTheLoanSoFar += principalAmount;
             interestPayedSoFar += interestAmount;
+
+            int debt = 0;
+            for (LeftToPay curLoner : listOfLenders.values()) {
+                debt += curLoner.getAmountToPayByGivenYaz(yaz);
+            }
+            if (debt == 0) {
+                status = LoanStatus.ACTIVE;
+                active = true;
+            }
         }
     }
 
@@ -271,6 +281,14 @@ public class Loan implements Serializable {
 
     public int getTotalMissedYazNeedToPayBack() {
         return totalMissedYazNeedToPayBack;
+    }
+
+    public void setDebt(int debt) {
+        this.debt = debt;
+    }
+
+    public int getDebt() {
+        return debt;
     }
 }
 

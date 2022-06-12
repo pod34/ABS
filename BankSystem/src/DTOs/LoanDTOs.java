@@ -40,6 +40,8 @@ public class LoanDTOs implements Serializable {
     private int endDate;
     private int principalYetToBePaid;
     private int interestYetToPaid;
+    private int totalMissedYazNeedToPayBack;
+    private int debt;
 
 
     public LoanDTOs(Loan loan){
@@ -65,6 +67,8 @@ public class LoanDTOs implements Serializable {
         theDateTheLoanBecameActive = loan.getStartingDate();
         endDate = loan.getFinishDate();
         loansPayments = loan.getPayments();
+        totalMissedYazNeedToPayBack = loan.getTotalMissedYazNeedToPayBack();
+        debt = loan.getDebt();
     }
 
     public int getEndDate() {
@@ -185,5 +189,13 @@ public class LoanDTOs implements Serializable {
 
     public SimpleIntegerProperty nextYazPaymentProperty() {
         return nextYazPayment;
+    }
+
+    public int getTotalMissedYazNeedToPayBack() {
+        return totalMissedYazNeedToPayBack;
+    }
+
+    public int getDebt() {
+        return debt;
     }
 }

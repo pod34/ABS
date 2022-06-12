@@ -112,13 +112,15 @@ public class BankController {
    }
 
    public void activateLoansInlay(List<String> nameOfLoansToInvestIn, int amountOfInvestment, int maxOwnerShipOfTheLoan) {
-      if(maxOwnerShipOfTheLoan <= 100) {
+      if (maxOwnerShipOfTheLoan <= 100) {
          if (bankEngine.LoansInlay(nameOfLoansToInvestIn, amountOfInvestment, curCustomerViewBy.getValue(), maxOwnerShipOfTheLoan) != null) {
             viewByAdminController.updateLoansInBankInAdminView();
          } else {
             errorAlert.setContentText("You can't invest more money than you have in your balance!");
             errorAlert.show();
          }
+      }
+   }
    
 
    public File ShowFileChooserDialog(FileChooser i_fileChooser) {
@@ -172,13 +174,15 @@ public class BankController {
 
          viewByCustomerController.setViewByCustomerData(viewBy.getValue());
          viewByCustomerController.setMessagesViewToCustomer(curCustomerViewBy.getValue());
-      } else {
-         if (!subComponent.equals(viewByAdmin))
          viewByCustomerController.updateTransactionToTransactionTable();
       }
+      else{
+         if(!subComponent.equals(viewByAdmin))
             subComponent.getChildren().setAll(viewByAdmin);
       }
    }
+
+
 
  
 

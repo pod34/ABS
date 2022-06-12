@@ -214,16 +214,18 @@ public class SystemImplement implements BankSystem , Serializable {
     public void IncreaseYaz(){
         int debt = 0;
         Map<Loan,Integer> newRiskLoans = new HashMap<>();
-        for(Loan curLoan : LoansInBank.values().stream().filter(L -> /*(L.getStatus().equals(LoanStatus.ACTIVE)) &&*/ (L.getNextYazForPayment() == Yaz)).collect(Collectors.toList())){
+        for(Loan curLoan : LoansInBank.values().stream().filter(L -> (!L.getStatus().equals(LoanStatus.FINISHED)) && (L.getNextYazForPayment() == Yaz)).collect(Collectors.toList())){
             for(Map.Entry<String,LeftToPay> curLender :curLoan.getMapOfLenders().entrySet()){
                 debt += curLender.getValue().getAmountToPayByGivenYaz(Yaz);
             }
             if(debt != 0){
                 curLoan.makeRisk(Yaz,debt);
                 newRiskLoans.put(curLoan,debt);
+                curLoan.setDebt(debt);
             }
             else{
                 curLoan.setNextYazForPayment();
+                curLoan.setDebt(0);
             }
         }
         sendMassagesToNewRiskLoans(newRiskLoans);
