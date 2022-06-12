@@ -117,12 +117,12 @@
                               <Insets top="30.0" />
                            </GridPane.margin>
                         </VBox>
-                        <Label fx:id="LoansAsLoanerLabel" alignment="BOTTOM_CENTER" prefHeight="13.0" prefWidth="216.0" text="Loans As Loaner" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="LoansAsLoanerLabel" alignment="BOTTOM_CENTER" prefHeight="13.0" prefWidth="216.0" styleClass="titleLabel" text="Loans As Loaner" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="LoansAsLenderLabel" alignment="BOTTOM_CENTER" layoutX="49.0" layoutY="88.0" prefHeight="13.0" prefWidth="216.0" text="Loans as lender" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <Label fx:id="LoansAsLenderLabel" alignment="BOTTOM_CENTER" layoutX="49.0" layoutY="88.0" prefHeight="13.0" prefWidth="216.0" styleClass="titleLabel" text="Loans as lender" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                         <TableView fx:id="LoansAsLoaner" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="6" />
                         <TableView fx:id="LoansAsLender" layoutX="49.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.rowSpan="7" />
                      </children>
@@ -275,7 +275,7 @@
                                     <Insets top="10.0" />
                                  </GridPane.margin>
                                  <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" text="Notifications" underline="true">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="titleLabel" text="Notifications" underline="true">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>

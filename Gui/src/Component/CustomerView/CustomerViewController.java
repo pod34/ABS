@@ -94,7 +94,7 @@ public class CustomerViewController {
         message.append("Hello " + customerName + "\n" + msg + loanName);
         message.append("\n" + "The amount for payment is: " + amount);
         if (notifications.containsKey(customerName))
-            notifications.get(customerName).add(msg.toString());
+            notifications.get(customerName).add(message.toString());
         else
             notifications.put(customerName, new ArrayList<>(Collections.singleton(message.toString())));
 
@@ -295,7 +295,7 @@ public class CustomerViewController {
             i_minInterest = Integer.parseInt(minInterest.getText());
 
         if(!(amountToInvest.getText().isEmpty()))
-             investment = Integer.parseInt(amountToInvest.getText());
+            investment = Integer.parseInt(amountToInvest.getText());
         if(!(maxOpenLoans.getText().isEmpty()))
             i_maxOpenLoansForLoanOwner = Integer.parseInt(maxOpenLoans.getText());
         return mainController.scrambleActivation(chosenCategories,minYaz,i_minInterest,i_maxOpenLoansForLoanOwner);

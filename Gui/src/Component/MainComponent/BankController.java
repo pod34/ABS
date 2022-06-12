@@ -8,6 +8,8 @@ import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
 import SystemExceptions.InccorectInputType;
 import common.BankResourcesConstants;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -74,7 +77,7 @@ public class BankController {
       URL BankControllerFXML = getClass().getResource(BankResourcesConstants.ERRORPOPUPWINDOW);
       loader.setLocation(BankControllerFXML);
       filePath.setId("file-path-label");
-      Skins.getItems().addAll("Light mode", "Dark mode");
+      Skins.getItems().addAll("Blue mode", "Red mode");
 
    }
 
@@ -134,7 +137,15 @@ public class BankController {
          viewByCustomerController.addCategoriesToScramble(bankEngine.getAllCategories().getCategories());
          viewByCustomerController.setDataOfCustomerTOPresentInCustomerView(bankEngine.getListOfDTOsCustomer());
          CurrentYazLabel.textProperty().bind(bankEngine.getYazProperty());
+
       }
+      //Duration = 2.5 seconds
+      Duration duration = Duration.millis(2500);
+      //Create new rotate transition
+      RotateTransition rotateTransition = new RotateTransition(duration, image);
+      //Rotate by 200 degree
+      rotateTransition.setByAngle(360);
+      rotateTransition.play();
       return flag;
    }
 
@@ -212,6 +223,19 @@ public class BankController {
    public void increaseYazActivation() {
       bankEngine.IncreaseYaz();
       viewByCustomerController.updateCustomersLoansData();
+      //Duration = 2.5 seconds
+      Duration duration = Duration.millis(2500);
+      //Create new translate transition
+      TranslateTransition transition = new TranslateTransition(duration, image);
+      //Move in X axis by +200
+      transition.setByX(200);
+      //Move in Y axis by +100
+      transition.setByY(0);
+      //Go back to previous position after 2.5 seconds
+      transition.setAutoReverse(true);
+      //Repeat animation twice
+      transition.setCycleCount(2);
+      transition.play();
    }
 
    public void fullyLoansPaymentActivation(List<String> loanNames) {
