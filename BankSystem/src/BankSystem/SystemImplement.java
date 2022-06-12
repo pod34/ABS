@@ -244,7 +244,7 @@ public class SystemImplement implements BankSystem , Serializable {
 
     private void sendMassagesToNewRiskLoans(Map<Loan,Integer> i_newRiskLoans) {
         for (Map.Entry<Loan,Integer> curLoan : i_newRiskLoans.entrySet()) {
-                mainController.setMessage(curLoan.getKey().getNameOfLoaner(), curLoan.getValue(), curLoan.getKey().getNameOfLoan(), "You did not pay on the due date: ");
+                mainController.setMessage(curLoan.getKey().getNameOfLoaner(), curLoan.getValue(), curLoan.getKey().getNameOfLoan(), "You did not pay on the due date for loan: ");
             }
     }
 
