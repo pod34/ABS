@@ -214,16 +214,18 @@ public class SystemImplement implements BankSystem , Serializable {
     public void IncreaseYaz(){
         int debt = 0;
         Map<Loan,Integer> newRiskLoans = new HashMap<>();
-        for(Loan curLoan : LoansInBank.values().stream().filter(L -> /*(L.getStatus().equals(LoanStatus.ACTIVE)) &&*/ (L.getNextYazForPayment() == Yaz)).collect(Collectors.toList())){
+        for(Loan curLoan : LoansInBank.values().stream().filter(L -> (!L.getStatus().equals(LoanStatus.FINISHED)) && (L.getNextYazForPayment() == Yaz)).collect(Collectors.toList())){
             for(Map.Entry<String,LeftToPay> curLender :curLoan.getMapOfLenders().entrySet()){
                 debt += curLender.getValue().getAmountToPayByGivenYaz(Yaz);
             }
             if(debt != 0){
                 curLoan.makeRisk(Yaz,debt);
                 newRiskLoans.put(curLoan,debt);
+                curLoan.setDebt(debt);
             }
             else{
                 curLoan.setNextYazForPayment();
+                curLoan.setDebt(0);
             }
         }
         sendMassagesToNewRiskLoans(newRiskLoans);
@@ -342,5 +344,37 @@ public class SystemImplement implements BankSystem , Serializable {
 
     public CustomerDTOs getCustomerByName(String name){
         return new CustomerDTOs(Customers.get(name),getListOfTransactionsDTO(Customers.get(name).getTransactions()));
+    }
+
+    public List<String> checkWhatLoansCanBeFullyPaidSystem(List<String> loanNames, String customerName){
+        List<Loan> wantedLoans = LoansInBank.values().stream().filter(L -> loanNames.contains(L.getNameOfLoan())).sorted(Comparator.comparingInt(e -> (e.getTheAmountOfPrincipalPaymentYetToBePaid() + e.getTheInterestYetToBePaidOnTheLoan()))).collect(Collectors.toList());
+        List<String> loansThatCanBeFullyPaid = new ArrayList<>();
+        int moneyInThatCanBeAfterPayment = Customers.get(customerName).getMoneyInAccount();
+        for (Loan curLoan: wantedLoans) {
+            if(moneyInThatCanBeAfterPayment >=  curLoan.getTheAmountOfPrincipalPaymentYetToBePaid() + curLoan.getTheInterestYetToBePaidOnTheLoan()){
+                moneyInThatCanBeAfterPayment -= curLoan.getTheAmountOfPrincipalPaymentYetToBePaid() + curLoan.getTheInterestYetToBePaidOnTheLoan();
+                loansThatCanBeFullyPaid.add(curLoan.getNameOfLoan());
+            }
+        }
+        return loansThatCanBeFullyPaid;
+    }
+
+    public List<String> checkIfCanPayAllLoans(Map<String,Integer> loansToPay, String customerName){
+        int amountInBank = Customers.get(customerName).getMoneyInAccount();
+        List<String> loansThatCanBePaid = new ArrayList<>();
+        Map<String,Integer> sortedLendersByAmountToPay = loansToPay.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        for (Map.Entry<String, Integer> curLoan: sortedLendersByAmountToPay.entrySet()) {
+            if(amountInBank != 0){
+                amountInBank -= curLoan.getValue();
+                loansThatCanBePaid.add(curLoan.getKey());
+            }
+        }
+        return loansThatCanBePaid;
+    }
+
+    public Boolean checkIfMoneyCanBeWithdraw(int amount, String customerName){
+        return amount <= Customers.get(customerName).getMoneyInAccount();
     }
 }

@@ -1,7 +1,7 @@
 .root{
     -fx-background: lightsteelblue;
     -fx-focus-color: darkslateblue;
-    -fx-font-family: "Copperplate";
+    -fx-font-family: "Arial";
 }
 
 .button{
@@ -21,14 +21,12 @@
 }
 
 #welcome-customer-label{
-    -fx-font-family: "Brush Script MT";
+    -fx-font-family: "Gabriola";
     -fx-text-fill: white;
     -fx-font-size: 24px;
 }
 
 .check-box{
-    -fx-border-color: indianred;
-    -fx-border-style: dotted;
     -fx-border-insets: -5;
     -fx-border-radius: 5;
     -fx-focus-color: indianred;
@@ -37,4 +35,8 @@
 .combo-box{
     -fx-border-radius: 20;
     -fx-background-radius: 20;
+}
+
+.table-view-status-risk{
+
 }

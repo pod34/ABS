@@ -200,12 +200,12 @@ public class ViewLoansInfoController {
                 LoanDataByStatus.setText("the loan became active on yaz " + loan.getTheDateTheLoanBecameActive() +  "\n"
                         + "next payment yaz is " + loan.getNextYazPayment() + "\n" + "The total principal paid so far : " + loan.getTheAmountOfThePrincipalPaymentPaidOnTheLoanSoFar() + "\n"
                         + "The total interest paid so far : " + loan.getInterestPayedSoFar() + "\n" + "The principal yet to be paid: " + loan.getTheAmountOfTheFundYetToBePaid() + "\n"
-                        + "The interest yet to be paid: " + loan.getTheInterestYetToBePaidOnTheLoan());//TODO
+                        + "The interest yet to be paid: " + loan.getTheInterestYetToBePaidOnTheLoan() + "\n" + "total missed payments: " + loan.getTotalMissedYazNeedToPayBack() + "\n" + "Debt: " + loan.getDebt());
                 break;
             case "FINISHED":
                 status.setText("FINISHED");
                 LoanDataByStatus.setText("Start yaz: " + loan.getTheDateTheLoanBecameActive() + "\n" +
-                "End yaz: " + loan.getEndDate());//TODO
+                "End yaz: " + loan.getEndDate());
                 break;
             default:
                 break;

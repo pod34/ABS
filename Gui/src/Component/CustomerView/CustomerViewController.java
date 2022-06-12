@@ -81,6 +81,8 @@ public class CustomerViewController {
     private String curCustomerName;
     @FXML private Label loansInAbsLb;
     @FXML private Label customersInAbsLb;
+    private Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+    private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 
 
     public void setMainController(BankController mainController) {
@@ -306,8 +308,11 @@ public class CustomerViewController {
             startTask();
         }
         else{
+            errorAlert.setContentText("You can't invest more than you have!");
+            errorAlert.show();
             errorAmountToInvest.setText("You can't invest more than you have!");
             errorAmountToInvest.setStyle("-fx-text-fill: #e70d0d; -fx-font-size: 16px;");//TODO not visible after invesment reset
+
         }
 
     }
@@ -398,11 +403,21 @@ public class CustomerViewController {
 
     @FXML
     void fullPaymentClicked(ActionEvent event) {
+         int numberOfLoansBeforeCheck;
         List<String> LoansToClose = DataOfCustomerTOPresentInCustomerView.get(curCustomerName).getLoansAsLoanerDataForPaymentTab().getItems().stream()
                 .filter(L -> L.isSelected())
                 .collect(Collectors.toMap(LoanDTOs::getNameOfLoan,loan -> loan))
                 .keySet().stream().collect(Collectors.toList());
-        mainController.fullyLoansPaymentActivation(LoansToClose);
+        numberOfLoansBeforeCheck = LoansToClose.size();
+        LoansToClose = mainController.checkWhatLoansCanBeFullyPaid(LoansToClose);
+        if(LoansToClose.size() != numberOfLoansBeforeCheck){
+            confirmationAlert.setContentText("You can not pay fully on the loans that you choose but you can pay the loans:\n" + loanNamesInString(LoansToClose) +"Press OK to continue the process");
+            confirmationAlert.showAndWait();
+            if(confirmationAlert.getResult().getText().equals("OK"))
+                mainController.fullyLoansPaymentActivation(LoansToClose);
+        }
+        else
+            mainController.fullyLoansPaymentActivation(LoansToClose);
     }
 
     @FXML
@@ -425,6 +440,7 @@ public class CustomerViewController {
 
     @FXML
     void yazlyPaymentClicked(ActionEvent event) {
+        List<String> nameOfLoansThatCanBePaid = new ArrayList<>();
         List<LoanDTOs> loansToPay = DataOfCustomerTOPresentInCustomerView.get(curCustomerName).getLoansAsLoanerDataForPaymentTab().getItems().stream()
                 .filter(L->L.getNextYazPayment() == mainController.getCurrentYaz()).collect(Collectors.toList());
         Map<String,Integer> loansToPayAndAmountOfPayment = new HashMap<>();
@@ -432,9 +448,26 @@ public class CustomerViewController {
             loansToPayAndAmountOfPayment.put(curLoan.getNameOfLoan(),Integer.parseInt(curLoan.getAmountToPay()));
        }
        if(loansToPay.size() != 0)
+           nameOfLoansThatCanBePaid = mainController.checkIfDividedLoansCanBePaid(loansToPayAndAmountOfPayment);
+       if(loansToPayAndAmountOfPayment.size() != nameOfLoansThatCanBePaid.size()) {
+           confirmationAlert.setContentText("You can not pay all the loans that you choose but you can pay the loans:\n" + loanNamesInString(nameOfLoansThatCanBePaid) +"Press OK to continue the process");
+           confirmationAlert.showAndWait();
+           if(confirmationAlert.getResult().getText().equals("OK")){
+               mainController.yazlyPaymentOfGivenLoansActivation(loansToPayAndAmountOfPayment);
+           }
+       }
+       else
            mainController.yazlyPaymentOfGivenLoansActivation(loansToPayAndAmountOfPayment);
 
   }
+
+    private String loanNamesInString(List<String> loanNames){
+        StringBuilder  allLoanNamesString = new StringBuilder();
+        for (String curLoanName: loanNames) {
+            allLoanNamesString.append(curLoanName + "\n");
+        }
+        return allLoanNamesString.toString();
+    }
 }
 
 

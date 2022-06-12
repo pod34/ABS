@@ -22,7 +22,7 @@
 <?import org.controlsfx.control.CheckListView?>
 <?import org.controlsfx.control.StatusBar?>
 
-<AnchorPane fx:id="customerViewWindow" stylesheets="@../../resources/abs.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Component.CustomerView.CustomerViewController">
+<AnchorPane fx:id="customerViewWindow" stylesheets="@../../resources/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Component.CustomerView.CustomerViewController">
    <children>
       <TabPane minHeight="567.0" minWidth="800.0" snapToPixel="false" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
