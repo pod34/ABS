@@ -18,10 +18,10 @@
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="197.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="0.0" prefWidth="18.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="108.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="85.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="150.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="55.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="128.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="61.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="192.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="7.0" prefWidth="9.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -51,7 +51,7 @@
                   <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="50.0" prefWidth="99.0" text="Payments" underline="true" />
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
-                        <Accordion fx:id="PaymentsDetails" prefHeight="100.0" prefWidth="100.0" />
+                        <Accordion fx:id="PaymentsDetails" prefHeight="100.0" prefWidth="193.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -67,7 +67,7 @@
                   <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="39.0" prefWidth="115.0" text="Lenders" underline="true" />
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
-                        <Accordion fx:id="LenderDetails" prefHeight="100.0" prefWidth="100.0" />
+                        <Accordion fx:id="LenderDetails" prefHeight="100.0" prefWidth="123.0" />
                      </content>
                   </ScrollPane>
                </children>

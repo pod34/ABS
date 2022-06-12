@@ -49,11 +49,17 @@ public class CustomerDataToPresent {
         final TableColumn<LoanDTOs, Integer> nextYazPayment = new TableColumn<>( "Next yaz payment" );
         nextYazPayment.setCellValueFactory( new PropertyValueFactory<>("nextYazPayment"));
         LoansAsLoanerDataForPaymentTab.getColumns().add(nextYazPayment);
-        nextYazPayment.getTableView().setEditable(true);
+        nextYazPayment.setPrefWidth(150);
+
+        final TableColumn<LoanDTOs, Integer> amountToPayThisYaz = new TableColumn<>( "Amount To Pay This Yaz" );
+        amountToPayThisYaz.setCellValueFactory( new PropertyValueFactory<>("AmountToPayThisYaz"));
+        LoansAsLoanerDataForPaymentTab.getColumns().add(amountToPayThisYaz);
+        amountToPayThisYaz.setPrefWidth(125);
 
 
         final TableColumn<LoanDTOs, String> amountToPayCol = new TableColumn<>("Amount to pay");
         amountToPayCol.setCellValueFactory( new PropertyValueFactory<>("AmountToPay"));
+        amountToPayCol.setPrefWidth(120);
         amountToPayCol.setCellFactory(TextFieldTableCell.forTableColumn());
         amountToPayCol.setOnEditCommit(
                 event -> {
@@ -72,9 +78,9 @@ public class CustomerDataToPresent {
         final TableColumn<LoanDTOs, Boolean> selectedColumn = new TableColumn<>( "Selected" );
         selectedColumn.setCellValueFactory( new PropertyValueFactory<>("selected"));
         selectedColumn.setCellFactory(CheckBoxTableCell.forTableColumn(selectedColumn));
+        selectedColumn.setPrefWidth(125);
         LoansAsLoanerDataForPaymentTab.getColumns().add( selectedColumn );
         selectedColumn.getTableView().setEditable(true);
-
 
     }
 
@@ -98,7 +104,7 @@ public class CustomerDataToPresent {
 
         TableColumn<AccountTransactionDTO, String> TransactionType = new TableColumn<>("Type Of Transaction");
         TransactionType.setCellValueFactory(new PropertyValueFactory<>("TransactionType"));
-        TransactionType.setPrefWidth(125);
+        TransactionType.setPrefWidth(150);
 
         TableColumn<AccountTransactionDTO, String> amount = new TableColumn<>("Amount");
         amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
