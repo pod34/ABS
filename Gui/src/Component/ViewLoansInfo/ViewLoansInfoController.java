@@ -168,7 +168,7 @@ public class ViewLoansInfoController {
             grid.add(new Label(curPayment.PaymentDetails()), 0, 0);
             grid.setMinHeight(tmp.getMinHeight());
             grid.setMinSize(500,500);
-            Payments[counter] = new TitledPane(Integer.toString(curPayment.getPaymentDate()),new Label(curPayment.PaymentDetails()));//TODO we need to warp it in scroll pane
+            Payments[counter] = new TitledPane(Integer.toString(curPayment.getPaymentDate()),new TextArea(curPayment.PaymentDetails()));//TODO we need to warp it in scroll pane
             Payments[counter].setMinSize(100,100);
             counter++;
         }

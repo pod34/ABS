@@ -21,6 +21,7 @@ public class LoanDTOs implements Serializable {
     private SimpleBooleanProperty selected = new SimpleBooleanProperty(this,"selected");
     private SimpleStringProperty amountToPay = new SimpleStringProperty(this,"AmountToPay");
     private SimpleIntegerProperty nextYazPayment = new SimpleIntegerProperty(this,"nextYazPayment");
+    private SimpleIntegerProperty amountToPayThisYaz = new SimpleIntegerProperty(this,"AmountToPayThisYaz");
     private final int originalAmount;
     private int amountRaisedSoFar;
     private final int durationOfTheLoan;
@@ -67,6 +68,7 @@ public class LoanDTOs implements Serializable {
         theDateTheLoanBecameActive = loan.getStartingDate();
         endDate = loan.getFinishDate();
         loansPayments = loan.getPayments();
+        amountToPayThisYaz.set(loan.getYazlyPaymentWithDebtsCalculation(nextPaymentYaz));
         totalMissedYazNeedToPayBack = loan.getTotalMissedYazNeedToPayBack();
         debt = loan.getDebt();
     }
@@ -85,6 +87,14 @@ public class LoanDTOs implements Serializable {
 
     public String getNameOfLoan() {
         return nameOfLoan.get();
+    }
+
+    public int getAmountToPayThisYaz() {
+        return amountToPayThisYaz.get();
+    }
+
+    public SimpleIntegerProperty amountToPayThisYazProperty() {
+        return amountToPayThisYaz;
     }
 
     public int getAmountRaisedSoFar() {

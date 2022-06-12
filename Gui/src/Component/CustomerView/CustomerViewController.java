@@ -4,6 +4,7 @@ import Component.ViewLoansInfo.ViewLoansInfoController;
 import DTOs.AccountTransactionDTO;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -368,14 +369,15 @@ public class CustomerViewController {
                     updateProgress(i, max);
                 }
                 List<LoanDTOs> matchingLoans = getRelevantLoansByUserParameters();
-                ViewLoansInfoController loansInfoController = new ViewLoansInfoController();
-                loansInfoController.setMainController(mainController);
-                loansInfoController.buildLoansTableView(relevantLoans,matchingLoans);
-                howManyMatchingLoansFoundProp.set("Found " + matchingLoans.size() + " matching loans!");
-                howManyLoansFound.setStyle("-fx-text-fill: #e70d0d; -fx-font-size: 16px;");//TODO not visible after invesment reset
-
-                checkLoansToInvest.getItems().addAll(matchingLoans.stream().collect(Collectors.toMap(LoanDTOs::getNameOfLoan,loan -> loan)).
-                        keySet().stream().collect(Collectors.toList()));
+                Platform.runLater(() -> {
+                    ViewLoansInfoController loansInfoController = new ViewLoansInfoController();
+                    loansInfoController.setMainController(mainController);
+                    loansInfoController.buildLoansTableView(relevantLoans,matchingLoans);
+                    howManyMatchingLoansFoundProp.set("Found " + matchingLoans.size() + " matching loans!");
+                    howManyLoansFound.setStyle("-fx-text-fill: #e70d0d; -fx-font-size: 16px;");//TODO not visible after invesment reset
+                    checkLoansToInvest.getItems().addAll(matchingLoans.stream().collect(Collectors.toMap(LoanDTOs::getNameOfLoan,loan -> loan)).
+                            keySet().stream().collect(Collectors.toList()));
+                });
 
                 updateProgress(0, 0);
                 done();
