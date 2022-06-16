@@ -21,46 +21,38 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.util.Duration;
+import org.controlsfx.control.ToggleSwitch;
+import savingData.dataSaving;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class BankController {
 
 
-   @FXML
-   private Button OkBt;
-   @FXML
-   private ComboBox<String> viewBy;
-   @FXML
-   private Label filePath;
-   @FXML
-   private Label CurrentYazLabel;
-   @FXML
-   private AnchorPane viewByAdmin;
-   @FXML
-   private AdminViewController viewByAdminController;
-   @FXML
-   private AnchorPane subComponent;
-   @FXML
-   private AnchorPane viewByCustomer;
-   @FXML
-   private CustomerViewController viewByCustomerController;
-   @FXML
-   private BorderPane mainContainerComponent;
+   @FXML private Button OkBt;
+   @FXML private ComboBox<String> viewBy;
+   @FXML private Label filePath;
+   @FXML private Label CurrentYazLabel;
+   @FXML private AnchorPane viewByAdmin;
+   @FXML private AdminViewController viewByAdminController;
+   @FXML private AnchorPane subComponent;
+   @FXML private AnchorPane viewByCustomer;
+   @FXML private CustomerViewController viewByCustomerController;
+   @FXML private BorderPane mainContainerComponent;
    private SimpleStringProperty curCustomerViewBy;
-   @FXML
-   private ComboBox<String> Skins;
+   @FXML private ComboBox<String> Skins;
    @FXML ImageView image;
    private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+   @FXML ToggleSwitch animationToggle;
+   private Boolean wasFileLoaded = false;
 
 
    private Stage primaryStage;
@@ -130,22 +122,47 @@ public class BankController {
       return i_fileChooser.showOpenDialog(primaryStage);
    }
 
-   public boolean LoadFileActivation() throws InccorectInputType {
-      boolean flag = bankEngine.ReadingTheSystemInformationFile(filePath.getText());
+   public boolean LoadFileActivation(String absolutePath, StringBuilder newAbsolutePath) throws InccorectInputType {
+      dataSaving data = new dataSaving();
+      if(wasFileLoaded) {
+         data.setData(bankEngine);
+         data.savingData();
+      }
+      boolean flag = bankEngine.ReadingTheSystemInformationFile(absolutePath);
       if (flag) {
          addCustomersToComboBox();
          viewByCustomerController.addCategoriesToScramble(bankEngine.getAllCategories().getCategories());
          viewByCustomerController.setDataOfCustomerTOPresentInCustomerView(bankEngine.getListOfDTOsCustomer());
          CurrentYazLabel.textProperty().bind(bankEngine.getYazProperty());
+         wasFileLoaded = true;
+         newAbsolutePath.append(absolutePath);
 
       }
-      //Duration = 2.5 seconds
-      Duration duration = Duration.millis(2500);
-      //Create new rotate transition
-      RotateTransition rotateTransition = new RotateTransition(duration, image);
-      //Rotate by 200 degree
-      rotateTransition.setByAngle(360);
-      rotateTransition.play();
+      else {
+         errorAlert.setContentText("Problem reading file. please load a valid XML file!");
+         errorAlert.showAndWait();
+         viewBy.getItems().clear();
+         viewByAdminController.clearLoansTables();
+         if(wasFileLoaded) {
+            bankEngine = data.loadingData();
+            addCustomersToComboBox();
+            viewByCustomerController.addCategoriesToScramble(bankEngine.getAllCategories().getCategories());
+            viewByCustomerController.setDataOfCustomerTOPresentInCustomerView(bankEngine.getListOfDTOsCustomer());
+            flag = true;
+            newAbsolutePath.append(filePath.getText());
+            bankEngine.setYazProperty();
+            CurrentYazLabel.textProperty().bind(bankEngine.getYazProperty());
+         }
+      }
+      if(animationToggle.isSelected()) {
+         //Duration = 2.5 seconds
+         Duration duration = Duration.millis(2500);
+         //Create new rotate transition
+         RotateTransition rotateTransition = new RotateTransition(duration, image);
+         //Rotate by 200 degree
+         rotateTransition.setByAngle(360);
+         rotateTransition.play();
+      }
       return flag;
    }
 
@@ -169,10 +186,6 @@ public class BankController {
 
    public List<LoanDTOs> getSystemCustomerLoansByListOfLoansName(List<String> i_LoansName) {
       return bankEngine.getListOfLoansDtoByListOfNamesOFLoans(i_LoansName);
-   }
-
-   public void setMessage(String customerName, int amount, String loanName, String msg) {
-      viewByCustomerController.messageMaker(customerName, amount, loanName, msg);
    }
 
    @FXML
@@ -223,19 +236,23 @@ public class BankController {
    public void increaseYazActivation() {
       bankEngine.IncreaseYaz();
       viewByCustomerController.updateCustomersLoansData();
-      //Duration = 2.5 seconds
-      Duration duration = Duration.millis(2500);
-      //Create new translate transition
-      TranslateTransition transition = new TranslateTransition(duration, image);
-      //Move in X axis by +200
-      transition.setByX(200);
-      //Move in Y axis by +100
-      transition.setByY(0);
-      //Go back to previous position after 2.5 seconds
-      transition.setAutoReverse(true);
-      //Repeat animation twice
-      transition.setCycleCount(2);
-      transition.play();
+      viewByAdminController.updateLoansInBankInAdminView();
+
+      if(animationToggle.isSelected()) {
+         //Duration = 2.5 seconds
+         Duration duration = Duration.millis(2500);
+         //Create new translate transition
+         TranslateTransition transition = new TranslateTransition(duration, image);
+         //Move in X axis by +200
+         transition.setByX(200);
+         //Move in Y axis by +100
+         transition.setByY(0);
+         //Go back to previous position after 2.5 seconds
+         transition.setAutoReverse(true);
+         //Repeat animation twice
+         transition.setCycleCount(2);
+         transition.play();
+      }
    }
 
    public void fullyLoansPaymentActivation(List<String> loanNames) {
@@ -252,14 +269,6 @@ public class BankController {
       viewByAdminController.updateLoansInBankInAdminView();
       viewByCustomerController.updateTransactionToTransactionTable();
 
-   }
-
-   public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyOfLoansAsBorrower(String customerName) {
-      return bankEngine.getCustomerPropertyForLoanAsBorrower(customerName);
-   }
-
-   public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyOfLoansAsLender(String customerName) {
-      return bankEngine.getCustomerPropertyForLoanAsLender(customerName);
    }
 
    public Map<String, SimpleStringProperty> getLoanDataByStatusPropertyAndStatusMapFromMainController(String loanName) {
@@ -280,7 +289,7 @@ public class BankController {
 
    @FXML
    private void skinsChooserClicked(ActionEvent event) {
-      if (Skins.getValue().equals("Light mode")) {
+      if (Skins.getValue().equals("Blue mode")) {
          if (!mainContainerComponent.getStylesheets().equals("resources/lightMode.css")) {
             mainContainerComponent.getStylesheets().remove("resources/darkMode.css");
             viewByCustomer.getStylesheets().remove("resources/darkMode.css");
@@ -304,6 +313,16 @@ public class BankController {
 
    public List<String> checkIfDividedLoansCanBePaid(Map<String, Integer> loansToPay){
       return bankEngine.checkIfCanPayAllLoans(loansToPay, curCustomerViewBy.getValue());
+   }
+
+   public List<String> getNotificationFromCustomer(){
+      List<CustomerDTOs> customersList = bankEngine.getListOfDTOsCustomer();
+      List<String> notifications = new ArrayList<>();
+      customersList.stream().filter(C -> C.getName().equals(curCustomerViewBy.getValue())).collect(Collectors.toList());
+      for (CustomerDTOs curCustomer: customersList) {
+         notifications = curCustomer.getNotifications();
+      }
+      return notifications;
    }
 }
 

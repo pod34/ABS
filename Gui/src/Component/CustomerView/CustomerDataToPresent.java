@@ -17,11 +17,12 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CustomerDataToPresent {
+public class CustomerDataToPresent implements Serializable {
 
     CustomerDTOs customer;
     private TableView<LoanDTOs> LoansAsLoanerData = new TableView<>();

@@ -25,10 +25,11 @@ package Component.AdminView;
 
     import java.io.File;
     import java.io.IOException;
+    import java.io.Serializable;
     import java.net.URL;
     import java.util.List;
 
-public class AdminViewController {
+public class AdminViewController implements Serializable {
 
     @FXML BankController mainController;
     @FXML private Button IncreaseYazBtn;
@@ -73,8 +74,9 @@ public class AdminViewController {
             return;
         }
         String absolutePath = selectedFile.getAbsolutePath();
-        selectedFileProperty.set(absolutePath);
-        isFileSelected.set(mainController.LoadFileActivation());//TODO add exception
+        StringBuilder newAbsolutePath = new StringBuilder();
+        //selectedFileProperty.set(absolutePath);
+        isFileSelected.set(mainController.LoadFileActivation(absolutePath, newAbsolutePath));//TODO add exception
         if(isFileSelected.getValue()){
             CustomerData.getItems().clear();
             LoansData.getItems().clear();
@@ -82,7 +84,13 @@ public class AdminViewController {
             loansInfoController.setMainController(mainController);
             loansInfoController.buildLoansTableView(LoansData,mainController.getSystemLoans());
             buildCustomersTableView();
+            selectedFileProperty.set(newAbsolutePath.toString());
         }
+    }
+
+    public void clearLoansTables(){
+        LoansData.getItems().clear();
+        CustomerData.getItems().clear();
     }
 
     public void updateLoansInBankInAdminView(){
@@ -141,8 +149,8 @@ public class AdminViewController {
         ViewCustomersInfoController customersInfoController = loader.getController();
         CustomerExpandedDetails.setBackground(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        customersInfoController.SetLoansAsLenderByStatusLabels(mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsALender()), mainController.getCustomerPropertyOfLoansAsLender(customer.getName()));
-        customersInfoController.SetLoansAsLoanerByStatusLabels(mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()), mainController.getCustomerPropertyOfLoansAsBorrower(customer.getName()));//TODO: change the map
+        customersInfoController.SetLoansAsLenderByStatusLabels(mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsALender()));
+        customersInfoController.SetLoansAsLoanerByStatusLabels(mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()));//TODO: change the map
 
         return CustomerExpandedDetails;
     }

@@ -5,11 +5,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class ViewCustomersInfoController {
+public class ViewCustomersInfoController implements Serializable {
 
     @FXML private Label LoansAsLoaner;
     @FXML private Label LoansAsLender;
@@ -29,7 +30,7 @@ public class ViewCustomersInfoController {
     @FXML private Label newAsLoaner;
 
 
-    public void SetLoansAsLoanerByStatusLabels(List<LoanDTOs> loansAsLoaner, Map<LoanStatus, SimpleStringProperty> propertyMapToBind){
+    public void SetLoansAsLoanerByStatusLabels(List<LoanDTOs> loansAsLoaner){
         if(loansAsLoaner.size() != 0) {
             Map<String, List<LoanDTOs>> LoansByStatus = loansAsLoaner
                     .stream()
@@ -62,7 +63,7 @@ public class ViewCustomersInfoController {
         }
     }
 
-    public void SetLoansAsLenderByStatusLabels(List<LoanDTOs> loansAsLender, Map<LoanStatus, SimpleStringProperty> propertyMapToBind){//TODO: list of propertys that will have the amount of loans per status that will be baind to the label
+    public void SetLoansAsLenderByStatusLabels(List<LoanDTOs> loansAsLender){//TODO: list of propertys that will have the amount of loans per status that will be baind to the label
         if(loansAsLender.size() != 0) {
             Map<String, List<LoanDTOs>> LoansByStatus = loansAsLender
                     .stream()

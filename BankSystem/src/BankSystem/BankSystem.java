@@ -9,10 +9,11 @@ import DTOs.LoanDTOs;
 import SystemExceptions.InccorectInputType;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public interface BankSystem {
+public interface BankSystem extends Serializable {
 
     boolean ReadingTheSystemInformationFile(String FileName) throws InccorectInputType;
     void ViewInformationOnExistingLoansAndTheirStatus();
@@ -28,9 +29,7 @@ public interface BankSystem {
     List<LoanDTOs> getListOfLoansDtoByListOfNamesOFLoans(List<String> i_loansName);
     SimpleStringProperty getYazProperty();
     void fullPaymentOnLoans(List<String> loanNames, String customerName);
-    Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsLender(String customerName);
     Map<String, SimpleStringProperty> getLoanDataByStatusPropertyFromSystemMap(String loanName);
-    Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsBorrower(String customerName);
     CategoriesDTO getAllCategories();
     CustomerDTOs getCustomerByName(String name);
     void YazlyPaymentForGivenLoans(Map<String,Integer> loansToPay);
@@ -38,5 +37,6 @@ public interface BankSystem {
     List<String> checkWhatLoansCanBeFullyPaidSystem(List<String> loanNames, String customerName);
     List<String> checkIfCanPayAllLoans(Map<String,Integer> loansToPay, String customerName);
     Boolean checkIfMoneyCanBeWithdraw(int amount, String customerName);
+    void setYazProperty();
 
     }

@@ -1,6 +1,8 @@
 package common;
 
-public class BankResourcesConstants {
+import java.io.Serializable;
+
+public class BankResourcesConstants implements Serializable {
   //  private static final String BASE_PACKAGE = "/Gui";
     public static final String BANKCONTROLLER_FXML_RESOURCE_IDENTIFIER = "/Component/MainComponent/mainBankWindow.fxml";
     public static final String ADMINCONTROLLER_FXML_RESOURCE_IDENTIFIER = "/Component/AdminViewComponent/AdminViewController.fxml";

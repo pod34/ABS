@@ -8,11 +8,12 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
 
-public class FromXmlToClasses {
+public class FromXmlToClasses implements Serializable {
 
     public static boolean fromXmlToObjects(List<Customer> customerInSystem, List<Loan> loanInSystem, String FileName,
                                         List<String> allCategoriesInSystem) {

@@ -2,7 +2,9 @@ package Validator;
 
 import SystemExceptions.InccorectInputType;
 
-public class Validator {
+import java.io.Serializable;
+
+public class Validator implements Serializable {
     public static void isTheStringANumber(String userInput) throws InccorectInputType {
         int userAnswerInInt = Integer.parseInt(userInput);
     }

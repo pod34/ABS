@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import org.controlsfx.control.ToggleSwitch?>
 
 <BorderPane fx:id="mainContainerComponent" stylesheets="@../../resources/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Component.MainComponent.BankController">
    <top>
@@ -38,7 +39,7 @@
                   <Label id="file-path-label" fx:id="filePath" styleClass="header-label" text="Currently Loaded File Path" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-            <ComboBox fx:id="viewBy" onAction="#viewByChooserClicked" prefHeight="35.0" prefWidth="105.0" promptText="View By" GridPane.rowIndex="1">
+            <ComboBox fx:id="viewBy" onAction="#viewByChooserClicked" prefHeight="27.0" prefWidth="111.0" promptText="View By" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></ComboBox>
@@ -56,6 +57,7 @@
                   <Image url="@ABS_logo1.png" />
                </image>
             </ImageView>
+            <ToggleSwitch fx:id="animationToggle" text="Animation" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </top>

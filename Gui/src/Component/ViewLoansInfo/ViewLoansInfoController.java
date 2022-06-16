@@ -16,6 +16,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import org.controlsfx.control.table.TableRowExpanderColumn;
+
+import java.io.Serializable;
 import java.util.Map;
 import java.io.IOException;
 import java.net.URL;
@@ -23,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ViewLoansInfoController {
+public class ViewLoansInfoController implements Serializable {
     @FXML private GridPane LoansView;
     @FXML private Label PaymentFrequency;
     @FXML private Label intrest;
@@ -130,10 +132,10 @@ public class ViewLoansInfoController {
         originalAmount.setText("The original amount: " + i_originalAmountVal);
     }
 
-    public void setStatusValue(String i_statusVal, String loanName, BankController i_mainController) {
-        status.setText(i_statusVal);
-        status.textProperty().bind(i_mainController.getLoanDataByStatusPropertyAndStatusMapFromMainController(loanName).get("statusProperty"));
-    }
+//    public void setStatusValue(String i_statusVal, String loanName, BankController i_mainController) {
+//        status.setText(i_statusVal);
+//        status.textProperty().bind(i_mainController.getLoanDataByStatusPropertyAndStatusMapFromMainController(loanName).get("statusProperty"));
+//    }
 
     public void setLenderDetails(LoanDTOs  Loan) {
         Map<String,Integer> listOfLenders =  Loan.getListOfLenders();

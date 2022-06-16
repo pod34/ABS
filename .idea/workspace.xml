@@ -1,26 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="BankSystem:jar" />
+      <artifact name="Gui:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="36db4c16-85c0-4000-b574-afa8518bd8fc" name="Changes" comment="added images">
+    <list default="true" id="36db4c16-85c0-4000-b574-afa8518bd8fc" name="Changes" comment="fixed notifications, adede animations and fixed css.">
+      <change afterPath="$PROJECT_DIR$/Gui/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gui/src/savingData/dataSaving.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/BankSystem_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/BankSystem_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Gui_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Gui_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/DTOs/LoanDTOs.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/DTOs/LoanDTOs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewComponent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/LoansComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/LoansComponent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/FromXmlToClasses.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/FromXmlToClasses.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/Costumers/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/Costumers/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/DTOs/CustomerDTOs.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/DTOs/CustomerDTOs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/Validator/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/Validator/Validator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewComponent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewCustomersInfo/ViewCustomersInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewCustomersInfo/ViewCustomersInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Main/TaskMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Main/TaskMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -37,10 +57,21 @@
     <setting file="file://$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Af1yHY3blnvAvPa4XJSiQc91ii" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Problems" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
@@ -65,9 +96,11 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.TaskMain" />
+        <item itemvalue="Application.TaskMain" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="final merging commit">
       <created>1653567697095</created>
@@ -77,7 +110,7 @@
       <updated>1653567697095</updated>
     </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bf3ced70-5942-43d0-915a-c5489fae3a91" name="Changes" comment="" />
+      <changelist id="36db4c16-85c0-4000-b574-afa8518bd8fc" name="Changes" comment="fixed notifications, adede animations and fixed css." />
       <created>1653581833991</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -101,6 +134,7 @@
       <workItem from="1654856723802" duration="17803000" />
       <workItem from="1654928203786" duration="2944000" />
       <workItem from="1654936070802" duration="31121000" />
+      <workItem from="1655386086474" duration="12678000" />
     </task>
     <task id="LOCAL-00002" summary="add transaction table">
       <created>1653993899727</created>
@@ -133,6 +167,9 @@
     <option name="localTasksCounter" value="6" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -146,7 +183,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added images" />
-    <option name="LAST_COMMIT_MESSAGE" value="added images" />
     <MESSAGE value="final merging commit" />
     <MESSAGE value="add transaction table" />
     <MESSAGE value="divided paymanet" />
@@ -158,12 +194,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="28" />
           <url>file://$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java</url>
           <line>250</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java</url>
+          <line>286</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -172,25 +210,7 @@
         <watch expression="dividedAmount" language="JAVA" />
         <watch expression="tmp - amountToPay" language="JAVA" />
         <watch expression="confirmationAlert.getResult().getText()" language="JAVA" />
-        <watch expression="loan.getStatusName()" language="JAVA" />
-        <watch expression="LoanDataByStatus" language="JAVA" />
-        <watch expression="status" language="JAVA" />
-        <watch expression="loans" language="JAVA" />
-        <watch expression="LoansAsLoaner" language="JAVA" />
-        <watch expression="mainContainerComponent.getCenter().getScene().widthProperty()" language="JAVA" />
-        <watch expression="investment" language="JAVA" />
-        <watch expression="Integer.parseInt(amountToInvest.getText()" language="JAVA" />
-        <watch expression="amountToPayThisYaz" language="JAVA" />
-        <watch expression="nextPaymentYaz" language="JAVA" />
-        <watch expression="getPaymentFrequency()" language="JAVA" />
-        <watch expression="nextPaymentYaz" language="JAVA" />
-        <watch expression="amountToPayThisYaz" language="JAVA" />
-        <watch expression="getPaymentFrequency())" language="JAVA" />
-        <watch expression="amountToPayThisYaz" language="JAVA" />
-        <watch expression="amountToPayThisYaz" language="JAVA" />
-        <watch expression="loan.getYazlyPaymentWithDebtsCalculation(nextPaymentYaz)" language="JAVA" />
-        <watch expression="amountToPayThisYaz" language="JAVA" />
-        <watch expression="LoansAsLoanerDataForPaymentTab.getItems()" language="JAVA" />
+        <watch expression="mainController" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

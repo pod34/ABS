@@ -34,7 +34,7 @@ public class Loan implements Serializable {
     private int yazlyPayment;
     private int yazlyInterest;
     private int totalMissedYazNeedToPayBack = 0;
-    private Map<String, SimpleStringProperty> loanDataByStatusPropertyAndStatusProperty;
+    transient private Map<String, SimpleStringProperty> loanDataByStatusPropertyAndStatusProperty;
     private int debt;
 
 

@@ -14,10 +14,11 @@ public class Customer implements Serializable {
     private List<String> LoansAsALender;
     private List<String> LoansAsABorrower;
     private List<AccountTransaction> Transactions;
-    private Map<LoanStatus, SimpleIntegerProperty> numberOfLoansAsBorrowerByStatus;
-    private Map<LoanStatus, SimpleStringProperty> stringOfLoansAsBorrowerByStatus;
-    private Map<LoanStatus, SimpleIntegerProperty> numberOfLoansAsLenderByStatus;
-    private Map<LoanStatus, SimpleStringProperty> stringOfLoansAsLenderByStatus;
+    private List<String> notifications = new ArrayList<>();
+
+    public List<String> getNotifications() {
+        return notifications;
+    }
 
     public Customer(String name, int balance, List<String> loansAsABorrowerNames) {
         this.name = name;
@@ -30,29 +31,8 @@ public class Customer implements Serializable {
          */
         LoansAsABorrower = loansAsABorrowerNames;
         Transactions = new ArrayList<>();
-        numberOfLoansAsBorrowerByStatus = new HashMap<>();
-        stringOfLoansAsBorrowerByStatus = new HashMap<>();
-        numberOfLoansAsLenderByStatus = new HashMap<>();
-        stringOfLoansAsLenderByStatus = new HashMap<>();
-
     }
 
-
-    public Map<LoanStatus, SimpleIntegerProperty> getNumberOfLoansAsBorrowerByStatus() {
-        return numberOfLoansAsBorrowerByStatus;
-    }
-
-    public Map<LoanStatus, SimpleStringProperty> getStringOfLoansAsBorrowerByStatus() {
-        return stringOfLoansAsBorrowerByStatus;
-    }
-
-    public Map<LoanStatus, SimpleIntegerProperty> getNumberOfLoansAsLenderByStatus() {
-        return numberOfLoansAsLenderByStatus;
-    }
-
-    public Map<LoanStatus, SimpleStringProperty> getStringOfLoansAsLenderByStatus() {
-        return stringOfLoansAsLenderByStatus;
-    }
 
     public List<AccountTransaction> getTransactions() {
        /* if (Transactions.size() == 0)

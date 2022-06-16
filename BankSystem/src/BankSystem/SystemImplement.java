@@ -21,17 +21,12 @@ public class SystemImplement implements BankSystem , Serializable {
     private Map<String, Customer> Customers;
     private Map<String, Loan> LoansInBank;
     private List<String> allCategories;
-    private BankController mainController;
-    private static int Yaz = 1;
-    private SimpleStringProperty yazProperty = new SimpleStringProperty();
+    private int Yaz = 1;
+    transient private SimpleStringProperty yazProperty = new SimpleStringProperty();
 
 
     public SimpleStringProperty getYazProperty() {
         return yazProperty;
-    }
-
-    public SystemImplement(BankController mainController) {
-        this.mainController = mainController;
     }
 
     public boolean ReadingTheSystemInformationFile(String FileName) throws InccorectInputType {
@@ -236,7 +231,7 @@ public class SystemImplement implements BankSystem , Serializable {
             for(Loan curLoan : curCustomerLoans){
                 curLoan.setHowManyYazAreLeft();
                 if(curLoan.getNextYazForPayment() == Yaz){
-                    mainController.setMessage(curLoan.getNameOfLoaner(), curLoan.getYazlyPaymentWithDebtsCalculation(Yaz), curLoan.getNameOfLoan(), "The payment date has arrived on the loan: ");
+                    messageMaker(curLoan.getNameOfLoaner(), curLoan.getYazlyPaymentWithDebtsCalculation(Yaz), curLoan.getNameOfLoan(), "The payment date has arrived on the loan: ");
                 }
             }
         }
@@ -244,7 +239,7 @@ public class SystemImplement implements BankSystem , Serializable {
 
     private void sendMassagesToNewRiskLoans(Map<Loan,Integer> i_newRiskLoans) {
         for (Map.Entry<Loan,Integer> curLoan : i_newRiskLoans.entrySet()) {
-                mainController.setMessage(curLoan.getKey().getNameOfLoaner(), curLoan.getValue(), curLoan.getKey().getNameOfLoan(), "You did not pay on the due date for loan: ");
+            messageMaker(curLoan.getKey().getNameOfLoaner(), curLoan.getValue(), curLoan.getKey().getNameOfLoan(), "You did not pay on the due date for loan: ");
             }
     }
 
@@ -330,13 +325,6 @@ public class SystemImplement implements BankSystem , Serializable {
         }*/
     }
 
-    public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsBorrower(String customerName){
-        return Customers.get(customerName).getStringOfLoansAsBorrowerByStatus();
-    }
-
-    public Map<LoanStatus, SimpleStringProperty> getCustomerPropertyForLoanAsLender(String customerName){
-        return Customers.get(customerName).getStringOfLoansAsLenderByStatus();
-    }
 
     public Map<String, SimpleStringProperty> getLoanDataByStatusPropertyFromSystemMap(String loanName){
         return LoansInBank.get(loanName).getLoanDataByStatusPropertyAndStatusProperty();
@@ -376,5 +364,17 @@ public class SystemImplement implements BankSystem , Serializable {
 
     public Boolean checkIfMoneyCanBeWithdraw(int amount, String customerName){
         return amount <= Customers.get(customerName).getMoneyInAccount();
+    }
+
+    private void messageMaker(String customerName, int amount, String loanName, String msg) {
+        StringBuilder message = new StringBuilder();
+        message.append("Hello " + customerName + "\n" + msg + loanName);
+        message.append("\n" + "The amount for payment is: " + amount);
+        Customers.get(customerName).getNotifications().add(message.toString());
+    }
+
+    public void setYazProperty(){
+        yazProperty = new SimpleStringProperty();
+        yazProperty.set("Current Yaz: " + Yaz);
     }
 }

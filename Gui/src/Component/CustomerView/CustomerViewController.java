@@ -25,6 +25,7 @@ import org.controlsfx.control.CheckListView;
 import org.controlsfx.control.ListSelectionView;
 import org.controlsfx.control.StatusBar;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,7 +34,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
-public class CustomerViewController {
+public class CustomerViewController implements Serializable {
     @FXML private ScrollPane LoanerInfoTable;
     @FXML private ScrollPane LoansInfoTable;
     @FXML private AnchorPane AccountTransInfo;
@@ -65,7 +66,6 @@ public class CustomerViewController {
     private Map<String, CustomerDataToPresent> DataOfCustomerTOPresentInCustomerView = new HashMap<>();
     private Map<String, List<String>> messages;
     @FXML private BankController mainController;
-    private Map<String, List<String>> notifications = new HashMap<>();
     @FXML private TextField AmountTB;
     @FXML private Button ChargeBT;
     @FXML private Button WithdrawBT;
@@ -87,18 +87,6 @@ public class CustomerViewController {
 
     public void setMainController(BankController mainController) {
         this.mainController = mainController;
-    }
-
-    public void messageMaker(String customerName, int amount, String loanName, String msg) {
-        StringBuilder message = new StringBuilder();
-        message.append("Hello " + customerName + "\n" + msg + loanName);
-        message.append("\n" + "The amount for payment is: " + amount);
-        if (notifications.containsKey(customerName))
-            notifications.get(customerName).add(message.toString());
-        else
-            notifications.put(customerName, new ArrayList<>(Collections.singleton(message.toString())));
-
-        notificationsView.getItems().addAll(notifications.get(customerName));
     }
 
     @FXML
@@ -179,16 +167,14 @@ public class CustomerViewController {
     }
 
     public void setMessagesViewToCustomer(String customerName) {
-        if(!notificationsView.getItems().isEmpty())
+        List<String> notifications = mainController.getNotificationFromCustomer();
+        if (!notificationsView.getItems().isEmpty())
             notificationsView.getItems().clear();
         ObservableList<String> items = null;
-        if (notifications != null) {
-            if (notifications.containsKey(customerName)) {
-                items = FXCollections.observableArrayList(notifications.get(customerName));
-            } else {
-                items = FXCollections.observableArrayList("No messages to " + customerName);
-            }
-        }
+        if (notifications.isEmpty())
+            items = FXCollections.observableArrayList("No messages to " + customerName);
+        else
+            items = FXCollections.observableArrayList(notifications);
 
         notificationsView.setItems(items);
     }
@@ -298,6 +284,11 @@ public class CustomerViewController {
             investment = Integer.parseInt(amountToInvest.getText());
         if(!(maxOpenLoans.getText().isEmpty()))
             i_maxOpenLoansForLoanOwner = Integer.parseInt(maxOpenLoans.getText());
+        if(!(maxLoanOwner.getText().isEmpty())){
+            int i_temp = Integer.parseInt((maxLoanOwner.getText()));
+            if(i_temp > 100)
+                return null;
+        }
         return mainController.scrambleActivation(chosenCategories,minYaz,i_minInterest,i_maxOpenLoansForLoanOwner);
     }
 
@@ -370,6 +361,12 @@ public class CustomerViewController {
                 }
                 List<LoanDTOs> matchingLoans = getRelevantLoansByUserParameters();
                 Platform.runLater(() -> {
+                    if(matchingLoans == null)
+                    {
+                        errorAlert.setContentText("You cant invest more then 100 present!");
+                        errorAlert.show();
+                        resetScrambleTab();
+                    }
                     ViewLoansInfoController loansInfoController = new ViewLoansInfoController();
                     loansInfoController.setMainController(mainController);
                     loansInfoController.buildLoansTableView(relevantLoans,matchingLoans);

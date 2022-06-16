@@ -34,7 +34,7 @@ public class TaskMain extends Application {
         BorderPane root = loader.load();
 
         BankController bankController = loader.getController();
-        BankSystem bankEngine = new SystemImplement(bankController);
+        BankSystem bankEngine = new SystemImplement();
         bankController.setBankEngine(bankEngine);
         bankController.setPrimaryStage(primaryStage);
         bankController.setMainContainer(root);

@@ -18,10 +18,12 @@ public class CustomerDTOs implements Serializable {
     private List<String> LoansAsABorrower;
     private List<AccountTransactionDTO> DtosTransactions;
     private int amountInvested = 0;
+    private List<String> notifications = new ArrayList<>();
 
     public CustomerDTOs( Customer curCustomer, List<AccountTransactionDTO> ListOfTransactions) {
         this.name.set(curCustomer.getName());
         balance.set(curCustomer.getMoneyInAccount());
+        notifications = curCustomer.getNotifications();
         if(curCustomer.getLoansAsALender() == null)
             LoansAsALender = null;
         else {
@@ -102,8 +104,8 @@ public class CustomerDTOs implements Serializable {
         return DtosTransactions;
     }
 
-
-
-
+    public List<String> getNotifications() {
+        return notifications;
+    }
 }
 
