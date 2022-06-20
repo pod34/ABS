@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public class AccountTransactionDTO implements Serializable {
 
-    private SimpleBooleanProperty TransactionType = new SimpleBooleanProperty(this, "TransactionType");//to do change it to + or - for now true is possitive (+)
+    private SimpleStringProperty TransactionType = new SimpleStringProperty(this, "TransactionType");//TODO:to do change it to + or - for now true is possitive (+)
     private SimpleIntegerProperty amount = new SimpleIntegerProperty(this, "amount");
     private SimpleIntegerProperty yazOfAction = new SimpleIntegerProperty(this, "yazOfAction");
     private SimpleIntegerProperty previousBalance = new SimpleIntegerProperty(this, "previousBalance");
@@ -21,18 +21,18 @@ public class AccountTransactionDTO implements Serializable {
         previousBalance.set(Transaction.getAmountBefore());
         curBalance.set(Transaction.getAmountAfter());
         if(previousBalance.get() < curBalance.get()){
-            TransactionType.set(true);
+            TransactionType.set("+");
         }
         else {
-            TransactionType.set(false);
+            TransactionType.set("-");
         }
     }
 
-    public boolean isTransactionType() {
+    public String isTransactionType() {
         return TransactionType.get();
     }
 
-    public SimpleBooleanProperty transactionTypeProperty() {
+    public SimpleStringProperty transactionTypeProperty() {
         return TransactionType;
     }
 

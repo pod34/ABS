@@ -37,6 +37,6 @@
     -fx-background-radius: 20;
 }
 
-.table-view-status-risk{
-
+.table-row-cell-risk {
+    -fx-background-color: red;
 }
