@@ -7,9 +7,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36db4c16-85c0-4000-b574-afa8518bd8fc" name="Changes" comment="added file save and file lode when there is an error loding a file.">
+    <list default="true" id="36db4c16-85c0-4000-b574-afa8518bd8fc" name="Changes" comment="changed the true or false in transactions to + or -.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/DTOs/AccountTransactionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/DTOs/AccountTransactionDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/resources/darkMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/resources/darkMode.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gui/src/resources/lightMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/resources/lightMode.css" afterDir="false" />
     </list>
@@ -53,6 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -118,7 +119,8 @@
       <workItem from="1654928203786" duration="2944000" />
       <workItem from="1654936070802" duration="31121000" />
       <workItem from="1655386086474" duration="12763000" />
-      <workItem from="1655716403050" duration="2358000" />
+      <workItem from="1655716403050" duration="10657000" />
+      <workItem from="1655744802136" duration="3367000" />
     </task>
     <task id="LOCAL-00002" summary="add transaction table">
       <created>1653993899727</created>
@@ -155,7 +157,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655402524006</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="changed the true or false in transactions to + or -.">
+      <created>1655719465322</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655719465322</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changed the true or false in transactions to + or -.">
+      <created>1655719485978</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655719485978</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +196,8 @@
     <MESSAGE value="done fixing sizing" />
     <MESSAGE value="done fixing sizing2" />
     <MESSAGE value="added file save and file lode when there is an error loding a file." />
-    <option name="LAST_COMMIT_MESSAGE" value="added file save and file lode when there is an error loding a file." />
+    <MESSAGE value="changed the true or false in transactions to + or -." />
+    <option name="LAST_COMMIT_MESSAGE" value="changed the true or false in transactions to + or -." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -189,11 +206,6 @@
           <url>file://$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java</url>
           <line>250</line>
           <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java</url>
-          <line>286</line>
-          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

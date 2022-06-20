@@ -4,6 +4,7 @@ import BankActions.Loan;
 import BankActions.LoanStatus;
 import BankActions.Payment;
 import Component.MainComponent.BankController;
+import DTOs.CategoriesDTO;
 import DTOs.LoanDTOs;
 import common.BankResourcesConstants;
 import javafx.beans.property.SimpleStringProperty;
@@ -170,7 +171,11 @@ public class ViewLoansInfoController implements Serializable {
             grid.add(new Label(curPayment.PaymentDetails()), 0, 0);
             grid.setMinHeight(tmp.getMinHeight());
             grid.setMinSize(500,500);
-            Payments[counter] = new TitledPane(Integer.toString(curPayment.getPaymentDate()),new TextArea(curPayment.PaymentDetails()));//TODO we need to warp it in scroll pane
+            Payments[counter] = new TitledPane(Integer.toString(curPayment.getPaymentDate()),new TextArea(curPayment.PaymentDetails()));
+            if(!curPayment.getPaid()) {
+                Payments[counter].getContent().setStyle("-fx-background-color: red; -fx-text-fill: red");
+                Payments[counter].setStyle("-fx-color: red");
+            }
             Payments[counter].setMinSize(100,100);
             counter++;
         }
