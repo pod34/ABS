@@ -7,28 +7,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36db4c16-85c0-4000-b574-afa8518bd8fc" name="Changes" comment="fixed notifications, adede animations and fixed css.">
-      <change afterPath="$PROJECT_DIR$/Gui/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gui/src/savingData/dataSaving.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/BankSystem_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/BankSystem_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Gui_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Gui_jar.xml" afterDir="false" />
+    <list default="true" id="36db4c16-85c0-4000-b574-afa8518bd8fc" name="Changes" comment="added file save and file lode when there is an error loding a file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/BankSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/FromXmlToClasses.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/FromXmlToClasses.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/Costumers/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/Costumers/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/DTOs/CustomerDTOs.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/DTOs/CustomerDTOs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/src/Validator/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/Validator/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerDataToPresent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/MainComponent/mainBankWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewCustomersInfo/ViewCustomersInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewCustomersInfo/ViewCustomersInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Main/TaskMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Main/TaskMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/DTOs/AccountTransactionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/DTOs/AccountTransactionDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/resources/darkMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/resources/darkMode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/resources/lightMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/resources/lightMode.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +117,8 @@
       <workItem from="1654856723802" duration="17803000" />
       <workItem from="1654928203786" duration="2944000" />
       <workItem from="1654936070802" duration="31121000" />
-      <workItem from="1655386086474" duration="12678000" />
+      <workItem from="1655386086474" duration="12763000" />
+      <workItem from="1655716403050" duration="2358000" />
     </task>
     <task id="LOCAL-00002" summary="add transaction table">
       <created>1653993899727</created>
@@ -164,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654990203706</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added file save and file lode when there is an error loding a file.">
+      <created>1655402524006</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655402524006</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +179,8 @@
     <MESSAGE value="divided paymanet" />
     <MESSAGE value="done fixing sizing" />
     <MESSAGE value="done fixing sizing2" />
-    <option name="LAST_COMMIT_MESSAGE" value="done fixing sizing2" />
+    <MESSAGE value="added file save and file lode when there is an error loding a file." />
+    <option name="LAST_COMMIT_MESSAGE" value="added file save and file lode when there is an error loding a file." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
