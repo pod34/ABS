@@ -2,16 +2,38 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="BankSystem:jar" />
-      <artifact name="Gui:jar" />
+      <artifact name="ABS-Web:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36db4c16-85c0-4000-b574-afa8518bd8fc" name="Changes" comment="changed the true or false in transactions to + or -.">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ABS_Web_war.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ABS_Web_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/okHttp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABS-Web/ABS-Web.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABS-Web/src/constants/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABS-Web/src/servlets/LoginServlets.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABS-Web/src/utils/ServletUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABS-Web/src/utils/SessionUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABS-Web/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BankSystem/src/userManager/UserManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientCommons/ClientCommons.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientCommons/src/clientController/ClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientCommons/src/login/ABS LOGO.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientCommons/src/login/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientCommons/src/util/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientCommons/src/util/http/HttpClientUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientCommons/src/util/http/SimpleCookieManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomerCilent/CustomerCilent.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomerCilent/src/common/CustomerBankResourcesConstans.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomerCilent/src/component/customerMainApp/CustomerMainAppController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CustomerCilent/src/main/CustomerClientMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ABS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ABS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Component/ViewLoansInfo/ViewLoansInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/resources/darkMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/resources/darkMode.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/src/resources/lightMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/resources/lightMode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankExui1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/BankSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/BankSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/Gui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/Gui.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,11 +56,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gui/src/common/BankResourcesConstants.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gui/src/Main/TaskMain.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gui/src/Component/AdminView/AdminViewController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Gui/src/Component/CustomerView/CustomerViewController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gui/src/Component/MainComponent/BankController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -50,20 +79,30 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.20574713" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ABS-Web/web/WEB-INF" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ClientCommons/src/login" />
       <recent name="C:\Users\LolyP\IdeaProjects\ABS\Gui\src\Component\MainComponent" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.ABS-WEB">
     <configuration name="TaskMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main.TaskMain" />
       <module name="Gui" />
@@ -77,6 +116,98 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ABS-WEB" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.22" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="ABS-Web:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/ABSApp" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="1d1a03ef-d9d1-4d60-975b-82a6c6b11188" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50295" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ABS-Web:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.TaskMain" />
+      <item itemvalue="Tomcat Server.ABS-WEB" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.TaskMain" />
@@ -121,6 +252,8 @@
       <workItem from="1655386086474" duration="12763000" />
       <workItem from="1655716403050" duration="10657000" />
       <workItem from="1655744802136" duration="3367000" />
+      <workItem from="1655900572162" duration="7296000" />
+      <workItem from="1655914024444" duration="18209000" />
     </task>
     <task id="LOCAL-00002" summary="add transaction table">
       <created>1653993899727</created>

@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ABS.iml" filepath="$PROJECT_DIR$/.idea/ABS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ABS-Web/ABS-Web.iml" filepath="$PROJECT_DIR$/ABS-Web/ABS-Web.iml" />
       <module fileurl="file://$PROJECT_DIR$/BankSystem/BankSystem.iml" filepath="$PROJECT_DIR$/BankSystem/BankSystem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BankExui1/BankUi/BankUi.iml" filepath="$PROJECT_DIR$/BankExui1/BankUi/BankUi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ClientCommons/ClientCommons.iml" filepath="$PROJECT_DIR$/ClientCommons/ClientCommons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CustomerCilent/CustomerCilent.iml" filepath="$PROJECT_DIR$/CustomerCilent/CustomerCilent.iml" />
       <module fileurl="file://$PROJECT_DIR$/Gui/Gui.iml" filepath="$PROJECT_DIR$/Gui/Gui.iml" />
     </modules>
   </component>
