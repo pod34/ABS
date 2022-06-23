@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import login.LoginController;
 import org.fxmisc.cssfx.CSSFX;
@@ -22,25 +23,16 @@ public class CustomerClientMain extends Application {
         CSSFX.start();
 
         FXMLLoader loginLoader = new FXMLLoader();
-        URL LoginLoaderFXML = getClass().getResource(CustomerBankResourcesConstans.CUSTOMERCONTROLLER_FXML_RESOURCE_IDENTIFIER);
+        URL LoginLoaderFXML = getClass().getResource(CustomerBankResourcesConstans.LOGINCONTOLLER_FXML_RESOURCE_IDENTIFIER);
         loginLoader.setLocation(LoginLoaderFXML);
-        Parent customerRoot = loginLoader.load();
+        GridPane customerRoot = loginLoader.load();
         LoginController customerViewController = loginLoader.getController();
 
         primaryStage.setTitle("Alternative Banking System");
-        Scene scene = new Scene(root, 1200, 800);
+        Scene scene = new Scene(customerRoot, 1200, 800);
         primaryStage.setScene(scene);
         primaryStage.show();
 
-
-       /* FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("worker login screen.fxml"));
-        Parent root = fxmlLoader.load();
-        LoginScreenController loginScreenController = fxmlLoader.getController();
-        loginScreenController.setStage(primaryStage);
-        Scene mainScene = new Scene(root, 620.0D, 450.0D);
-        primaryStage.setScene(mainScene);
-        primaryStage.show();
-*/
 
     }
 }

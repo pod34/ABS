@@ -6,53 +6,22 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36db4c16-85c0-4000-b574-afa8518bd8fc" name="Changes" comment="changed the true or false in transactions to + or -.">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ABS_Web_war.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ABS_Web_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/okHttp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABS-Web/ABS-Web.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABS-Web/src/constants/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABS-Web/src/servlets/LoginServlets.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABS-Web/src/utils/ServletUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABS-Web/src/utils/SessionUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABS-Web/web/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BankSystem/src/userManager/UserManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientCommons/ClientCommons.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientCommons/src/clientController/ClientController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientCommons/src/login/ABS LOGO.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientCommons/src/login/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientCommons/src/util/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientCommons/src/util/http/HttpClientUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientCommons/src/util/http/SimpleCookieManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CustomerCilent/CustomerCilent.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CustomerCilent/src/common/CustomerBankResourcesConstans.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CustomerCilent/src/component/customerMainApp/CustomerMainAppController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CustomerCilent/src/main/CustomerClientMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ABS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ABS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="db91939d-9113-4583-8f49-1b7dab6287ac" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankExui1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankSystem/BankSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/BankSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gui/Gui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/Gui.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/BankSystem.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/BankSystem/SystemImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/DTOs/AccountTransactionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/DTOs/AccountTransactionDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankSystem/src/DTOs/CategoriesDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BankSystem/src/DTOs/CategoriesDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientCommons/src/util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClientCommons/src/util/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerCilent/src/common/CustomerBankResourcesConstans.java" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerCilent/src/common/CustomerBankResourcesConstans.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomerCilent/src/main/CustomerClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/CustomerCilent/src/main/CustomerClientMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -72,43 +41,34 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2Af1yHY3blnvAvPa4XJSiQc91ii" />
+  <component name="ProjectId" id="2AyXlHuCxoITbo3kO9rrAqwjjB8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ABS-Web/web" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.20574713" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/ABS-Web/web/WEB-INF" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/ClientCommons/src/login" />
-      <recent name="C:\Users\LolyP\IdeaProjects\ABS\Gui\src\Component\MainComponent" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
+      <recent name="$PROJECT_DIR$/ABS-Web/web" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.ABS-WEB">
-    <configuration name="TaskMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main.TaskMain" />
-      <module name="Gui" />
+    <configuration name="CustomerClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.CustomerClientMain" />
+      <module name="CustomerCilent" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Main.*" />
+          <option name="PATTERN" value="main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,8 +76,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="ABS-Web" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="ABS-Web" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ABS-WEB" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.22" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER" value="false" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="ABS-Web:war exploded">
@@ -127,7 +99,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="1d1a03ef-d9d1-4d60-975b-82a6c6b11188" />
+        <option name="BASE_DIRECTORY_NAME" value="e7b65077-da63-40c3-bb1c-a970abd41a51" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -135,7 +107,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50295" />
+        <option name="DEBUG_PORT" value="53848" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -205,106 +177,25 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.TaskMain" />
+      <item itemvalue="Application.CustomerClientMain" />
       <item itemvalue="Tomcat Server.ABS-WEB" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TaskMain" />
-        <item itemvalue="Application.TaskMain" />
+        <item itemvalue="Application.CustomerClientMain" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00001" summary="final merging commit">
-      <created>1653567697095</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1653567697095</updated>
-    </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="36db4c16-85c0-4000-b574-afa8518bd8fc" name="Changes" comment="fixed notifications, adede animations and fixed css." />
-      <created>1653581833991</created>
+      <changelist id="db91939d-9113-4583-8f49-1b7dab6287ac" name="Changes" comment="" />
+      <created>1655982953164</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1653581833991</updated>
-      <workItem from="1653581839352" duration="35255000" />
-      <workItem from="1653922832515" duration="2531000" />
-      <workItem from="1653925503833" duration="7354000" />
-      <workItem from="1653999563917" duration="16000" />
-      <workItem from="1654019951532" duration="12824000" />
-      <workItem from="1654085523046" duration="930000" />
-      <workItem from="1654100230062" duration="243000" />
-      <workItem from="1654120950705" duration="2557000" />
-      <workItem from="1654168542883" duration="140000" />
-      <workItem from="1654173867488" duration="1399000" />
-      <workItem from="1654253414252" duration="22000" />
-      <workItem from="1654365859182" duration="82000" />
-      <workItem from="1654375309739" duration="608000" />
-      <workItem from="1654609141949" duration="16466000" />
-      <workItem from="1654760965755" duration="12631000" />
-      <workItem from="1654852004504" duration="3488000" />
-      <workItem from="1654856723802" duration="17803000" />
-      <workItem from="1654928203786" duration="2944000" />
-      <workItem from="1654936070802" duration="31121000" />
-      <workItem from="1655386086474" duration="12763000" />
-      <workItem from="1655716403050" duration="10657000" />
-      <workItem from="1655744802136" duration="3367000" />
-      <workItem from="1655900572162" duration="7296000" />
-      <workItem from="1655914024444" duration="18209000" />
+      <updated>1655982953164</updated>
+      <workItem from="1655982957352" duration="6816000" />
     </task>
-    <task id="LOCAL-00002" summary="add transaction table">
-      <created>1653993899727</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1653993899727</updated>
-    </task>
-    <task id="LOCAL-00003" summary="divided paymanet">
-      <created>1654956853394</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1654956853394</updated>
-    </task>
-    <task id="LOCAL-00004" summary="done fixing sizing">
-      <created>1654985350958</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1654985350958</updated>
-    </task>
-    <task id="LOCAL-00005" summary="done fixing sizing2">
-      <created>1654990203706</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1654990203706</updated>
-    </task>
-    <task id="LOCAL-00006" summary="added file save and file lode when there is an error loding a file.">
-      <created>1655402524006</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1655402524006</updated>
-    </task>
-    <task id="LOCAL-00007" summary="changed the true or false in transactions to + or -.">
-      <created>1655719465322</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1655719465322</updated>
-    </task>
-    <task id="LOCAL-00008" summary="changed the true or false in transactions to + or -.">
-      <created>1655719485978</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1655719485978</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,33 +212,21 @@
       </map>
     </option>
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="added images" />
-    <MESSAGE value="final merging commit" />
-    <MESSAGE value="add transaction table" />
-    <MESSAGE value="divided paymanet" />
-    <MESSAGE value="done fixing sizing" />
-    <MESSAGE value="done fixing sizing2" />
-    <MESSAGE value="added file save and file lode when there is an error loding a file." />
-    <MESSAGE value="changed the true or false in transactions to + or -." />
-    <option name="LAST_COMMIT_MESSAGE" value="changed the true or false in transactions to + or -." />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/BankSystem/src/BankActions/Loan.java</url>
-          <line>250</line>
-          <option name="timeStamp" value="17" />
+          <url>file://$PROJECT_DIR$/ABS-Web/src/servlets/LoginServlets.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
-      <configuration name="Application">
-        <watch expression="dividedAmount" language="JAVA" />
-        <watch expression="tmp - amountToPay" language="JAVA" />
-        <watch expression="confirmationAlert.getResult().getText()" language="JAVA" />
-        <watch expression="mainController" language="JAVA" />
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="userManagerLock" language="JAVA" />
+        <watch expression="USER_MANAGER_ATTRIBUTE_NAME" language="JAVA" />
+        <watch expression="userManagerLock" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

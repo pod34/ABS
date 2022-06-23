@@ -1,7 +1,6 @@
 package DTOs;
 
 import BankActions.AccountTransaction;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -22,6 +21,7 @@ public class AccountTransactionDTO implements Serializable {
         curBalance.set(Transaction.getAmountAfter());
         if(previousBalance.get() < curBalance.get()){
             TransactionType.set("+");
+
         }
         else {
             TransactionType.set("-");

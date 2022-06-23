@@ -24,6 +24,7 @@ public class CategoriesDTO implements Serializable {
             i++;
         }
         return allCategories.toString();
+
     }
 }
 
