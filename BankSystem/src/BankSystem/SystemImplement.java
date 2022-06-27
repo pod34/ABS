@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
 import static BankSystem.FromXmlToClasses.fromXmlToObjects;
 
 public class SystemImplement implements BankSystem , Serializable {
-    private Map<String, Customer> Customers;
-    private Map<String, Loan> LoansInBank;
-    private List<String> allCategories;
+    private Map<String, Customer> Customers = new HashMap<>();
+    private Map<String, Loan> LoansInBank = new HashMap<>();
+    private List<String> allCategories = new ArrayList<>();
     private int Yaz = 1;
     transient private SimpleStringProperty yazProperty = new SimpleStringProperty();
 
@@ -49,35 +49,6 @@ public class SystemImplement implements BankSystem , Serializable {
         return tmp;
     }
 
-    public void ViewInformationOnExistingLoansAndTheirStatus(){
-        int numOfLoan = 1;
-        for (Loan curLoan: LoansInBank.values()) {
-            curLoan.PrintLoan(true, numOfLoan);
-            numOfLoan++;
-        }
-    }
-
-    public void DisplayInformationAboutSystemCustomers(){
-        for (Customer curCustomer: Customers.values()) {
-            AtomicInteger numOfLoan = new AtomicInteger(1);
-            System.out.println("\n");
-            System.out.println("The name of the customer: " + curCustomer.getName());
-            curCustomer.PrintCustomerTransactions();
-            if(curCustomer.getLoansAsABorrower().size() == 0)
-                System.out.println("There are no loans as borrower for: " + curCustomer.getName());
-            else {
-                System.out.println("The Loans that " + curCustomer.getName() + " borrowed: ");
-                LoansInBank.values().stream().filter(L -> L.getNameOfLoaner().equals(curCustomer.getName())).forEach(L -> L.PrintLoan(false, numOfLoan.getAndIncrement()));
-            }
-            if(curCustomer.getLoansAsALender().size() == 0)
-                System.out.println("There are no loans as lender for: " + curCustomer.getName());
-            else {
-                System.out.println("The Loans that " + curCustomer.getName() + " lend: ");
-                LoansInBank.values().stream().filter(L -> L.ifTheNameIsInTheNameList(curCustomer.getName())).forEach(L -> L.PrintLoan(false, numOfLoan.getAndIncrement()));
-            }
-        }
-    }
-
     @Override
     public AccountTransactionDTO DepositToAccount(int amount,String nameOfCostumer){
         return Customers.get(nameOfCostumer).DepositMoney(amount,Yaz);
@@ -86,6 +57,11 @@ public class SystemImplement implements BankSystem , Serializable {
     @Override
     public AccountTransactionDTO WithdrawFromTheAccount(int amount,String nameOfCostumer){
         return Customers.get(nameOfCostumer).WithdrawMoney(amount,Yaz);
+    }
+
+    public void addCustomerToBank(String nameOfCustomer){
+        if(!Customers.containsKey(nameOfCustomer))
+            Customers.put(nameOfCustomer,new Customer(nameOfCustomer,0,null));
     }
 
     public List<CustomerDTOs> getListOfDTOsCustomer(){

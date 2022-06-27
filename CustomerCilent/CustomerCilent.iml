@@ -8,5 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="ClientCommons" />
+    <orderEntry type="module" module-name="Dtos" />
+    <orderEntry type="library" name="GSON" level="project" />
   </component>
 </module>

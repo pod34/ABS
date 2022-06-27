@@ -37,13 +37,7 @@ public abstract class AccountTransaction  implements Serializable {
 
     abstract public void setAmountAfter(int amountAfter);
 
-    public void PrintTransaction(){
-        System.out.println("Time of transaction: " + timeOfAction);
-        System.out.println("The amount of transaction " + amountOfTransaction);
-        System.out.println("Was the transaction negative(-) or positive (+): " + this.getSignOfTransaction());
-        System.out.println("The amount before: " + amountBefore);
-        System.out.println("The amount after: " + amountAfter);
-    }
+
 
 }
 

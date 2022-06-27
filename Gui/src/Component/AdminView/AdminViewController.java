@@ -7,7 +7,6 @@ package Component.AdminView;
     import DTOs.LoanDTOs;
     import SystemExceptions.InccorectInputType;
     import common.BankResourcesConstants;
-    import javafx.animation.TranslateTransition;
     import javafx.beans.property.SimpleBooleanProperty;
     import javafx.beans.property.SimpleStringProperty;
     import javafx.collections.FXCollections;
@@ -20,7 +19,6 @@ package Component.AdminView;
     import javafx.scene.layout.*;
     import javafx.scene.paint.Color;
     import javafx.stage.FileChooser;
-    import javafx.util.Duration;
     import org.controlsfx.control.table.TableRowExpanderColumn;
 
     import java.io.File;

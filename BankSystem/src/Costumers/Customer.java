@@ -2,8 +2,6 @@ package Costumers;
 
 import BankActions.*;
 import DTOs.AccountTransactionDTO;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 import java.util.*;
@@ -86,15 +84,6 @@ public class Customer implements Serializable {
         return new AccountTransactionDTO(withdrawMoney);
     }
 
-    public void PrintCustomerTransactions(){
-        if(Transactions.size() == 0)
-            System.out.println("There are no transactions for " + name + " for this moment.");
-        else{
-            System.out.println("This is the Transactions for " + name);
-            for (AccountTransaction curTransaction : Transactions)
-                curTransaction.PrintTransaction();
-        }
-    }
 
     public void makeAnInvestment(String loanName, int amount, int yaz){
         this.WithdrawMoney(amount, yaz);

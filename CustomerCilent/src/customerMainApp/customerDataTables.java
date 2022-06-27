@@ -1,10 +1,10 @@
-package Component.CustomerView;
+package customerMainApp;
 
-import Component.MainComponent.BankController;
-import Component.ViewLoansInfo.ViewLoansInfoController;
 import DTOs.AccountTransactionDTO;
 import DTOs.CustomerDTOs;
 import DTOs.LoanDTOs;
+import clientController.ClientController;
+import component.loansComponent.ViewLoansInfo.ViewLoansInfoController;
 import javafx.collections.FXCollections;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CustomerDataToPresent implements Serializable {
+public class customerDataTables implements Serializable {
 
     CustomerDTOs customer;
     private TableView<LoanDTOs> LoansAsLoanerData = new TableView<>();
@@ -25,21 +25,21 @@ public class CustomerDataToPresent implements Serializable {
     private TableView<LoanDTOs> LoansAsLoanerDataForPaymentTab = new TableView<>();
     private TableView<AccountTransactionDTO> TransactionTable = new TableView<>();
     ViewLoansInfoController loansInfoController = new ViewLoansInfoController();
-    BankController mainController;
+    ClientController clientController;
 
-    public CustomerDataToPresent(CustomerDTOs customer, BankController i_mainController) {
-        mainController = i_mainController;
+    public customerDataTables(CustomerDTOs customer, ClientController i_clientController) {
+        clientController = i_clientController;
         this.customer = customer;
         List<LoanDTOs> lst = new ArrayList<>();
-        loansInfoController.setMainController(mainController);
-        loansInfoController.buildLoansTableView(LoansAsLoanerData,mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()));
-        loansInfoController.buildLoansTableView(LoansAsLenderData,mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsALender()));
-        buildLoansTableForPaymentTab();
+        loansInfoController.setMainController(clientController);
+        //loansInfoController.buildLoansTableView(LoansAsLoanerData,clientController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()));
+        //loansInfoController.buildLoansTableView(LoansAsLenderData,clientController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsALender()));
+        //buildLoansTableForPaymentTab();
         buildTransactionsTable(customer.getTransactions());
     }
 
-    private void buildLoansTableForPaymentTab(){
-        List<LoanDTOs> filteredLoansActiveAndRisk = mainController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()).stream().filter(L -> (L.getStatusName().equals("ACTIVE") || L.getStatusName().equals("RISK"))).collect(Collectors.toList());
+/*    private void buildLoansTableForPaymentTab(){
+        List<LoanDTOs> filteredLoansActiveAndRisk = clientController.getSystemCustomerLoansByListOfLoansName(customer.getLoansAsABorrower()).stream().filter(L -> (L.getStatusName().equals("ACTIVE") || L.getStatusName().equals("RISK"))).collect(Collectors.toList());
         loansInfoController.buildLoansTableView(LoansAsLoanerDataForPaymentTab,filteredLoansActiveAndRisk);
 
         final TableColumn<LoanDTOs, Integer> nextYazPayment = new TableColumn<>( "Next yaz payment" );
@@ -59,7 +59,7 @@ public class CustomerDataToPresent implements Serializable {
         amountToPayCol.setCellFactory(TextFieldTableCell.forTableColumn());
         amountToPayCol.setOnEditCommit(
                 event -> {
-                    if((event.getTableView().getItems().get(event.getTablePosition().getRow()).getNextYazPayment()) != mainController.getCurrentYaz()){
+                    if((event.getTableView().getItems().get(event.getTablePosition().getRow()).getNextYazPayment()) != clientController.getCurrentYaz()){
                         event.getTableView().getItems().get(event.getTablePosition().getRow()).setAmountToPay("0");
                     }
                     else{
@@ -67,6 +67,7 @@ public class CustomerDataToPresent implements Serializable {
                     }
                 }
         );
+
 
         LoansAsLoanerDataForPaymentTab.getColumns().add( amountToPayCol );
         amountToPayCol.getTableView().setEditable(true);
@@ -79,6 +80,7 @@ public class CustomerDataToPresent implements Serializable {
         selectedColumn.getTableView().setEditable(true);
 
     }
+*/
 
     public TableView<LoanDTOs> getLoansAsLoanerDataForPaymentTab() {
         return LoansAsLoanerDataForPaymentTab;
@@ -122,13 +124,13 @@ public class CustomerDataToPresent implements Serializable {
         TransactionTable.getItems().addAll(FXCollections.observableArrayList(customerTransactions));
     }
 
-    public void updateLoansTables(CustomerDTOs curCustomer){
-        List<LoanDTOs> loansAsLoaner = mainController.getSystemCustomerLoansByListOfLoansName(curCustomer.getLoansAsABorrower());
-        updateLoansAsLender(mainController.getSystemCustomerLoansByListOfLoansName(curCustomer.getLoansAsALender()));
+   /* public void updateLoansTables(CustomerDTOs curCustomer){
+        List<LoanDTOs> loansAsLoaner = clientController.getSystemCustomerLoansByListOfLoansName(curCustomer.getLoansAsABorrower());
+        updateLoansAsLender(clientController.getSystemCustomerLoansByListOfLoansName(curCustomer.getLoansAsALender()));
         updateLoansAsLoaner(loansAsLoaner);
         updateLoanAsLoanerForPaymentTab(loansAsLoaner);
         updateTransactionTable(curCustomer);
-    }
+    }*/
 
     public void updateLoansAsLender(List<LoanDTOs> i_loansAsLender){
         LoansAsLenderData.getItems().clear();

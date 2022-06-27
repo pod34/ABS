@@ -1,8 +1,9 @@
-package Component.ViewLoansInfo;
-import BankActions.Payment;
-import Component.MainComponent.BankController;
-import DTOs.CategoriesDTO;
+package component.loansComponent.ViewLoansInfo;
+
+//import BankActions.Payment;
+//import Component.MainComponent.BankController;
 import DTOs.LoanDTOs;
+import clientController.ClientController;
 import common.BankResourcesConstants;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -14,11 +15,11 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import org.controlsfx.control.table.TableRowExpanderColumn;
 
-import java.io.Serializable;
-import java.util.Map;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
 
 public class ViewLoansInfoController implements Serializable {
     @FXML private GridPane LoansView;
@@ -33,10 +34,9 @@ public class ViewLoansInfoController implements Serializable {
     private TextArea LoanDataByStatus;
     @FXML private Accordion PaymentsDetails;
     @FXML private Accordion LenderDetails;
-    @FXML private BankController mainController;
+    ClientController clientController;
 
-
-    public void setMainController(BankController mainController) {this.mainController = mainController;}
+    public void setMainController(ClientController i_clientController) {this.clientController = i_clientController;}
 
     public void buildLoansTableView(TableView<LoanDTOs> i_LoansData,List<LoanDTOs> allLoans){
         i_LoansData.getItems().clear();
@@ -94,7 +94,7 @@ public class ViewLoansInfoController implements Serializable {
         ViewLoansInfoController expendedLoansDetailsController = loader.getController();
         LoanExpandedDetails.setBackground(new Background(new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        expendedLoansDetailsController.setLoanDataByStatus(loan, mainController);
+        expendedLoansDetailsController.setLoanDataByStatus(loan, clientController);
         expendedLoansDetailsController.setInterestValue(interest);
         expendedLoansDetailsController.setOriginalAmountValue(originalAmount);
         expendedLoansDetailsController.setPaymentFrequencyValue(paymentFrequency);
@@ -102,7 +102,7 @@ public class ViewLoansInfoController implements Serializable {
         expendedLoansDetailsController.setOriginalInterestAmountValue(theTotalInterestAmountOfTheLoan);
         //expendedLoansDetailsController.setStatusValue(status, loan.getNameOfLoan(), mainController);
         expendedLoansDetailsController.setLenderDetails(loan);
-        expendedLoansDetailsController.setPaymentsDetails(loan);
+        //expendedLoansDetailsController.setPaymentsDetails(loan);
 
         return LoanExpandedDetails;
     }
@@ -148,7 +148,7 @@ public class ViewLoansInfoController implements Serializable {
         LenderDetails.getPanes().addAll(lenders);
     }
 
-    public void setPaymentsDetails(LoanDTOs Loan){
+/*    public void setPaymentsDetails(LoanDTOs Loan){
         List<Payment> listOfPayments = Loan.getLoansPayments();
         TitledPane[] Payments = new TitledPane[listOfPayments.size()];
         int counter = 0;
@@ -170,9 +170,9 @@ public class ViewLoansInfoController implements Serializable {
         }
         PaymentsDetails.getPanes().addAll(Payments);
 
-    }
+    }*/
 
-    public void setLoanDataByStatus(LoanDTOs loan, BankController i_mainController){
+    public void setLoanDataByStatus(LoanDTOs loan, ClientController i_clientController){
         LoanDataByStatus.setText("");
         status.setText("");
         switch (loan.getStatusName()){

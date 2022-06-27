@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -41,6 +42,8 @@ public class LoginController {
         errorMassage.textProperty().bind(errorMessageProperty);
         //TODO manage cookies for login (not sure what i need to do, take a 2 look in aviad login app)
     }
+
+
 
 
     @FXML
@@ -77,8 +80,8 @@ public class LoginController {
                     );
                 } else {
                     Platform.runLater(() -> {
-                        //TODO update customerAppController what is the name of this current customer
-                        //TODO Show main customer window
+                        customerAppMainController.setCurrentClientUserName(userName);
+                        customerAppMainController.switchToClientApp();
                     });
                 }
             }

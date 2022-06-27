@@ -1,5 +1,4 @@
 package Component.MainComponent;
-import BankActions.LoanStatus;
 import BankSystem.BankSystem;
 import Component.AdminView.AdminViewController;
 import Component.CustomerView.CustomerViewController;

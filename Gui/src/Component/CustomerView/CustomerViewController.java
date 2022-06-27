@@ -18,7 +18,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import org.controlsfx.control.CheckComboBox;
 import org.controlsfx.control.CheckListView;
@@ -28,7 +27,6 @@ import org.controlsfx.control.StatusBar;
 import java.io.Serializable;
 import java.util.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -54,7 +52,6 @@ public class CustomerViewController implements Serializable {
     @FXML private TextField minimumYaz;
     @FXML private TextField maxOpenLoans;
     @FXML private TextField maxLoanOwner;
-    private SimpleStringProperty howManyMatchingLoansFoundProp = new SimpleStringProperty("");
     @FXML private TextField minInterest;
     @FXML private Label errorMaxLoanOwner;
     @FXML private TableView relevantLoans;
@@ -63,8 +60,6 @@ public class CustomerViewController implements Serializable {
     @FXML private AnchorPane customerViewWindow;
     @FXML private StatusBar FindLoansProgress;
     @FXML private Button findLoans;
-    private Map<String, CustomerDataToPresent> DataOfCustomerTOPresentInCustomerView = new HashMap<>();
-    private Map<String, List<String>> messages;
     @FXML private BankController mainController;
     @FXML private TextField AmountTB;
     @FXML private Button ChargeBT;
@@ -78,34 +73,14 @@ public class CustomerViewController implements Serializable {
     @FXML private Label welcomeCustomer;
     @FXML private Label balanceOfCustomer;
     @FXML private Button fullPayment;
-    private String curCustomerName;
     @FXML private Label loansInAbsLb;
     @FXML private Label customersInAbsLb;
+    private SimpleStringProperty howManyMatchingLoansFoundProp = new SimpleStringProperty("");
+    private Map<String, CustomerDataToPresent> DataOfCustomerTOPresentInCustomerView = new HashMap<>();
+    private Map<String, List<String>> messages;
+    private String curCustomerName;
     private Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
     private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-
-
-    public void setMainController(BankController mainController) {
-        this.mainController = mainController;
-    }
-
-    @FXML
-    void chargeClicked(ActionEvent event) {
-        if (!AmountTB.getText().trim().isEmpty()) {
-            mainController.chargeActivation(Integer.parseInt(AmountTB.getText()));
-        }
-        AmountTB.clear();
-        AmountTB.setText(AmountTB.getText());
-    }
-
-    @FXML
-    void withdrawClicked(ActionEvent event) {//TODO: add limit check cant withdraw more than customer have
-        if (!AmountTB.getText().trim().isEmpty()) {
-            mainController.withdrawActivation(Integer.parseInt(AmountTB.getText()));
-        }
-        AmountTB.clear();
-        AmountTB.setText(AmountTB.getText());
-    }
 
     @FXML
     private void initialize() {
@@ -165,6 +140,29 @@ public class CustomerViewController implements Serializable {
 
         howManyLoansFound.textProperty().bind(howManyMatchingLoansFoundProp);
     }
+
+    public void setMainController(BankController mainController) {
+        this.mainController = mainController;
+    }
+
+    @FXML
+    void chargeClicked(ActionEvent event) {
+        if (!AmountTB.getText().trim().isEmpty()) {
+            mainController.chargeActivation(Integer.parseInt(AmountTB.getText()));
+        }
+        AmountTB.clear();
+        AmountTB.setText(AmountTB.getText());
+    }
+
+    @FXML
+    void withdrawClicked(ActionEvent event) {//TODO: add limit check cant withdraw more than customer have
+        if (!AmountTB.getText().trim().isEmpty()) {
+            mainController.withdrawActivation(Integer.parseInt(AmountTB.getText()));
+        }
+        AmountTB.clear();
+        AmountTB.setText(AmountTB.getText());
+    }
+
 
     public void setMessagesViewToCustomer(String customerName) {
         List<String> notifications = mainController.getNotificationFromCustomer();

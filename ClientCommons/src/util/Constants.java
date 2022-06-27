@@ -9,5 +9,6 @@ public class Constants {
 
 
     public final static String LOGIN_PAGE = FULL_SERVER_PATH + "/login";
+    public final static String ChargeAccount = FULL_SERVER_PATH + "/Transaction";
 
 }

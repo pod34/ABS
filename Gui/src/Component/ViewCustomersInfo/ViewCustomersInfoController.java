@@ -1,7 +1,5 @@
 package Component.ViewCustomersInfo;
-import BankActions.LoanStatus;
 import DTOs.LoanDTOs;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

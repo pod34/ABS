@@ -4,14 +4,12 @@ import BankSystem.BankSystem;
 import BankSystem.SystemImplement;
 import Component.CustomerView.CustomerViewController;
 import Component.MainComponent.BankController;
-import Component.PopUpWindows.ErrorWindow;
 import common.BankResourcesConstants;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.fxmisc.cssfx.CSSFX;
 
